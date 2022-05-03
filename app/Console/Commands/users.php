@@ -28,16 +28,17 @@ class users extends Command
      *
      * @return int
      */
+
     public function handle()
     {
         $password = "";
-        echo "We Are Going To Guide You Through The Admin Creation Process:\n";
+        $this->info("We Are Going To Guide You Through The Admin Creation Process: ");
         $name = readline("First Input The New Admin's First Name: ");
-        echo "Good!\n";
+        $this->info("Good! ");
         $last_name = readline("Now Please Input The New Admin's Last Name: ");
-        echo "Very Well!\n";
+        $this->info("Very Well! ");
         $father = readline("Almost There! Input The New Admin's Father Name: ");
-        echo "One Thing Left! Do You Want To Input A Specific Password Or Do You Want It To Be Randomly Generated?";
+        $this->info("One Thing Left! Do You Want To Input A Specific Password Or Do You Want It To Be Randomly Generated?");
         $choice = readline("(R)andom or (S)pecific?: ");
 
         //Testing For Wrong Input
@@ -47,12 +48,12 @@ class users extends Command
             if ($choice == "R" || $choice == "r") 
             {
                 $test = true;
-                echo "Generating Random Password....\n";
+                $this->info("Generating Random Password....");
                 $password = Str::Random(8);
-                echo "Password Generated!";
-                echo "Admin Password Is: ".$password."\n";
-                echo "It Is Recommended That You Change This Password In The Near Future!\n";
-                echo "Creating Admin......\n";
+                $this->info("Password Generated!");
+                $this->info("Admin Password Is: ".$password);
+                $this->info("It Is Recommended That You Change This Password In The Near Future!");
+                $this->info("Creating Admin......");
                 $admin = new User();
                 $admin->name = $name;
                 $admin->last_name = $last_name;
@@ -60,9 +61,9 @@ class users extends Command
                 $admin->admin = true;
                 $admin->password = Hash::make($password);
                 $admin->save();
-                echo "Admin Created!\n";
-                echo "Do Not Forget To Change The Password In The Near Future!\n";
-                echo "It Is Reccommended That You Close This Session Immediatly!\n";
+                $this->info("Admin Created!");
+                $this->info("Do Not Forget To Change The Password In The Near Future!");
+                $this->info("It Is Reccommended That You Close This Session Immediatly!");
             }
 
             else if ($choice == "S" || $choice == "s") 
@@ -70,7 +71,7 @@ class users extends Command
                 $test = true;
                 $passtest = false;
                 $equaltest = false;
-                $password = readLine("Please Input The New Admin's Password: ");
+                $password = $this->secret("Please Input The New Admin's Password: ");
                 //Specifying Some Password Rules
                 while (!$passtest) 
                 {
@@ -83,7 +84,7 @@ class users extends Command
                     {
                         if (strlen($password) < 8) 
                         {
-                            echo "Password Must Be At Least 8 Characters Long\n";
+                            $this->error("Password Must Be At Least 8 Characters Long");
                         }
 
                         else
@@ -109,15 +110,15 @@ class users extends Command
 
                         if(!$capitaltest)
                         {
-                            echo "The Password Must Have At Least One Capital Character!\n";
+                            $this->error("The Password Must Have At Least One Capital Character!");
                         }
                         if(!$numtest)
                         {
-                            echo "The Password Must Contain At Least One Number!\n";
+                            $this->error("The Password Must Contain At Least One Number!");
                         }
                         if(!$specialtest)
                         {
-                            echo "The Password Must Contain At Least One Special Characeter!\n";
+                            $this->error("The Password Must Contain At Least One Special Characeter!");
                         }
 
                         if(!$mintest || !$capitaltest || !$numtest || !$specialtest)
@@ -126,25 +127,25 @@ class users extends Command
                             $capitaltest = false;
                             $numtest = false;
                             $specialtest = false;
-                            $password = readLine("Please Re-Input The New Admin's Password: ");
+                            $password = $this->secret("Please Re-Input The New Admin's Password: ");
                         }
 
                         else
                         {
                             $passtest = true;
-                            echo "Password Accepted!\n";
+                            $this->info("Password Accepted!");
                         }
                     }
                 }
                 
-                $confirm = readline("Confirm Password: ");
+                $confirm = $this->secret("Confirm Password: ");
                 while(!$equaltest)
                 {
                     $etest = true;
                     if(strlen($confirm) != strlen($password))
                     {
-                        echo "Passwords Do Not Match!\n";
-                        $confirm = readline("Confirm Password: ");
+                        $this->error("Passwords Do Not Match!");
+                        $confirm = $this->secret("Confirm Password: ");
                     }
                     else
                     {
@@ -158,19 +159,19 @@ class users extends Command
 
                         if(!$etest)
                         {
-                            echo "Passwords Do Not Match!\n";
-                            $confirm = readline("Confirm Password: ");
+                            $this->error("Passwords Do Not Match!");
+                            $confirm = $this->secret("Confirm Password: ");
                         }
                     }
 
                     if($etest)
                     {
                         $equaltest = true;
-                        echo "Password Confirmed!\n";
+                        $this->info("Password Confirmed!");
                     }
                 }
 
-                echo "Creating Admin......\n";
+                $this->info("Creating Admin......");
                 $admin = new User();
                 $admin->name = $name;
                 $admin->last_name = $last_name;
@@ -178,13 +179,13 @@ class users extends Command
                 $admin->admin = true;
                 $admin->password = Hash::make($password);
                 $admin->save();
-                echo "Admin Created!\n";
-                echo "It Is Reccommended That You Close This Session Immediatly!\n";
+                $this->info("Admin Created!");
+                $this->info("It Is Reccommended That You Close This Session Immediatly!");
             } 
 
             else 
             {
-                echo "Please Input (S) or (R)!\n";
+                $this->info("Please Input (S) or (R)!\n");
                 $choice = readline("(R)andom or (S)pecific?: ");
             }
         }
