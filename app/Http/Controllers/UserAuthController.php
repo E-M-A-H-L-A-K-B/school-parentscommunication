@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
 
 class UserAuthController extends Controller
@@ -51,13 +52,64 @@ class UserAuthController extends Controller
         return view('user change password');
     }
 
+    public function HandleAdminChangePassword(Request $req)
+    {
+        $credentials= $req->validate([
+            'oldpass' => ['required','current_password'],
+            'newpass' => ['required'],
+        ]);
+
+        $password = $req->newpass;
+        $capitaltest = false;   //Must Have A Capital Character
+        $numtest = false;   //Must Have At Least One Number
+        $specialtest = false; //Must Have At Least One Special Character
+
+        if (strlen($password) < 8) 
+        {
+            return back()->with('mintest_error',"Password Must Be At Least 8 Characters Long!");
+        }
+    
+        for ($i = 0; $i < strlen($password); $i++) 
+        {
+            if ($password[$i] >= 'A' && $password[$i] <= 'Z') 
+            {
+                $capitaltest = true;
+            }
+            if ($password[$i] >= '0' && $password[$i] <= '9') 
+            {
+                $numtest = true;
+            }
+            if(!($password[$i] >= 'A' && $password[$i] <= 'Z') && !($password[$i] >= 'a' && $password[$i] <= 'z') && !($password[$i] >= '0' && $password[$i] <= '9'))
+            {
+                $specialtest = true;
+            }
+        }
+        if(!$capitaltest)
+        {
+            return back()->with('capitaltest_error',"The Password Must Have At Least One Capital Character!");
+        }
+        if(!$numtest)
+        {
+            return back()->with('numtest_error',"The Password Must Contain At Least One Number!");
+        }
+        if(!$specialtest)
+        {
+            return back()->with('specialtest_error',"The Password Must Contain At Least One Special Characeter!");
+        }
+
+        $user = User::where('id',$req->id)->first();
+        $user->password = Hash::make($req->newpass);
+        $user->save();
+        return redirect()->intended('/')->with('change_success','Password Changed Successfully');
+    }
+
     public function HandleChangePassword(Request $req)
     {
         $credentials= $req->validate([
             'oldpass' => ['required'],
             'newpass' => ['required'],
         ]);
-        
+
         $user = User::where('id',$req->id)->first();
         if(Hash::check($req->oldpass,$user->password))
         {
