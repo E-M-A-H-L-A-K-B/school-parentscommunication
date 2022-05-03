@@ -13,9 +13,13 @@
 <form action="{{route('student.Handlelogin')}}" method="post">
     @csrf
     Name: <input type="text" name="name"><br>
+    <span><small style="color: red;">@error('name'){{ $message }}@enderror <br></small></span>
     Last Name: <input type="text" name="last_name"><br>
+    <span><small style="color: red;">@error('last_name'){{ $message }}@enderror <br></small></span>
     Father: <input type="text" name="father"><br>
+    <span><small style="color: red;">@error('father'){{ $message }}@enderror <br></small></span>
     Password: <input type="password" name="password"><br>
+    <span><small style="color: red;">@error('password'){{ $message }}@enderror <br></small></span>
     <input type="submit" value="Login">
 </form>
     

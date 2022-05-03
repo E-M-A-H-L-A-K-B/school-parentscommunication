@@ -52,9 +52,12 @@
     <h2>Student Register Form</h2>
     <form action="{{route('student.register')}}" method="post">
         @csrf
-        Name: <input type="text" name='name' required><br>
-        Last Name: <input type="text" name='last_name' required><br>
-        Father's Name: <input type="text" name="father" required><br>
+        Name: <input type="text" name='name' ><br>
+        <span><small style="color: red;">@error('name'){{ $message }}@enderror <br></small></span>
+        Last Name: <input type="text" name='last_name' ><br>
+        <span><small style="color: red;">@error('last_name'){{ $message }}@enderror <br></small></span>
+        Father's Name: <input type="text" name="father" ><br>
+        <span><small style="color: red;">@error('father'){{ $message }}@enderror <br></small></span>
         <input type="submit" value="Register">
     </form>
 

@@ -53,6 +53,11 @@ class UserAuthController extends Controller
 
     public function HandleChangePassword(Request $req)
     {
+        $credentials= $req->validate([
+            'oldpass' => ['required'],
+            'newpass' => ['required'],
+        ]);
+        
         $user = User::where('id',$req->id)->first();
         if(Hash::check($req->oldpass,$user->password))
         {
