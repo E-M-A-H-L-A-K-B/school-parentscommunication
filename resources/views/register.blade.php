@@ -33,9 +33,16 @@
     <h2>User Register Form</h2>
     <form action="{{route('user.register')}}" method="post">
         @csrf
-        Name: <input type="text" name='name' required><br>
-        Last Name: <input type="text" name='last_name' required><br>
-        Father's Name: <input type="text" name="father" required><br>
+        Name: <input type="text" name='name' ><br>
+        <span><small style="color: red;">@error('name'){{ $message }}@enderror <br></small></span>
+        Last Name: <input type="text" name='last_name' ><br>
+        <span><small style="color: red;">@error('last_name'){{ $message }}@enderror <br></small></span>
+        Father's Name: <input type="text" name="father" ><br>
+        <span><small style="color: red;">@error('father'){{ $message }}@enderror <br></small></span>
+        Role: 
+        <label for="teacher">Teacher <input type="radio" name="role" id="teacher" value='1' ></label> 
+        <label for="guide">Guide <input type="radio" name="role" id="guide" value="2" ></label> <br>
+        <span><small style="color: red;">@error('role'){{ $message }}@enderror <br></small></span>
         <input type="submit" value="Register">
     </form>
 

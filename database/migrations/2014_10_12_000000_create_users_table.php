@@ -19,6 +19,9 @@ return new class extends Migration
             $table->string('last_name');
             $table->string('father');
             $table->string('password');
+            $table->boolean('teacher')->default(false);
+            $table->boolean('guide')->default(false);
+            $table->boolean('admin')->default(false);
             $table->rememberToken();
             $table->timestamps();
         });

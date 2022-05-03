@@ -21,6 +21,7 @@ class UserAuthController extends Controller
             'name' => ['required'],
             'last_name' => ['required'],
             'father' => ['required'],
+            'role' => ['required'],
         ]);
 
         $password = Str::random(8);
@@ -31,6 +32,14 @@ class UserAuthController extends Controller
         $new->father = $req->father;
         $new->last_name = $req->last_name;
         $new->password = Hash::make($password);
+        if($req->role == 1)
+        {
+            $new->teacher = true;
+        }
+        else if($req->role == 2)
+        {
+            $new->guide = true;
+        }
 
         $new->save();
 
