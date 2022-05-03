@@ -22,22 +22,14 @@ class StudentAuthController extends Controller
     public function HandleChangePassword(Request $req)
     {
         $credentials= $req->validate([
-            'oldpass' => ['required'],
+            'oldpass' => ['required','current_password'],
             'newpass' => ['required'],
         ]);
 
         $user = Student::where('id',$req->id)->first();
-        if(Hash::check($req->oldpass,$user->password))
-        {
-            $user->password = Hash::make($req->newpass);
-            $user->save();
-            return redirect()->intended('/')->with('change_success','Password Changed Successfully');
-        }
-
-        else
-        {
-            return back()->with('error','The Old Password Is Not Right');
-        }
+        $user->password = Hash::make($req->newpass);
+        $user->save();
+        return redirect()->intended('/')->with('change_success','Password Changed Successfully');
     }
 
     public function register(Request $req)
