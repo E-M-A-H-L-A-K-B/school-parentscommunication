@@ -9,6 +9,10 @@
 <body>
 
 
+@if(Session::has('error'))
+    <p style="color:red">{{ Session::get('error') }}</p>
+@endif
+
 <h2>User Login Form</h2>
 <form action="{{route('user.Handlelogin')}}" method="post">
     @csrf

@@ -15,9 +15,16 @@
     @endif
 
     @if(Auth::check())
+        @if(Auth::user()->admin)
+        <p style="color:blue"> Hello Admin : {{ Auth::user()->name }} {{Auth::user()->father}} {{ Auth::user()->last_name }}</p>
+        <p><a href="{{route('user.logout')}}">logout</a></p>
+        <p><a href="{{route('user.changepassword')}}">Change Password</a></p>
+        @endif
+        @if(!Auth::user()->admin)
         <p style="color:blue"> Hello Professor : {{ Auth::user()->name }} {{Auth::user()->father}} {{ Auth::user()->last_name }}</p>
         <p><a href="{{route('user.logout')}}">logout</a></p>
         <p><a href="{{route('user.changepassword')}}">Change Password</a></p>
+        @endif
     @endif
 
     @if(Session::has('change_success'))
