@@ -37,6 +37,10 @@
     @if(Session::has('user_success'))
         <p style="color: green;">{{Session::get('user_success')}}</p>
     @endif
+
+    @if(Session::has('user_exists'))
+        <p style="color: red;">{{Session::get('user_exists')}}</p>
+    @endif
     <h2>User Register Form</h2>
     <form action="{{route('user.register')}}" method="post">
         @csrf
@@ -56,6 +60,11 @@
     @if(Session::has('student_success'))
         <p style="color: green;">{{Session::get('student_success')}}</p>
     @endif
+
+    @if(Session::has('student_exists'))
+        <p style="color: red;">{{Session::get('student_exists')}}</p>
+    @endif
+
     <h2>Student Register Form</h2>
     <form action="{{route('student.register')}}" method="post">
         @csrf

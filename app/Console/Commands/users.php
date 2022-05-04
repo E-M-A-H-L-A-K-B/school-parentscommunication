@@ -38,6 +38,14 @@ class users extends Command
         $last_name = readline("Now Please Input The New Admin's Last Name: ");
         $this->info("Very Well! ");
         $father = readline("Almost There! Input The New Admin's Father Name: ");
+
+        $existtest = User::where('name',$name)->where('last_name',$last_name)->where('father',$father)->exists();
+        if($existtest)
+        {
+            $this->error('This Admin Already Exists In The Database');
+            return;
+        }
+
         $this->info("One Thing Left! Do You Want To Input A Specific Password Or Do You Want It To Be Randomly Generated?");
         $choice = readline("(R)andom or (S)pecific?: ");
 

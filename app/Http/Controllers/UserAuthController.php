@@ -18,6 +18,12 @@ class UserAuthController extends Controller
 
     public function register(Request $req)
     {
+        $test = User::where('name',$req->name)->where('last_name',$req->last_name)->where('father',$req->father)->exists();
+        if($test)
+        {
+            return back()->with('user_exists','This User Already Exists In The Database');
+        }
+
         $credentials= $req->validate([
             'name' => ['required'],
             'last_name' => ['required'],

@@ -34,6 +34,12 @@ class StudentAuthController extends Controller
 
     public function register(Request $req)
     {
+        $test = Student::where('name',$req->name)->where('last_name',$req->last_name)->where('father',$req->father)->exists();
+        if($test)
+        {
+            return back()->with('student_exists','This Student Already Exists In The Database');
+        }
+
         $credentials= $req->validate([
             'name' => ['required'],
             'last_name' => ['required'],
