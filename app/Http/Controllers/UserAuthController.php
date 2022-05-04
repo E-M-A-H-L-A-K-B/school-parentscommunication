@@ -56,18 +56,13 @@ class UserAuthController extends Controller
     {
         $credentials= $req->validate([
             'oldpass' => ['required','current_password'],
-            'newpass' => ['required'],
+            'newpass' => ['required','min:8'],
         ]);
 
         $password = $req->newpass;
         $capitaltest = false;   //Must Have A Capital Character
         $numtest = false;   //Must Have At Least One Number
         $specialtest = false; //Must Have At Least One Special Character
-
-        if (strlen($password) < 8) 
-        {
-            return back()->with('mintest_error',"Password Must Be At Least 8 Characters Long!");
-        }
     
         for ($i = 0; $i < strlen($password); $i++) 
         {
