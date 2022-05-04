@@ -56,13 +56,20 @@ class UserAuthController extends Controller
     {
         $credentials= $req->validate([
             'oldpass' => ['required','current_password'],
-            'newpass' => ['required','min:8'],
+            'newpass' => ['required'],
         ]);
 
         $password = $req->newpass;
+        $mintest = false;
         $capitaltest = false;   //Must Have A Capital Character
         $numtest = false;   //Must Have At Least One Number
         $specialtest = false; //Must Have At Least One Special Character
+
+        if(strlen($req->newpass) < 8)
+        {
+            Session::flash("mintest_error","The Password Must Be At Least 8 Characters Long!");
+            $mintest = true;
+        }
     
         for ($i = 0; $i < strlen($password); $i++) 
         {
@@ -81,15 +88,20 @@ class UserAuthController extends Controller
         }
         if(!$capitaltest)
         {
-            return back()->with('capitaltest_error',"The Password Must Have At Least One Capital Character!");
+           Session::flash('capitaltest_error',"The Password Must Have At Least One Capital Character!");
         }
         if(!$numtest)
         {
-            return back()->with('numtest_error',"The Password Must Contain At Least One Number!");
+            Session::flash('numtest_error',"The Password Must Contain At Least One Number!");
         }
         if(!$specialtest)
         {
-            return back()->with('specialtest_error',"The Password Must Contain At Least One Special Characeter!");
+            Session::flash('specialtest_error',"The Password Must Contain At Least One Special Characeter!");
+        }
+
+        if(!$specialtest || !$numtest || !$capitaltest || !$mintest)
+        {
+            return back();
         }
 
         $user = User::where('id',$req->id)->first();
