@@ -110,7 +110,7 @@ class UserAuthController extends Controller
             return back();
         }
 
-        $user = User::find($req->id);
+        $user = User::findorfail($req->id);
         $user->password = Hash::make($req->newpass);
         $user->save();
 
