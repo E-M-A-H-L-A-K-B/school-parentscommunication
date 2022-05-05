@@ -110,9 +110,10 @@ class UserAuthController extends Controller
             return back();
         }
 
-        $user = User::where('id',$req->id)->first();
+        $user = User::where('ID',$req->id)->first();
         $user->password = Hash::make($req->newpass);
         $user->save();
+
         return redirect()->intended('/')->with('change_success','Password Changed Successfully');
     }
 
