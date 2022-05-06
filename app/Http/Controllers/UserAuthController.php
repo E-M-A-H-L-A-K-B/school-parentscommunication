@@ -66,7 +66,7 @@ class UserAuthController extends Controller
         ]);
 
         $password = $req->newpass;
-        $mintest = false;
+        $mintest = true;
         $capitaltest = false;   //Must Have A Capital Character
         $numtest = false;   //Must Have At Least One Number
         $specialtest = false; //Must Have At Least One Special Character
@@ -74,7 +74,7 @@ class UserAuthController extends Controller
         if(strlen($req->newpass) < 8)
         {
             Session::flash("mintest_error","The Password Must Be At Least 8 Characters Long!");
-            $mintest = true;
+            $mintest = false;
         }
     
         for ($i = 0; $i < strlen($password); $i++) 
@@ -107,6 +107,7 @@ class UserAuthController extends Controller
 
         if(!$specialtest || !$numtest || !$capitaltest || !$mintest)
         {
+            error_log("Entered The Back Function");
             return back();
         }
 
