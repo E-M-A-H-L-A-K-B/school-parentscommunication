@@ -22,7 +22,7 @@ class StudentAuthController extends Controller
     public function HandleChangePassword(Request $req)
     {
         $credentials= $req->validate([
-            'oldpass' => ['required','current_password'],
+            'oldpass' => ['required','current_password:student'],
             'newpass' => ['required'],
         ]);
 
