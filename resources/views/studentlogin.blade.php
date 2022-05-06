@@ -9,6 +9,13 @@
 </head>
 <body>
 
+    @if(Session::has('error'))
+        <p style="color:red">{{ Session::get('error') }}</p>
+    @endif
+
+    @if(Session::has('protection'))
+        <p style="color: red;">{{Session::get('protection')}}</p>
+    @endif
 
 <h2>Students Login Form</h2>
 <form action="{{route('student.Handlelogin')}}" method="post">

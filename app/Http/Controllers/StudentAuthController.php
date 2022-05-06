@@ -76,7 +76,7 @@ class StudentAuthController extends Controller
             return redirect()->intended('/');
         }
 
-        return back();
+        return back()->with('error','The Login Credentials Do Not Match With Our Database');
     }
 
     public function logout()

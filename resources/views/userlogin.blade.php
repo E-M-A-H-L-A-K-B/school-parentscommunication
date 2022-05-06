@@ -14,6 +14,10 @@
     <p style="color:red">{{ Session::get('error') }}</p>
 @endif
 
+@if(Session::has('protection'))
+        <p style="color: red;">{{Session::get('protection')}}</p>
+    @endif
+
 <h2>User Login Form</h2>
 <form action="{{route('user.Handlelogin')}}" method="post">
     @csrf

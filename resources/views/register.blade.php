@@ -32,6 +32,10 @@
         <p style="color: green;">{{Session::get('change_success')}}</p>
     @endif
 
+    @if(Session::has('protection'))
+        <p style="color: red;">{{Session::get('protection')}}</p>
+    @endif
+
     <p> Enter The Student login test: <a href="{{route('student.login')}}">login test</a></p>
     <p> Enter The User login test: <a href="{{route('user.login')}}">login test</a></p>
 
