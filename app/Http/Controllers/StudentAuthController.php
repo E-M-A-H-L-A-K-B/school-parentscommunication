@@ -69,6 +69,7 @@ class StudentAuthController extends Controller
             'password' => ['required'],
         ]);
 
+        //if statement
         if(Auth::guard('student')->attempt(['name'=> $req->name , 'last_name'=> $req->last_name, 'father'=> $req->father, 'password'=> $req->password]))
         {
             $req->session()->regenerate();
