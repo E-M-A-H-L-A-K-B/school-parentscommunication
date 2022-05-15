@@ -27,6 +27,8 @@ Route::middleware('auth.admin')->group(function (){
     Route::post('/studentregister',[StudentAuthController::class, 'register'])->name('student.register');
     Route::post('/admin-change-password',[UserAuthController::class, 'HandleAdminChangePassword'])->name('user.handleadminchangepassword');
     Route::get('/structure',[StructureController::class, 'main'])->name('structure.main');
+    Route::get('/structure/classes',[StructureController::class,'SClass'])->name('structure.classes');
+    Route::post('/structure/classes',[StructureController::class,'storeclass'])->name('structure.storeclass');
 });
 
 Route::middleware('auth.student')->group(function (){
