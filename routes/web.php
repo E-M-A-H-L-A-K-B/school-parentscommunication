@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\StructureController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentAuthController;
 use App\Http\Controllers\UserAuthController;
@@ -25,6 +26,7 @@ Route::middleware('auth.admin')->group(function (){
     Route::post('/userregister',[UserAuthController::class, 'register'])->name('user.register');
     Route::post('/studentregister',[StudentAuthController::class, 'register'])->name('student.register');
     Route::post('/admin-change-password',[UserAuthController::class, 'HandleAdminChangePassword'])->name('user.handleadminchangepassword');
+    Route::get('/structure',[StructureController::class, 'main'])->name('structure.main');
 });
 
 Route::middleware('auth.student')->group(function (){
@@ -45,8 +47,6 @@ Route::post('/userlogin',[UserAuthController::class, 'HandleLogin'])->name('user
 
 Route::get('/studentlogin',[StudentAuthController::class, 'login'])->name('student.login');
 Route::post('/studentlogin',[StudentAuthController::class, 'Handlelogin'])->name('student.Handlelogin');
-
-
 
 
 
