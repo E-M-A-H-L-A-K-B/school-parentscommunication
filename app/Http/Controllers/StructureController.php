@@ -28,7 +28,6 @@ class StructureController extends Controller
             return back()->with('number_error','The Class Number Must Be Between 1 and 12');
         }
 
-        error_log("Finished Validation");
         if(SClass::where('num',$request->class_number)->exists())
         {
             return back()->with('class_exist','This Class Already Exists');
@@ -40,5 +39,24 @@ class StructureController extends Controller
 
         return back()->with('class_created','Class Created Successfully');
         
+    }
+
+    public function section()
+    {
+        $classes = SClass::all()->sortBy('num');
+        return view('sections',['classes'=>$classes,]);
+    }
+
+    public function storesection(Request $request)
+    {
+        if(Section::where('class_num',$request->class_number)->where('num',$request->section_number)->exists())
+        {
+            return back()->with('section_exist_'.$request->class_number,'This Section Already Exists In This Class');
+        }
+        $new = new Section();
+        $new->num = $request->section_number;
+        $new->class_num = $request->class_number;
+        $new->save();
+        return back()->with('section_created','Section Created');
     }
 }

@@ -4,6 +4,7 @@ use App\Http\Controllers\StructureController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentAuthController;
 use App\Http\Controllers\UserAuthController;
+use Nette\Schema\Elements\Structure;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +30,8 @@ Route::middleware('auth.admin')->group(function (){
     Route::get('/structure',[StructureController::class, 'main'])->name('structure.main');
     Route::get('/structure/classes',[StructureController::class,'SClass'])->name('structure.classes');
     Route::post('/structure/classes',[StructureController::class,'storeclass'])->name('structure.storeclass');
+    Route::get('/structure/sections',[StructureController::class,'section'])->name('structure.sections');
+    Route::post('/structure/sections',[StructureController::class,'storesection'])->name('structure.storesection');
 });
 
 Route::middleware('auth.student')->group(function (){
