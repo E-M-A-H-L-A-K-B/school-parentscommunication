@@ -65,4 +65,10 @@ class StructureController extends Controller
         $new->save();
         return back()->with('section_created','Section Created');
     }
+
+    public function deletesection($id)
+    {
+        Section::find($id)->delete();
+        return back()->with('section_deleted',"Section Was Deleted Successfully");
+    }
 }

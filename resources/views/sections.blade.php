@@ -12,6 +12,10 @@
     <h2 style="color: green;">{{ Session::get('section_created') }}</h2>
 @endif
 
+@if(Session::has('section_deleted'))
+    <h2 style="color: green;">{{ Session::get('section_deleted') }}</h2>
+@endif
+
 @foreach($classes as $class)
         @if($class->num == 1)
             <h3>first class</h3>
@@ -49,7 +53,7 @@
         </form>
         <h4></h4>
         @foreach($class->sections->sortby('num') as $section)
-            <p>     {{ $section->num }}</p>
+            <p>     {{ $section->num }} <button><a href="{{ route('structure.deletesection',['id'=>$section->id,]) }}">Delete Section</a></button></p>
         @endforeach
 
     @endforeach

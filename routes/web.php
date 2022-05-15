@@ -33,6 +33,7 @@ Route::middleware('auth.admin')->group(function (){
     Route::get('/structure/sections',[StructureController::class,'section'])->name('structure.sections');
     Route::post('/structure/sections',[StructureController::class,'storesection'])->name('structure.storesection');
     Route::get('/structure/deleteclass/{id}',[StructureController::class, 'deleteclass'])->name('structure.deleteclass');
+    Route::get('/structure/deletesection/{id}',[StructureController::class, 'deletesection'])->name('structure.deletesection');
 });
 
 Route::middleware('auth.student')->group(function (){
