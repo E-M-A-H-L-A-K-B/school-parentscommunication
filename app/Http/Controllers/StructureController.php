@@ -41,6 +41,12 @@ class StructureController extends Controller
         
     }
 
+    public function deleteclass($id)
+    {
+        SClass::where('num',$id)->delete();
+        return back()->with('class_deleted','The Class Was Deleted Successfully');
+    }
+
     public function section()
     {
         $classes = SClass::all()->sortBy('num');

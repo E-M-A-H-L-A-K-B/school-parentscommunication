@@ -39,6 +39,7 @@
         @elseif($class->num == 12)
             <p>Twelveth Class</p>
         @endif
+        <button><a href="{{route('structure.deleteclass',['id'=>$class->num,])}}">Delete</a></button>
     @endforeach
     <hr>
     <form action="{{route('structure.storeclass')}}" method="post">

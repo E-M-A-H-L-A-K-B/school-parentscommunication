@@ -32,6 +32,7 @@ Route::middleware('auth.admin')->group(function (){
     Route::post('/structure/classes',[StructureController::class,'storeclass'])->name('structure.storeclass');
     Route::get('/structure/sections',[StructureController::class,'section'])->name('structure.sections');
     Route::post('/structure/sections',[StructureController::class,'storesection'])->name('structure.storesection');
+    Route::get('/structure/deleteclass/{id}',[StructureController::class, 'deleteclass'])->name('structure.deleteclass');
 });
 
 Route::middleware('auth.student')->group(function (){
