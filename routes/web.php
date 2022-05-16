@@ -52,6 +52,13 @@ Route::middleware('auth.admin')->group(function (){
     Route::get('/structure/teachers/{id}/subjects',[StructureController::class,'subject_teacher'])->name('structure.teachers.subjects');
     Route::get('/structure/teachers/{id}/subjects/{section}/{subject}',[StructureController::class,'storesubject_teacher'])->name('structure.teachers.storesubjectteacher');
     Route::get('/structure/teachers/{id}/subjects/{section}/{subject}/delete',[StructureController::class,'deletesubject_teacher'])->name('structure.teachers.deletesubjectteacher');
+
+    //Structure Section Guide Routes
+    Route::get('/structure/guides',[StructureController::class,'guides'])->name('structure.guides');
+    Route::get('/structure/guides/{id}/sections',[StructureController::class,'section_guide'])->name('structure.guide.sections');
+    Route::get('/structure/guides/{id}/sections/{section}',[StructureController::class,'storesection_guide'])->name('structure.guide.storesectionguide');
+    Route::get('/structure/guides/{id}/sections/{section}/delete',[StructureController::class,'deletesection_guide'])->name('structure.guide.deletesectionguide');
+
 });
 
 Route::middleware('auth.student')->group(function (){

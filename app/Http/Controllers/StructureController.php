@@ -133,4 +133,40 @@ class StructureController extends Controller
         ->delete();
         return back()->with('subject_teacher_deleted','Subject Deleted From The Teacher');
     }
+    
+    public function guides()
+    {
+        $guides = User::where('guide',true)->get();
+        return view('guides',['guides'=>$guides,]);
+    }
+
+    public function section_guide($id)
+    {
+        $classes = SClass::all()->sortBy('num');   
+        $guide = User::find($id);
+        
+        return view('section_guide',['guide'=>$guide,'classes'=>$classes,]);
+    }
+
+    public function storesection_guide($id,$section)
+    {
+        DB::table('section_guide')
+        ->insert([
+            'guide_id'=>$id,
+            'section_id'=>$section
+        ]);
+
+        return back()->with('section_guide_added','Section Added To Guide Successfully');
+    }
+
+    public function deletesection_guide($id,$section)
+    {
+        DB::table('section_guide')
+        ->where('guide_id','=',$id)
+        ->where('section_id','=',$section)
+        ->delete();
+
+        return back()->with('section_guide_deleted','Section Deleted From Guide');
+    }
+
 }

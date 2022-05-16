@@ -52,4 +52,9 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Subject::class,'subject_teacher','teacher_id','subject_id');
     }
+
+    public function sections()
+    {
+        return $this->belongsToMany(Section::class,'section_guide','guide_id','section_id');
+    }
 }
