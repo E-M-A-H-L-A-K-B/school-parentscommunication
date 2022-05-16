@@ -1,5 +1,7 @@
+*
 <?php
 
+use App\Models\Section;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,20 +15,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('students', function (Blueprint $table) {
+        Schema::create('weekly_schedules', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('last_name');
-            $table->string('father');
-            $table->string('mother_name');
-            $table->unsignedBigInteger('national_number')->unique();
-            $table->string('password');
-            $table->Integer('class_num');
+            $table->string('picture');
             $table->foreignIdFor(Section::class)->constrained()
                 ->onUpdate('cascade')->onDelete('cascade');
-            $table->date('date_of_birth');
-            $table->string('place_of_birth');
-            $table->rememberToken();
             $table->timestamps();
         });
     }
@@ -38,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('students');
+        Schema::dropIfExists('weekly_schedules');
     }
 };

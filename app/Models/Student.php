@@ -17,4 +17,25 @@ class Student extends Authenticatable
     protected $fillable = ['name', 'last_name', 'father',  'password'];
 
     protected $hidden = ['password',  'remember_token'];
+
+
+    public function myClass()
+    {
+        return $this->belongsTo(SClass::class,'class_num','num');
+    }
+
+    public function section()
+    {
+        return $this->belongsTo(Section::class);
+    }
+
+    public function schoolNotes()
+    {
+        return $this->hasMany(SchoolNote::class);
+    }
+
+    public function parentNotes()
+    {
+        return $this->hasMany(ParentNote::class);
+    }
 }

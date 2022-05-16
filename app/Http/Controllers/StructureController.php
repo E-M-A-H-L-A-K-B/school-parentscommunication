@@ -18,7 +18,7 @@ class StructureController extends Controller
     public function SClass()
     {
         $classes = SClass::all()->sortBy('num');
-        return view('classes',['classes'=>$classes,]);
+        return view('addclass',['classes'=>$classes,]);
     }
 
     public function storeclass(Request $request)
