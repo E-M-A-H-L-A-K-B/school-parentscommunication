@@ -13,4 +13,9 @@ class SClass extends Model
     {
         return $this->hasMany(Section::class,'class_num','num');
     }
+
+    public function subjects()
+    {
+        return $this->hasMany(Subject::class,'class_num','num');
+    }
 }

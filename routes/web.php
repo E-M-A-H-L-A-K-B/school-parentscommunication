@@ -34,6 +34,9 @@ Route::middleware('auth.admin')->group(function (){
     Route::post('/structure/sections',[StructureController::class,'storesection'])->name('structure.storesection');
     Route::get('/structure/deleteclass/{id}',[StructureController::class, 'deleteclass'])->name('structure.deleteclass');
     Route::get('/structure/deletesection/{id}',[StructureController::class, 'deletesection'])->name('structure.deletesection');
+    Route::get('/structure/subjects',[StructureController::class,'subject'])->name('structure.subjects');
+    Route::post('/structure/subjects',[StructureController::class,'storesubject'])->name('structure.storesubject');
+    Route::get('/structure/deletesubject/{id}',[StructureController::class,'deletesubject'])->name('structure.deletesubject');
 });
 
 Route::middleware('auth.student')->group(function (){

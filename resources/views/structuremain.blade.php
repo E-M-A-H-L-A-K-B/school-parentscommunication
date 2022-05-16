@@ -9,5 +9,6 @@
 <body>
     <p><a href="{{route('structure.classes')}}">Classes</a></p>
     <p><a href="{{route('structure.sections')}}">Sections</a></p>
+    <p><a href="{{route('structure.subjects')}}">Subjects</a></p>
 </body>
 </html>

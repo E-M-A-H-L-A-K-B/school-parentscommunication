@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\SClass;
 use App\Models\Section;
+use App\Models\Subject;
 
 class StructureController extends Controller
 {
@@ -70,5 +71,30 @@ class StructureController extends Controller
     {
         Section::find($id)->delete();
         return back()->with('section_deleted',"Section Was Deleted Successfully");
+    }
+
+    public function subject()
+    {
+        $classes = SClass::all()->sortBy('num');
+        return view('subjects',['classes'=>$classes,]);
+    }
+
+    public function storesubject(Request $request)
+    {
+        if(Subject::where('class_num',$request->class_number)->where('name',$request->subject_name)->exists())
+        {
+            return back()->with('subject_exist_'.$request->class_number,'This Subject Already Exists In This Class');
+        }
+        $new = new Subject();
+        $new->name = $request->subject_name;
+        $new->class_num = $request->class_number;
+        $new->save();
+        return back()->with('subject_created','Subject Created');
+    }
+
+    public function deletesubject($id)
+    {
+        Subject::find($id)->delete();
+        return back()->with('subject_deleted',"Subject Was Deleted Successfully");
     }
 }
