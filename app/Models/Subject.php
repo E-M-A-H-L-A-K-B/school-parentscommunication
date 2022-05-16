@@ -16,7 +16,7 @@ class Subject extends Model
 
     public function myClass()
     {
-        return $this->belongsTo(SClass::class,'my_class_id','num');
+        return $this->belongsTo(SClass::class,'class_num','num');
     }
 
     public function teachres()

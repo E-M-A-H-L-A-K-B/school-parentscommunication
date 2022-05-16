@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\SClass;
 use App\Models\Section;
 use App\Models\Subject;
+use App\Models\User;
+use Illuminate\Support\Facades\DB;
 
 class StructureController extends Controller
 {
@@ -96,5 +98,39 @@ class StructureController extends Controller
     {
         Subject::find($id)->delete();
         return back()->with('subject_deleted',"Subject Was Deleted Successfully");
+    }
+
+    public function teachers()
+    {
+        $teachers = User::where('teacher',true)->get();
+        return view('teachers',['teachers'=>$teachers,]);
+    }
+
+    public function subject_teacher($id)
+    {
+        $classes = SClass::all();
+        $teacher = User::find($id);
+        return view('subject_teacher',['teacher'=>$teacher,'classes'=>$classes,]);
+    }
+
+    public function storesubject_teacher($id, $section, $subject)
+    {
+        DB::table('subject_teacher')
+        ->insert([
+            'teacher_id'=>$id,
+            'section_id'=>$section,
+            'subject_id'=>$subject,
+        ]);
+        return back()->with('subject_teacher_added','Subject Added To The Teacher');
+    }
+
+    public function deletesubject_teacher($id, $section, $subject)
+    {
+        DB::table('subject_teacher')
+        ->where('teacher_id','=',$id)
+        ->where('section_id','=',$section)
+        ->where('subject_id','=',$subject)
+        ->delete();
+        return back()->with('subject_teacher_deleted','Subject Deleted From The Teacher');
     }
 }

@@ -27,16 +27,31 @@ Route::middleware('auth.admin')->group(function (){
     Route::post('/userregister',[UserAuthController::class, 'register'])->name('user.register');
     Route::post('/studentregister',[StudentAuthController::class, 'register'])->name('student.register');
     Route::post('/admin-change-password',[UserAuthController::class, 'HandleAdminChangePassword'])->name('user.handleadminchangepassword');
+
+    //Structure Routes
+    //Structure Main Route
     Route::get('/structure',[StructureController::class, 'main'])->name('structure.main');
+
+    //Structure Class Routes
     Route::get('/structure/classes',[StructureController::class,'SClass'])->name('structure.classes');
     Route::post('/structure/classes',[StructureController::class,'storeclass'])->name('structure.storeclass');
+    Route::get('/structure/deleteclass/{id}',[StructureController::class, 'deleteclass'])->name('structure.deleteclass');
+
+    //Structure Section Routes
     Route::get('/structure/sections',[StructureController::class,'section'])->name('structure.sections');
     Route::post('/structure/sections',[StructureController::class,'storesection'])->name('structure.storesection');
-    Route::get('/structure/deleteclass/{id}',[StructureController::class, 'deleteclass'])->name('structure.deleteclass');
     Route::get('/structure/deletesection/{id}',[StructureController::class, 'deletesection'])->name('structure.deletesection');
+
+    //Structure Subjects Routes
     Route::get('/structure/subjects',[StructureController::class,'subject'])->name('structure.subjects');
     Route::post('/structure/subjects',[StructureController::class,'storesubject'])->name('structure.storesubject');
     Route::get('/structure/deletesubject/{id}',[StructureController::class,'deletesubject'])->name('structure.deletesubject');
+
+    //Structure Subject Teachers Routs
+    Route::get('/structure/teachers',[StructureController::class,'teachers'])->name('structure.teachers');
+    Route::get('/structure/teachers/{id}/subjects',[StructureController::class,'subject_teacher'])->name('structure.teachers.subjects');
+    Route::get('/structure/teachers/{id}/subjects/{section}/{subject}',[StructureController::class,'storesubject_teacher'])->name('structure.teachers.storesubjectteacher');
+    Route::get('/structure/teachers/{id}/subjects/{section}/{subject}/delete',[StructureController::class,'deletesubject_teacher'])->name('structure.teachers.deletesubjectteacher');
 });
 
 Route::middleware('auth.student')->group(function (){

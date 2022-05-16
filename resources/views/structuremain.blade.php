@@ -10,5 +10,6 @@
     <p><a href="{{route('structure.classes')}}">Classes</a></p>
     <p><a href="{{route('structure.sections')}}">Sections</a></p>
     <p><a href="{{route('structure.subjects')}}">Subjects</a></p>
+    <p><a href="{{route('structure.teachers')}}">Teachers</a></p>
 </body>
 </html>

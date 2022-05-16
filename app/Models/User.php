@@ -19,7 +19,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
-        'lasy_name',
+        'last_name',
         'father',
         'password',
         'teacher',
@@ -46,4 +46,10 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    public function subjects()
+    {
+        return $this->belongsToMany(Subject::class,'subject_teacher','teacher_id','subject_id');
+    }
 }
