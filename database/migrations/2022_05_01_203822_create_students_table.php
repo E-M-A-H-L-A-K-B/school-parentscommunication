@@ -22,8 +22,7 @@ return new class extends Migration
             $table->unsignedBigInteger('national_number')->unique();
             $table->string('password');
             $table->Integer('class_num');
-            $table->foreignIdFor(Section::class)->constrained()
-                ->onUpdate('cascade')->onDelete('cascade');
+            $table->Integer('section_id');
             $table->date('date_of_birth');
             $table->string('place_of_birth');
             $table->rememberToken();
