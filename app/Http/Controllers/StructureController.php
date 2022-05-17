@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\Student_Section_Export;
+use App\Imports\Student_Section_Import;
 use Illuminate\Http\Request;
 use App\Models\SClass;
 use App\Models\Section;
+use App\Models\Student;
 use App\Models\Subject;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
 
 class StructureController extends Controller
 {
@@ -167,6 +171,43 @@ class StructureController extends Controller
         ->delete();
 
         return back()->with('section_guide_deleted','Section Deleted From Guide');
+    }
+
+    public function showsort()
+    {
+        $students = Student::all();
+        return view('students',['students'=>$students]);
+    }
+
+    public function sortstudents(Request $request)
+    {
+        $import =new Student_Section_Import;
+        Excel::import($import,$request->file('file'));
+        $array = $import->getArray();
+        $count = sizeof($array);
+        error_log("Controller Array Count: ".$count);
+        foreach($array as $row)
+        {
+            $data=Student::where('name',$row['name'])
+                            ->where('father',$row['father'])
+                            ->where('last_name',$row['last_name'])
+                            ->first();
+            
+            $section=DB::table('sections')
+                        ->select('id')
+                        ->where('class_num','=',$row['class'])
+                        ->where('num','=',$row['section'])
+                        ->get()[0];
+            $data->section_id = $section->id;
+            $data->save();
+        }
+
+        return back()->with('test_complete','The Test Is Completed');
+    }
+
+    public function studentsexport()
+    {
+        return Excel::download(new Student_Section_Export, 'students.xlsx');
     }
 
 }

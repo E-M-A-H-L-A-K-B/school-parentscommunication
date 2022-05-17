@@ -12,5 +12,6 @@
     <p><a href="{{route('structure.subjects')}}">Subjects</a></p>
     <p><a href="{{route('structure.teachers')}}">Teachers</a></p>
     <p><a href="{{route('structure.guides')}}">Guides</a></p>
+    <p><a href="{{route('structure.students')}}">Students</a></p>
 </body>
 </html>

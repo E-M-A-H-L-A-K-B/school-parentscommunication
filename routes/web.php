@@ -59,6 +59,10 @@ Route::middleware('auth.admin')->group(function (){
     Route::get('/structure/guides/{id}/sections/{section}',[StructureController::class,'storesection_guide'])->name('structure.guide.storesectionguide');
     Route::get('/structure/guides/{id}/sections/{section}/delete',[StructureController::class,'deletesection_guide'])->name('structure.guide.deletesectionguide');
 
+    //Structure Students Sort Routes
+    Route::get('/structure/students',[StructureController::class,'showsort'])->name('structure.students');
+    Route::post('/structure/students/sort',[StructureController::class,'sortstudents'])->name('students.sort');
+
 });
 
 Route::middleware('auth.student')->group(function (){
@@ -79,6 +83,7 @@ Route::post('/userlogin',[UserAuthController::class, 'HandleLogin'])->name('user
 
 Route::get('/studentlogin',[StudentAuthController::class, 'login'])->name('student.login');
 Route::post('/studentlogin',[StudentAuthController::class, 'Handlelogin'])->name('student.Handlelogin');
+Route::get('/students/download',[StructureController::class,'studentsexport']);
 
 
 

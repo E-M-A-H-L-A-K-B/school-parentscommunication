@@ -40,24 +40,40 @@ class StudentAuthController extends Controller
             return back()->with('student_exists','This Student Already Exists In The Database');
         }
 
-        $credentials= $req->validate([
+        /*$credentials= $req->validate([
             'name' => ['required'],
             'last_name' => ['required'],
             'father' => ['required'],
-        ]);
+            'mother_name'=>['required'],
+            'national_number'=>['required'],
+            'class_number'=>['required','between:1,12'],
+            'date_of_birth'=>['required','date'],
+            'place_of_birth'=>['required'],
+        ]);*/
 
-        $password = Str::random(8);
+        if(Student::where('national_number',$req->national_number)->exists())
+        {
+            return back()->with('national_number_exist','This National Number Already Exists');
+        }
 
         $new = new Student();
 
+        $new->last_name = $req->last_name;
         $new->name = $req->name;
         $new->father = $req->father;
-        $new->last_name = $req->last_name;
-        $new->password = Hash::make($password);
+        $new->mother_name = $req->mother_name;
+        $new->national_number = $req->national_number;
+        $new->class_num = $req->class_number;
+        $new->section_id = 0;
+        $new->date_of_birth = $req->date_of_birth;
+        $new->place_of_birth = $req->place_of_birth;
+
+        $save_password = Str::random(8);
+        $new->password = Hash::make($save_password);
 
         $new->save();
 
-        return back()->with('student_success','Student Registered Successfully,Password is: '.$password);
+        return back()->with('student_success','Student Registered Successfully,Password is: '.$save_password);
     }
 
     public function Handlelogin(Request $req)

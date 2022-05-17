@@ -80,6 +80,16 @@
         <span><small style="color: red;">@error('last_name'){{ $message }}@enderror <br></small></span>
         Father's Name: <input type="text" name="father" ><br>
         <span><small style="color: red;">@error('father'){{ $message }}@enderror <br></small></span>
+        Mother's Name: <input type="text" name="mother_name" ><br>
+        <span><small style="color: red;">@error('mother_name'){{ $message }}@enderror <br></small></span>
+        National Number: <input type="text" name="national_number" ><br>
+        <span><small style="color: red;">@error('national_number'){{ $message }}@enderror <br></small></span>
+        Class: <input type="number" name="class_number" min='1' max='12'><br>
+        <span><small style="color: red;">@error('class_number'){{ $message }}@enderror <br></small></span>
+        Date Of Birth: <input type="date" name="date_of_birth" ><br>
+        <span><small style="color: red;">@error('date_of_birth'){{ $message }}@enderror <br></small></span>
+        Place Of Birth: <input type="text" name="place_of_birth" ><br>
+        <span><small style="color: red;">@error('place_of_birth'){{ $message }}@enderror <br></small></span>
         <input type="submit" value="Register">
     </form>
 
