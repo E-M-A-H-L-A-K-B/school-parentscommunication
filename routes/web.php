@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AnnouncementsController;
 use App\Http\Controllers\StructureController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentAuthController;
@@ -63,6 +64,9 @@ Route::middleware('auth.admin')->group(function (){
     Route::get('/structure/students',[StructureController::class,'showsort'])->name('structure.students');
     Route::post('/structure/students/sort',[StructureController::class,'sortstudents'])->name('students.sort');
 
+    Route::get('/announcements/add-school-announcement',[AnnouncementsController::class,'addschoolannoun'])->name('announcements.addschool');
+    Route::post('/announcements/add-school-announcement',[AnnouncementsController::class,'storeschoolannouncement'])->name('announcements.storeschool');
+
 });
 
 Route::middleware('auth.student')->group(function (){
@@ -84,6 +88,7 @@ Route::post('/userlogin',[UserAuthController::class, 'HandleLogin'])->name('user
 Route::get('/studentlogin',[StudentAuthController::class, 'login'])->name('student.login');
 Route::post('/studentlogin',[StudentAuthController::class, 'Handlelogin'])->name('student.Handlelogin');
 Route::get('/students/download',[StructureController::class,'studentsexport']);
+Route::get('/announcements/school',[AnnouncementsController::class,'schoolannouncements'])->name('announcements.school');
 
 
 

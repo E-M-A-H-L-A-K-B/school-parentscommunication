@@ -21,6 +21,7 @@
         <p><a href="{{route('user.logout')}}">logout</a></p>
         <p><a href="{{route('user.changepassword')}}">Change Password</a></p>
         <p><a href="{{route('structure.main')}}">Go To Structure</a></p>
+        <p><a href="{{route('announcements.addschool')}}">Add School Announcement</a></p>
         @endif
         @if(!Auth::user()->admin)
         <p style="color:blue"> Hello Professor : {{ Auth::user()->name }} {{Auth::user()->father}} {{ Auth::user()->last_name }}</p>
@@ -28,6 +29,7 @@
         <p><a href="{{route('user.changepassword')}}">Change Password</a></p>
         @endif
     @endif
+    <p><a href="{{route('announcements.school')}}">View School Announcments</a></p>
 
     @if(Session::has('change_success'))
         <p style="color: green;">{{Session::get('change_success')}}</p>
