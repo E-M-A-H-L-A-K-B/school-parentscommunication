@@ -11,7 +11,12 @@
         <p>{{ Session::get('announ_stored') }}</p>
     @endif
     <h2>Add School Announcement:</h2>
+    @if($section)
+    <form action="{{route('sections.storeannouncement',['id'=>$section])}}" method="post">
+    @else
     <form action="{{route('announcements.storeschool')}}" method="post">
+    @endif
+    
         @csrf
         <input type="submit" value="Add"><br>
         <textarea name="content"  cols="50" rows="10"></textarea>

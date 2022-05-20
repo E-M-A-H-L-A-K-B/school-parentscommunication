@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\SchoolAnnouncement;
 use App\Models\SectionAnnouncement;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class AnnouncementsController extends Controller
 {
@@ -17,7 +19,7 @@ class AnnouncementsController extends Controller
 
     public function addschoolannoun()
     {
-        return view('addschoolannouncement');
+        return view('addannouncement');
     }
 
     public function storeschoolannouncement(Request $request)
@@ -33,8 +35,35 @@ class AnnouncementsController extends Controller
 
     public function sectionannouncements($id)
     {
-        $announs = SectionAnnouncement::all();
+        $announs = SectionAnnouncement::where('section_id',1)->get();
+        foreach($announs as $announ)
+        {
+            error_log($announ->id);
+        }
+        
+        return view('sectionannouncments',['announs'=>$announs,'section'=>$id,]);
+    }
 
-        return view('sectionannouncments');
+    public function addsectionannoun($id)
+    {
+        return view('addannouncement',['section'=>$id]);
+    }
+
+    public function storesectionannouncements(Request $request,$id)
+    {
+        $new = new SectionAnnouncement();
+
+        $new->content = $request->content;
+        $new->user_id = Auth::User()->id;
+        $new->section_id = $id;
+
+        $new->save();
+
+        return back()->with('announ_stored','New Section Announcment Stored');
+    }
+
+    public function viewsections()
+    {
+        return view('staffsections');
     }
 }

@@ -64,6 +64,7 @@ Route::middleware('auth.admin')->group(function (){
     Route::get('/structure/students',[StructureController::class,'showsort'])->name('structure.students');
     Route::post('/structure/students/sort',[StructureController::class,'sortstudents'])->name('students.sort');
 
+    //School Announcements Routes
     Route::get('/announcements/add-school-announcement',[AnnouncementsController::class,'addschoolannoun'])->name('announcements.addschool');
     Route::post('/announcements/add-school-announcement',[AnnouncementsController::class,'storeschoolannouncement'])->name('announcements.storeschool');
 
@@ -74,12 +75,17 @@ Route::middleware('auth.student')->group(function (){
     Route::get('/studentlogout',[StudentAuthController::class, 'logout'])->name('student.logout');
     Route::get('/student-change-password',[StudentAuthController::class, 'ChangePassword'])->name('student.changepassword');
     Route::post('/student-change-password',[StudentAuthController::class, 'HandleChangePassword'])->name('student.handlechangepassword');
+    Route::get('/announcements/sections/{id}',[AnnouncementsController::class,'sectionannouncements'])->name('announcements.sections');
 });
 
 Route::middleware('auth.staff')->group(function (){
     Route::get('/userlogout',[UserAuthController::class, 'logout'])->name('user.logout');
     Route::get('/user-change-password',[UserAuthController::class, 'ChangePassword'])->name('user.changepassword');
     Route::post('/user-change-password',[UserAuthController::class, 'HandleChangePassword'])->name('user.handlechangepassword');
+    Route::get('/sections',[AnnouncementsController::class,'viewsections'])->name('sections.view');
+    Route::get('/section/{id}/announcement',[AnnouncementsController::class,'addsectionannoun'])->name('sections.announcement');
+    Route::post('/section/{id}/announcement',[AnnouncementsController::class,'storesectionannouncements'])->name('sections.storeannouncement');
+    Route::get('/students/download',[StructureController::class,'studentsexport']);
 });
 
 Route::get('/userlogin',[UserAuthController::class, 'login'])->name('user.login');
@@ -87,7 +93,6 @@ Route::post('/userlogin',[UserAuthController::class, 'HandleLogin'])->name('user
 
 Route::get('/studentlogin',[StudentAuthController::class, 'login'])->name('student.login');
 Route::post('/studentlogin',[StudentAuthController::class, 'Handlelogin'])->name('student.Handlelogin');
-Route::get('/students/download',[StructureController::class,'studentsexport']);
 Route::get('/announcements/school',[AnnouncementsController::class,'schoolannouncements'])->name('announcements.school');
 
 

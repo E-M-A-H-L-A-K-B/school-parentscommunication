@@ -13,6 +13,7 @@
         <p style="color:blueviolet"> Hello Student : {{ Auth::guard('student')->user()->name }} {{Auth::guard('student')->user()->father}} {{ Auth::guard('student')->user()->last_name }}</p>
         <p><a href="{{route('student.logout')}}">logout</a></p>
         <p><a href="{{route('student.changepassword')}}">Change Password</a></p>
+        <p><a href="{{route('announcements.sections',['id'=>Auth::guard('student')->user()->section_id])}}">View Section Announcement</a></p>
     @endif
 
     @if(Auth::check())
@@ -27,6 +28,7 @@
         <p style="color:blue"> Hello Professor : {{ Auth::user()->name }} {{Auth::user()->father}} {{ Auth::user()->last_name }}</p>
         <p><a href="{{route('user.logout')}}">logout</a></p>
         <p><a href="{{route('user.changepassword')}}">Change Password</a></p>
+        <p><a href="{{route('sections.view')}}">View Sections</a></p>
         @endif
     @endif
     <p><a href="{{route('announcements.school')}}">View School Announcments</a></p>
