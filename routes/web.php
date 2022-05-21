@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AnnouncementsController;
+use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\StructureController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentAuthController;
@@ -76,6 +77,9 @@ Route::middleware('auth.student')->group(function (){
     Route::get('/student-change-password',[StudentAuthController::class, 'ChangePassword'])->name('student.changepassword');
     Route::post('/student-change-password',[StudentAuthController::class, 'HandleChangePassword'])->name('student.handlechangepassword');
     Route::get('/announcements/sections/{id}',[AnnouncementsController::class,'sectionannouncements'])->name('announcements.sections');
+    Route::get('/feedback/school',[FeedbackController::class,'sendparentfeedback'])->name('feedback.parentfeedback');
+    Route::post('/feedback/school',[FeedbackController::class,'storeparentfeedback'])->name('feedback.storeparentsfeedback');
+    Route::get('/feedback/viewschool',[FeedbackController::class,'viewschoolfeedback'])->name('feedback.viewschool');
 });
 
 Route::middleware('auth.staff')->group(function (){
@@ -86,6 +90,10 @@ Route::middleware('auth.staff')->group(function (){
     Route::get('/section/{id}/announcement',[AnnouncementsController::class,'addsectionannoun'])->name('sections.announcement');
     Route::post('/section/{id}/announcement',[AnnouncementsController::class,'storesectionannouncements'])->name('sections.storeannouncement');
     Route::get('/students/download',[StructureController::class,'studentsexport']);
+    Route::get('/feedback/students',[FeedbackController::class,'viewstudents'])->name('feedback.students');
+    Route::get('/feedback/students/{id}',[FeedbackController::class,'sendstafffeedback'])->name('feedback.schoolfeedback');
+    Route::post('/feedback/students/{id}',[FeedbackController::class,'storestafffeedback'])->name('feedback.storeschoolfeedback');
+    Route::get('feedback/viewparents',[FeedbackController::class,'viewparentsfeedback'])->name('feedback.viewparents');
 });
 
 Route::get('/userlogin',[UserAuthController::class, 'login'])->name('user.login');

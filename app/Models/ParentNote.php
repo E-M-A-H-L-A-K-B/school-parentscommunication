@@ -16,9 +16,9 @@ class ParentNote extends Model
         'student_id',
     ];
 
-    public function subject()
+    public function section()
     {
-        return $this->belongsTo(Subject::class);
+        return $this->belongsTo(Section::class);
     }
 
     public function student()
