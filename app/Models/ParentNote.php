@@ -25,4 +25,9 @@ class ParentNote extends Model
     {
         return $this->belongsTo(Student::class);
     }
+
+    public function response()
+    {
+        return $this->hasOne(SchoolResponse::class);
+    }
 }

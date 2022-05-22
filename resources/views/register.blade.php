@@ -16,6 +16,7 @@
         <p><a href="{{route('announcements.sections',['id'=>Auth::guard('student')->user()->section_id])}}">View Section Announcement</a></p>
         <p><a href="{{route('feedback.viewschool')}}">View School Feedback</a></p>
         <p><a href="{{route('feedback.parentfeedback')}}">Send Feedback</a></p>
+        <p><a href="{{route('feedback.myfeedbackparent')}}">View My Feedback</a></p>
     @endif
 
     @if(Auth::check())
@@ -31,11 +32,12 @@
         <p><a href="{{route('user.logout')}}">logout</a></p>
         <p><a href="{{route('user.changepassword')}}">Change Password</a></p>
         <p><a href="{{route('sections.view')}}">View Sections</a></p>
+        <p><a href="{{route('feedback.students')}}">View Students</a></p>
+        <p><a href="{{route('feedback.myfeedbackstaff')}}">View My Feedback</a></p>
         @endif
         @if(Auth::user()->guide)
             <p><a href="{{route('feedback.viewparents')}}">view Parents Feedback</a></p>
         @endif
-        <p><a href="{{route('feedback.students')}}">View Students</a></p>
     @endif
     <p><a href="{{route('announcements.school')}}">View School Announcments</a></p>
 

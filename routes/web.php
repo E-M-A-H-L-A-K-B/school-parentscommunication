@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AnnouncementsController;
 use App\Http\Controllers\FeedbackController;
+use App\Http\Controllers\FeedbackResponseController;
 use App\Http\Controllers\StructureController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentAuthController;
@@ -80,6 +81,9 @@ Route::middleware('auth.student')->group(function (){
     Route::get('/feedback/school',[FeedbackController::class,'sendparentfeedback'])->name('feedback.parentfeedback');
     Route::post('/feedback/school',[FeedbackController::class,'storeparentfeedback'])->name('feedback.storeparentsfeedback');
     Route::get('/feedback/viewschool',[FeedbackController::class,'viewschoolfeedback'])->name('feedback.viewschool');
+    Route::post('/feedback/respondtoschool/{id}',[FeedbackResponseController::class,'respondToSchool'])->name('feedback.respondtoschool');
+    Route::get('/feedback/myfeedback/student',[FeedbackResponseController::class,'myfeedbackparents'])->name('feedback.myfeedbackparent');
+    
 });
 
 Route::middleware('auth.staff')->group(function (){
@@ -93,7 +97,9 @@ Route::middleware('auth.staff')->group(function (){
     Route::get('/feedback/students',[FeedbackController::class,'viewstudents'])->name('feedback.students');
     Route::get('/feedback/students/{id}',[FeedbackController::class,'sendstafffeedback'])->name('feedback.schoolfeedback');
     Route::post('/feedback/students/{id}',[FeedbackController::class,'storestafffeedback'])->name('feedback.storeschoolfeedback');
-    Route::get('feedback/viewparents',[FeedbackController::class,'viewparentsfeedback'])->name('feedback.viewparents');
+    Route::get('/feedback/viewparents',[FeedbackController::class,'viewparentsfeedback'])->name('feedback.viewparents');
+    Route::post('/feedback/respondtoparent/{id}',[FeedbackResponseController::class,'respondToParent'])->name('feedback.respondtoparent');
+    Route::get('/feedback/myfeedback',[FeedbackResponseController::class,'myfeedbackstaff'])->name('feedback.myfeedbackstaff');
 });
 
 Route::get('/userlogin',[UserAuthController::class, 'login'])->name('user.login');

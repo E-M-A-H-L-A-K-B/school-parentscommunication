@@ -32,7 +32,7 @@ class FeedbackController extends Controller
 
     public function viewschoolfeedback()
     {
-        $feedbacks = SchoolNote::where('student_id',Auth::guard('student')->user()->id)->get();
+        $feedbacks = SchoolNote::where('student_id',Auth::guard('student')->user()->id)->orderBy('created_at','desc')->get();
 
         return view('schoolfeedback',['feedbacks'=>$feedbacks,]);
     }
@@ -73,7 +73,7 @@ class FeedbackController extends Controller
             array_push($sections,$section->id);
         }
 
-        $feedbacks = ParentNote::whereIn('section_id',$sections)->get();
+        $feedbacks = ParentNote::whereIn('section_id',$sections)->orderBy('created_at','desc')->get();
 
         return view('parentsfeedback',['feedbacks'=>$feedbacks,]);
     }

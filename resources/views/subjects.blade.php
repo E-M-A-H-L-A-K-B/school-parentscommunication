@@ -1,62 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<link rel="stylesheet" href="{{URL::asset('css/second.css')}}">
+
+
 <body>
 
-@if(Session::has('section_created'))
-    <h2 style="color: green;">{{ Session::get('section_created') }}</h2>
-@endif
+    <div class="d">
 
-@if(Session::has('section_deleted'))
-    <h2 style="color: green;">{{ Session::get('section_deleted') }}</h2>
-@endif
 
-    <h2>Subjects:</h2>
-    @foreach($classes as $class)
-        @if($class->num == 1)
-            <h3>first class</h3>
-        @elseif($class->num == 2)
-            <h3>Second Class</h3>
-        @elseif($class->num == 3)
-            <h3>Third Class</h3>
-        @elseif($class->num == 4)
-            <h3>Fourth Class</h3>
-        @elseif($class->num == 5)
-            <h3>Fifth Class</h3>
-        @elseif($class->num == 6)
-            <h3>Sixth Class</h3>
-        @elseif($class->num == 7)
-            <h3>Seventh Class</h3>
-        @elseif($class->num == 8)
-            <h3>Eigth Class</h3>
-        @elseif($class->num == 9)
-            <h3>Nineth Class</h3>
-        @elseif($class->num == 10)
-            <h3>Tenth Class</h3>
-        @elseif($class->num == 11)
-            <h3>Eleventh Class</h3>
-        @elseif($class->num == 12)
-            <h3>Twelveth Class</h3>
-        @endif
-        <form action="{{ route('structure.storesubject') }}" method="post">
-            @csrf
-            <input type="text" name="subject_name">
-            <input type="hidden" name="class_number" value="{{ $class->num }}">
-            <input type="submit" name="submit">
-            @if(Session::has('subject_exist_'.$class->num))
-            <span><small style="color: red;">{{ Session::get('subject_exist_'.$class->num) }}</small></span>
+        @foreach($classes as $class)
+        <h3>Class {{$class->num}}:</h3>
+        <div class="dc">
+
+            <button id="section_button_{{$class->num}}" onclick="showsform(this)">Add</button>
+            <button id="section_button_{{$class->num}}" onclick="showsdiv(this)">View</button>
+
+            @if(Session::has('subject-exist_'.$class->num))
+            <form id="form_div_{{$class->num}}" action="{{route('structure.storesubject')}}" method="POST" style="display: block;">
+            @else
+            <form id="form_div_{{$class->num}}" action="{{route('structure.storesubject')}}" method="POST" style="display: none;">
             @endif
-        </form>
-        <h4></h4>
-        @foreach($class->subjects as $subject)
-            <p>     {{ $subject->name }} <button><a href="{{ route('structure.deletesubject',['id'=>$subject->id,]) }}">Delete Subject</a></button></p>
+                <input type="text" id="idF" name="subject_name">
+                <input type="hidden" name="class_number" value="{{ $class->num }}">
+                <input type="submit" value="Add">
+                @if(Session::has('subject_exist_'.$class->num))
+                <span><small style="color: red;">{{ Session::get('subject_exist_'.$class->num) }}</small></span>
+                @endif
+            </form>
+
+            <div id="div_div_{{$class->num}}" style="display: none;">
+                @foreach($class->subjects as $subject)
+                <p>{{$subject->name}}</p>
+                @endforeach
+            </div>
+
+        </div>
         @endforeach
 
-    @endforeach
+
+
+        <h3>Class 1:</h3>
+        <div class="dc">
+
+            <button id="section_button_12" onclick="showsform(this)">Add</button>
+            <button id="section_button_11" onclick="showsdiv(this)">View</button>
+
+            <form id="form_div_12" style="display: none;">
+                <input type="text" id="idF" name="nameF">
+                <input type="submit" value="Add">
+            </form>
+
+            <div id="div_div_11" style="display: none;">
+                <p>Arabic</p>
+                <p>Art</p>
+                <p>Math</p>
+            </div>
+
+        </div>
+
+
+
+
+        <h3>Class 2:</h3>
+
+        <div class="dc">
+            <button id="section_button_22" onclick="showsform(this)">Add</button>
+
+
+            <button id="section_button_21" onclick="showsdiv(this)">View</button>
+            <form id="form_div_22" style="display: none;">
+                <input type="text" id="idF" name="nameF">
+                <input type="submit" value="Add">
+            </form>
+
+            <div id="div_div_21" style="display: none;">
+                <p>Music</p>
+                <p>Frinch</p>
+                <p>English</p>
+            </div>
+
+        </div>
+    </div>
+    <br>
+
+    <br>
+
+
+    <script>
+        function showsform(ele) {
+            var id = ele.id;
+            var num = id.split('_');
+            var forms_div = document.getElementById('form_div_' + num[num.length - 1]);
+            if (forms_div.style.display == 'none') {
+                forms_div.style.display = 'block';
+            }
+            else {
+                forms_div.style.display = 'none';
+            }
+        }
+
+        function showsdiv(ele) {
+            var id = ele.id;
+            var num = id.split('_');
+            var div_div = document.getElementById('div_div_' + num[num.length - 1]);
+            if (div_div.style.display == 'none') {
+                div_div.style.display = 'block';
+            }
+            else {
+                div_div.style.display = 'none';
+            }
+        }
+    </script>
+
 </body>
+
 </html>
