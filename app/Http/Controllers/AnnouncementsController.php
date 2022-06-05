@@ -19,7 +19,7 @@ class AnnouncementsController extends Controller
 
     public function addschoolannoun()
     {
-        return view('addannouncement');
+        return view('index/addannouncement',['section'=>false]);
     }
 
     public function storeschoolannouncement(Request $request)
@@ -46,7 +46,7 @@ class AnnouncementsController extends Controller
 
     public function addsectionannoun($id)
     {
-        return view('addannouncement',['section'=>$id]);
+        return view('index/addannouncement',['section'=>$id]);
     }
 
     public function storesectionannouncements(Request $request,$id)
@@ -64,6 +64,6 @@ class AnnouncementsController extends Controller
 
     public function viewsections()
     {
-        return view('staffsections');
+        return view('index/staffsections');
     }
 }

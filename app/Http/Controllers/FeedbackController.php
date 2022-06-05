@@ -19,6 +19,9 @@ class FeedbackController extends Controller
     
     public function storeparentfeedback(Request $request)
     {
+        $creds = $request->validate([
+            'content'=>['required','min:10','max:100'],
+        ]);
         $new = new ParentNote();
 
         $new->content = $request->content;

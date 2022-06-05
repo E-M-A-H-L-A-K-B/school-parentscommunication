@@ -22,6 +22,7 @@
     @endif
         @csrf
         <input type="submit" value="Send Feedback"><br>
+        @error('content') <span style="color: red;">{{ $massege }}</span> @enderror
         <textarea name="content" id="" cols="30" rows="10"></textarea>
     </form>
     

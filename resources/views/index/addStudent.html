@@ -1,0 +1,110 @@
+
+<html lang="en ">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link href="css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="addS.css">
+    <title>addStudent</title>
+  </head>
+  <body data-spy="scroll" data-target=".navbar" data-offset="50">
+    <a href="structuremain.html"> <i  id="left" class="fas fa-arrow-alt-circle-left"></i></a>
+
+    <div class="container">
+      <div id="logo">
+        <img   src="img/logo_fixed.png">
+       </div>
+      <div class="row">
+
+        <div  id="icon" class=" col-lg-6 clo col-md-6 clo col-sm-12 col-xs-12">
+          <i  class="fas fa-user-cog"></i>
+          <h1>Admin</h1>
+        </div>
+        <div  class=" col-lg-6  clo col-d-6 clo col-sm-12 col-xs-12">
+          <div id="accordion">
+<form >
+      <a class="card-link" data-toggle="collapse" href="#collapseOne">
+        <i class="fas fa-user-plus"></i>Add Student
+      </a>
+    </div>
+    
+      <div class="form-row">
+        <div class="inputBox col-md-4 mb-2">
+          <label id="labelname" >First name</label>
+          <input  name="name" type="text" maxlength="10" class="inputt" autofocus placeholder="First name" required>
+        </div>
+        <div class="inputBox col-md-4 mb-2">
+          <label id="labelname" >Last name</label>
+          <input  name="last_name" type="text" maxlength="10" class="inputt"  placeholder="Last name" required>
+        </div>
+
+        <div class="input-group mb-2">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">Father</span>
+          </div>
+          <input name="father" type="text" maxlength="10" placeholder="Father's Name" required class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+        </div>
+
+        <div class="input-group mb-2">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">Mother</span>
+          </div>
+          <input name="mother_name"  type="text" maxlength="10" required placeholder="Mother's Name" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+        </div>
+         
+        <div class="input-group mb-2">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default"><i class="fas fa-user-circle"></i></span>
+          </div>
+          <input name="national_number" type="text" maxlength="10" placeholder="National Id" required class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+        </div>
+
+        <div class="form-row align-items-center">
+          <div class="col-auto my-1">
+            <label id="gender"  class="mr-sm-2" for="inlineFormCustomSelect"><i class="fas fa-chalkboard"></i>Class</label>
+            <select required name="class_number" class="custom-select mr-sm-2" value="tt" id="inlineFormCustomSelect">
+              <option selected>Choose...</option>
+            </select>
+          
+          </div>
+
+
+        <div class="input-group mb-2">
+          <input  name="date_of_birth" id="data" type="date" aria-required="true" class="form-control" value="dd-mm-yyyy" required >
+        </div><br/>
+            
+        <div class="input-group mb-2">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default"><i class="fas fa-map-marker-alt"></i></span>
+          </div>
+          <input name="place_of_birth" type="text" maxlength="25" required placeholder="Place Of Birth" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+        </div>
+
+        <label class="validation-error hide" id="fullNameValidationError"></label>
+        <input id="submit" class="btn btn-primary" type="submit" value="Register">
+     </div>
+</div>
+</div>
+</div>
+       
+
+
+        
+          </form>
+            </div>
+      </div>
+ 
+    </div>
+  
+    
+    
+    
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    
+    <script src="addSU.js"></script>
+    </body>
+ 
+
+</html>

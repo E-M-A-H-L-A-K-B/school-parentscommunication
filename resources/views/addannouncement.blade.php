@@ -8,7 +8,7 @@
 </head>
 <body>
     @if(Session::has('announ_stored'))
-        <p>{{ Session::get('announ_stored') }}</p>
+        <p style="color: green;">{{ Session::get('announ_stored') }}</p>
     @endif
     <h2>Add School Announcement:</h2>
     @if($section)

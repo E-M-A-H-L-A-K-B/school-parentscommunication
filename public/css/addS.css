@@ -1,0 +1,246 @@
+body{
+    background: linear-gradient(#143449,rgb(201, 217, 241));
+}
+.form-row {
+    background: transparent
+}
+
+.fa-arrow-alt-circle-left:before {
+position: relative;
+    left: -100px;
+    top: 20px;}
+::before {
+    padding: 20px;}
+.fa-user-cog:before {
+    font-size: 200px;
+    position: relative;
+    top: 10px;
+    left: 100px;
+    color: #0a2130;
+    animation-name: aa;
+animation-duration: 10s;
+}
+span#inputGroup-sizing-default {
+    color: #0e2d41;
+}
+h1 {
+    font-family: auto;
+    font-size: 5rem;
+    color: #0a2130;
+    position: relative;
+    left: 100px;
+    top: 10px;
+animation-name: aa;
+animation-duration: 10s;
+}
+@keyframes aa{
+    from {
+        color: #dfeaf3;
+
+    }to{
+        color: #0a2130;
+    }
+}
+
+    .form-row>.col, .form-row>[class*=col-] {
+        padding-left: 1px;
+        margin-right: 70px;
+    }
+    .inputBox input {
+        display: block;
+        font-family: auto;
+        padding: 5px;
+        width: 230px;
+        font-size: 20px;
+        text-align: center;
+        color: #cde1f0;
+        border-radius: 10px;
+        border: 2px #bce1fa solid;
+        background: #0e2d41;
+    }
+    .ff{
+        position: relative;
+        left: 60px;
+    }
+    .fs{
+    width:300px;
+    font-family: auto;
+    padding: 5px;
+    font-size: 20px;
+    color: #cde1f0;
+    border-radius: 0px 10px 10px 0px;
+    border: 2px #bce1fa solid;
+    background: #0e2d41;}
+    .inputt {
+        display: block;
+       }
+       
+            .col-lg-6.clo.col-d-6.clo.col-sm-12.col-xs-12 {
+                position: relative;
+                top: -110px;
+            }
+.card{
+    border: none;
+}
+.card-header {
+
+    padding: 25px 10px;
+    font-size: 25px;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(20 44 78);
+    border-bottom: 1px solid #e5e1f3;
+}
+   
+   
+    a{
+       font-family: auto;
+    color: #e5e1f3; 
+    position: relative;
+    left: 100px;
+    }
+    a.card-link {
+        font-size: 30px;
+        padding: 10px 20px;
+        padding: 10px 20px;
+    
+        border-radius: 50px;
+        box-shadow: 0px 10px 10px 10px #b3cfe6;}
+    a:hover{
+        font-family: auto;
+        color: #50a2dd;
+        font-size: 30px;
+    }
+    
+    #date{
+        font-family: auto;
+        border-radius: 10px;
+        font-size: 20px;
+    }
+    #gender {
+        font-family: auto;
+        color: #dfeaf3;
+        font-weight: bolder;
+        font-size: 30px;
+    }
+
+    select#inlineFormCustomSelect {
+        background: #0e2d41;
+        color: white;
+        font-size: 25px;
+        height: 50px;
+        border-radius: 20px;
+        border: 3px solid #ced4da;
+    }
+    .input-group>.custom-select:not(:first-child), .input-group>.form-control:not(:first-child) {
+        font-family: auto;
+        color: white;
+        background-color: #0e2d41;
+        border: 1px #c3d7e7 solid;
+        border-radius: 0px 10px 10px 0px;
+        font-size: 20px;
+    }
+    .input-group>.custom-file, .input-group>.custom-select, .input-group>.form-control {
+        font-family: auto;
+        color: white;
+        background-color: #0e2d41;
+        border: 1px #c3d7e7 solid;
+        border-radius: 0px 10px 10px 0px;
+        font-size: 20px;
+        
+}
+.btn-primary {
+    font-family: auto;
+    background-color: #0e2d41;
+    border: 2px #dfeaf3 solid;
+    border-radius: 0px 10px 10px 0px;
+  border-radius: 0px 10px 10px 0px;}
+.btn-primary:hover {
+    background-color: #025891;
+    border-color:#dfeaf3;
+    box-shadow: 0px 0px 10px 0px #3293d8;
+
+}
+
+.input-group>.input-group-append:last-child>.btn:not(:last-child):not(.dropdown-toggle), .input-group>.input-group-append:last-child>.input-group-text:not(:last-child), .input-group>.input-group-append:not(:last-child)>.btn, .input-group>.input-group-append:not(:last-child)>.input-group-text, .input-group>.input-group-prepend>.btn, .input-group>.input-group-prepend>.input-group-text {
+    font-family: auto;
+   background-color:#dfeaf3;
+    border-radius: 15px 0px 0px 15px;
+    font-size: 20px;
+    }
+    
+
+            label.form-check-label {
+                font-family: auto;
+                font-weight: bolder;
+                color: #0e2d41;
+                font-size: 25px;
+            }
+            label.mr-sm-2{
+                font-family: auto;
+                font-weight: bolder;
+                color: #0e2d41;
+                font-size: 25px;
+            }        
+            
+            .col-auto.my-1 {
+                font-family: auto;
+                margin-left: 150px;
+            }
+            label{
+                font-family: auto;
+                color: #dfeaf3;
+                position: relative;
+                left: 40px;
+                    border-radius: 20px;
+                    font-size: 30px;
+            }
+            .col-sm-10 {
+                font-family: auto;
+                margin-left: 50px;
+            }
+                #submit {
+                    font-family: auto;
+                    color: #dfeaf3;
+                    background: #0e2d41;
+                    border-radius: 20px;
+                    font-size: 30px;
+                    position: relative;
+                    left: 40px;
+                    margin: 20px 190px 19px;
+                } 
+                #submit:hover{
+                    color: #0e2d41;
+                    background: #dfeaf3;
+                }             
+                input[type = radio] + label{
+                    display: inline;
+                    cursor: pointer;
+                    
+                     }
+                     input[type = radio]{
+                           display: none;
+                           
+                     }
+                    
+                     input[type = radio] + label:before{
+                        content: "\2714";
+                        border: 2px solid white;
+                        border-radius: 50%;
+                        font-size: 20px;
+                        padding: 1px 2px;
+                        color: transparent;
+                        transition: .1s;
+                    }
+                    .form-check{
+                      padding: 10px;
+                    }
+                           input[type = radio] + label:active:before{
+                                 transform: scale(0);
+                           }
+                    
+                           input[type = radio]:checked + label:before{
+                                background: linear-gradient(#143449,rgb(201, 217, 241));
+                    border-color: rgb(235, 239, 250);
+                    color: #042033;
+                           }
