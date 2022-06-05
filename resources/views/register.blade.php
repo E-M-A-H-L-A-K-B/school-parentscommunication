@@ -101,7 +101,13 @@
         National Number: <input type="text" name="national_number" ><br>
         <span><small style="color: red;">@error('national_number'){{ $message }}@enderror <br></small></span>
         @if(Session::has('national_number_exist'))
-        <span><small style="color: red;">{{ Session::get('national_number_exist') }}</small></span>
+        <span><small style="color: red;">{{ Session::get('national_number_exist') }}</small></span><br>
+        @endif
+        @if(Session::has('national_number_error'))
+        <span><small style="color: red;">{{ Session::get('national_number_error') }}</small></span><br>
+        @endif
+        @if(Session::has('national_number_size_error'))
+        <span><small style="color: red;">{{ Session::get('national_number_size_error') }}</small></span><br>
         @endif
         Class: <input type="number" name="class_number" min='1' max='12'><br>
         <span><small style="color: red;">@error('class_number'){{ $message }}@enderror <br></small></span>

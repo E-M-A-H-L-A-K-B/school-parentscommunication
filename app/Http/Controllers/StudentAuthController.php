@@ -95,11 +95,20 @@ class StudentAuthController extends Controller
             return back()->with('date_error','The Student\'s Age Does Not Fit With The Entered Class');
         }
 
+        if(!is_numeric($req->national_number))
+        {
+            return back()->with('national_number_error','The National Number Must Be Numeric');
+        }
+
+        if(strlen($req->national_number) != 11)
+        {
+            return back()->with('national_number_size_error','National Number Maust Be 11 Digits');
+        }
+
         if(Student::where('national_number',$req->national_number)->exists())
         {
             return back()->with('national_number_exist','This National Number Already Exists');
         }
-
 
 
         $new = new Student();
