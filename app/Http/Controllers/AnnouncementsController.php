@@ -24,6 +24,9 @@ class AnnouncementsController extends Controller
 
     public function storeschoolannouncement(Request $request)
     {
+        $creds = $request->validate([
+            'content'=>['required','min:10','max:100'],
+        ]);
         $new = new SchoolAnnouncement;
 
         $new->content = $request->content;
@@ -51,6 +54,9 @@ class AnnouncementsController extends Controller
 
     public function storesectionannouncements(Request $request,$id)
     {
+        $creds = $request->validate([
+            'content'=>['required','min:10','max:100'],
+        ]);
         $new = new SectionAnnouncement();
 
         $new->content = $request->content;

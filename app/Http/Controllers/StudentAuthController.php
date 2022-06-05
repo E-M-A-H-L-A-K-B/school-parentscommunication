@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Student;
 use Illuminate\Support\Str;
+use Carbon\Carbon;
 class StudentAuthController extends Controller
 {
     public function login(Request $req)
@@ -32,35 +33,80 @@ class StudentAuthController extends Controller
         return redirect()->intended('/')->with('change_success','Password Changed Successfully');
     }
 
+    public function check_date($today,$date_of_birth,$class)
+    {
+        $temp = $today->year - $date_of_birth->year;
+        if($temp < (4+(1*$class)) || $temp > 6+(1*$class))
+        {
+            return false;
+        }
+        else if($temp == (4+(1*$class)))
+        {
+            if($today->month < $date_of_birth->month)
+            {
+                return false;
+            }
+            else if($today->year == $date_of_birth->month)
+            {
+                if($today->day < $date_of_birth->day)
+                {
+                    return false;
+                }
+            }
+        }
+
+        return true;
+    }
+
     public function register(Request $req)
     {
+
         $test = Student::where('name',$req->name)->where('last_name',$req->last_name)->where('father',$req->father)->exists();
         if($test)
         {
             return back()->with('student_exists','This Student Already Exists In The Database');
         }
+        $dob = Carbon::parse($req->date_of_birth,'Asia/Damascus');
+        $today = Carbon::today('Asia/Damascus');
+        error_log($today->year);
+        error_log($today->month);
+        error_log($today->day);
 
-        /*$credentials= $req->validate([
-            'name' => ['required'],
-            'last_name' => ['required'],
-            'father' => ['required'],
-            'mother_name'=>['required'],
+        $credentials= $req->validate([
+            'name' => ['required','alpha'],
+            'last_name' => ['required','alpha'],
+            'father_name' => ['required','alpha'],
+            'mother_name'=>['required','alpha'],
             'national_number'=>['required'],
-            'class_number'=>['required','between:1,12'],
+            'class_number'=>['required'],
             'date_of_birth'=>['required','date'],
             'place_of_birth'=>['required'],
-        ]);*/
+        ]);
+
+        if($req->class_number < 1 || $req->class_number > 12)
+        {
+            return back()->with('number_error','The Class Number Must Be Between 1 and 12');
+        }
+
+        $date_test = $this->check_date($today,$dob,$req->class_number);
+
+        if(!$date_test)
+        {
+            return back()->with('date_error','The Student\'s Age Does Not Fit With The Entered Class');
+        }
 
         if(Student::where('national_number',$req->national_number)->exists())
         {
             return back()->with('national_number_exist','This National Number Already Exists');
         }
 
+
+
         $new = new Student();
 
         $new->last_name = $req->last_name;
         $new->name = $req->name;
-        $new->father = $req->father;
+        $new->father = $req->father_name;
         $new->mother_name = $req->mother_name;
         $new->national_number = $req->national_number;
         $new->class_num = $req->class_number;

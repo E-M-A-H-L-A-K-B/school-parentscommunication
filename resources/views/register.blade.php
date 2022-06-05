@@ -62,12 +62,12 @@
     <h2>User Register Form</h2>
     <form action="{{route('user.register')}}" method="post">
         @csrf
-        Name: <input type="text" name='name' ><br>
-        <span><small style="color: red;">@error('name'){{ $message }}@enderror <br></small></span>
-        Last Name: <input type="text" name='last_name' ><br>
-        <span><small style="color: red;">@error('last_name'){{ $message }}@enderror <br></small></span>
-        Father's Name: <input type="text" name="father" ><br>
-        <span><small style="color: red;">@error('father'){{ $message }}@enderror <br></small></span>
+        Name: <input type="text" name='user_name' ><br>
+        <span><small style="color: red;">@error('user_name'){{ $message }}@enderror <br></small></span>
+        Last Name: <input type="text" name='user_last_name' ><br>
+        <span><small style="color: red;">@error('user_last_name'){{ $message }}@enderror <br></small></span>
+        Father's Name: <input type="text" name="user_father_name" ><br>
+        <span><small style="color: red;">@error('user_father_name'){{ $message }}@enderror <br></small></span>
         Role: 
         <label for="teacher">Teacher <input type="radio" name="role" id="teacher" value='1' ></label> 
         <label for="guide">Guide <input type="radio" name="role" id="guide" value="2" ></label> <br>
@@ -83,6 +83,10 @@
         <p style="color: red;">{{Session::get('student_exists')}}</p>
     @endif
 
+    @if(Session::has('date_error'))
+        <p style="color: red;">{{Session::get('date_error')}}</p>
+    @endif
+
     <h2>Student Register Form</h2>
     <form action="{{route('student.register')}}" method="post">
         @csrf
@@ -90,14 +94,20 @@
         <span><small style="color: red;">@error('name'){{ $message }}@enderror <br></small></span>
         Last Name: <input type="text" name='last_name' ><br>
         <span><small style="color: red;">@error('last_name'){{ $message }}@enderror <br></small></span>
-        Father's Name: <input type="text" name="father" ><br>
-        <span><small style="color: red;">@error('father'){{ $message }}@enderror <br></small></span>
+        Father's Name: <input type="text" name="father_name" ><br>
+        <span><small style="color: red;">@error('father_name'){{ $message }}@enderror <br></small></span>
         Mother's Name: <input type="text" name="mother_name" ><br>
         <span><small style="color: red;">@error('mother_name'){{ $message }}@enderror <br></small></span>
         National Number: <input type="text" name="national_number" ><br>
         <span><small style="color: red;">@error('national_number'){{ $message }}@enderror <br></small></span>
+        @if(Session::has('national_number_exist'))
+        <span><small style="color: red;">{{ Session::get('national_number_exist') }}</small></span>
+        @endif
         Class: <input type="number" name="class_number" min='1' max='12'><br>
         <span><small style="color: red;">@error('class_number'){{ $message }}@enderror <br></small></span>
+        @if(Session::has('number_error'))
+        <span><small style="color: red;">{{ Session::get('number_error') }}</small></span>
+        @endif
         Date Of Birth: <input type="date" name="date_of_birth" ><br>
         <span><small style="color: red;">@error('date_of_birth'){{ $message }}@enderror <br></small></span>
         Place Of Birth: <input type="text" name="place_of_birth" ><br>

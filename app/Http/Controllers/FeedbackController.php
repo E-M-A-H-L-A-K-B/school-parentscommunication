@@ -47,6 +47,9 @@ class FeedbackController extends Controller
 
     public function storestafffeedback(Request $request, $id)
     {
+        $creds = $request->validate([
+            'content'=>['required','min:10','max:100'],
+        ]);
         $new = new SchoolNote();
         $student = Student::find($id);
         $new->content = $request->content;

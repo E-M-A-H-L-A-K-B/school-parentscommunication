@@ -25,9 +25,9 @@ class UserAuthController extends Controller
         }
 
         $credentials= $req->validate([
-            'name' => ['required'],
-            'last_name' => ['required'],
-            'father' => ['required'],
+            'user_name' => ['required','alpha'],
+            'user_last_name' => ['required','alpha'],
+            'user_father_name' => ['required','alpha'],
             'role' => ['required'],
         ]);
 
@@ -35,9 +35,9 @@ class UserAuthController extends Controller
 
         $new = new User();
 
-        $new->name = $req->name;
-        $new->father = $req->father;
-        $new->last_name = $req->last_name;
+        $new->name = $req->user_name;
+        $new->father = $req->user_father_name;
+        $new->last_name = $req->user_last_name;
         $new->password = Hash::make($password);
         if($req->role == 1)
         {
