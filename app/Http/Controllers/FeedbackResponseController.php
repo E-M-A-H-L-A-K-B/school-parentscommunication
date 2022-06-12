@@ -38,6 +38,7 @@ class FeedbackResponseController extends Controller
         catch(QueryException $e)
         {
             DB::rollBack();
+            return back()->with('response_failed','Response Failed To Be Sent');
         }
     }
 

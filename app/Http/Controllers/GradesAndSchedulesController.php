@@ -8,6 +8,7 @@ use App\Models\SClass;
 use App\Models\Student;
 use App\Models\WeeklySchedule;
 use Illuminate\Contracts\Cache\Store;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -87,20 +88,31 @@ class GradesAndSchedulesController extends Controller
         $array = $import->getArray();
         $count = sizeof($array);
         error_log("Controller Array Count: ".$count);
-        foreach($array as $row)
-        {
-            $student=Student::where('name',$row['name'])
-                            ->where('father',$row['father'])
-                            ->where('last_name',$row['last_name'])
-                            ->first();
-            
-            $grade = new Grade();
-            $grade->student_id = $student->id;
-            $grade->subject_id = $subject;
-            $grade->number = $row['grade'];
-            $grade->save();
-        }
+        DB::beginTransaction();
+        try{
 
-        return back()->with('test_complete','The Test Is Completed');
+            foreach($array as $row)
+            {
+                $student=Student::where('name',$row['name'])
+                                ->where('father',$row['father'])
+                                ->where('last_name',$row['last_name'])
+                                ->first();
+
+                $grade = new Grade();
+                $grade->student_id = $student->id;
+                $grade->subject_id = $subject;
+                $grade->number = $row['grade'];
+                $grade->save();
+            }
+
+            DB::commit();
+            return back()->with('grades_assigned','Grades Where Assigned Successfully');
+        }
+        catch(QueryException $e)
+        {
+            DB::rollBack();
+            return back()->with('grades_failed','Grades Assigning Failed');
+        }
+        
     }
 }

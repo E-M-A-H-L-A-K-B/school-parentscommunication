@@ -10,6 +10,7 @@ use App\Models\Section;
 use App\Models\Student;
 use App\Models\Subject;
 use App\Models\User;
+use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -186,23 +187,34 @@ class StructureController extends Controller
         $array = $import->getArray();
         $count = sizeof($array);
         error_log("Controller Array Count: ".$count);
-        foreach($array as $row)
-        {
-            $data=Student::where('name',$row['name'])
-                            ->where('father',$row['father'])
-                            ->where('last_name',$row['last_name'])
-                            ->first();
-            
-            $section=DB::table('sections')
-                        ->select('id')
-                        ->where('class_num','=',$row['class'])
-                        ->where('num','=',$row['section'])
-                        ->get()[0];
-            $data->section_id = $section->id;
-            $data->save();
-        }
+        DB::beginTransaction();
+        try{
 
-        return back()->with('test_complete','The Test Is Completed');
+            foreach($array as $row)
+            {
+                $data=Student::where('name',$row['name'])
+                                ->where('father',$row['father'])
+                                ->where('last_name',$row['last_name'])
+                                ->first();
+
+                $section=DB::table('sections')
+                            ->select('id')
+                            ->where('class_num','=',$row['class'])
+                            ->where('num','=',$row['section'])
+                            ->get()[0];
+                $data->section_id = $section->id;
+                $data->save();
+            }
+
+            DB::commit();
+            return back()->with('sort_complete','Sorting Is Completed');
+        }
+        catch(QueryException $e)
+        {
+            DB::rollBack();
+            return back()->with('sort_failed','Sorting Failed');
+        }
+        
     }
 
     public function studentsexport()
