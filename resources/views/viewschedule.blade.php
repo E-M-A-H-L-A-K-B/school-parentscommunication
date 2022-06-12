@@ -8,7 +8,7 @@
 </head>
 <body>
     <h2>Schedule For Section {{Auth::guard('student')->user()->section->num}} From Class {{Auth::guard('student')->user()->class_num}}:</h2>
-    <img src="{{asset('storage/app/'.$schedule->picture)}}" alt="Section Schedule Image">
+    <img src="{{asset('schedules/'.$schedule->picture)}}" alt="Section Schedule Image">
     @if($schedule->file)
     <a href="{{route('schedules.download',['file'=>$schedule->file])}}"><button>Download PDF</button></a>
     @endif
