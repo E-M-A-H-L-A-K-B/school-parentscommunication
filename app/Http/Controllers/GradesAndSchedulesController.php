@@ -115,4 +115,10 @@ class GradesAndSchedulesController extends Controller
         }
         
     }
+
+    public function showgrades()
+    {
+        $grades = Grade::where('student_id',Auth::guard('student')->user()->id)->get();
+        return view('showgrades',['grades'=>$grades,]);
+    }
 }
