@@ -41,12 +41,11 @@
             @for($i=0;$i < count($sections);$i++)
                 @if($sections[$i] == $section->id)
                     <p> Section {{$section->num}} <button id="section_button_{{$class->num}}{{$section->id}}" onclick="showsubject(this)">Set Schedule</button></p>
+                    <div id="subject_div_{{$class->num}}{{$section->id}}" style="display: none;">
                     @foreach($class->subjects as $subject)
-                    
-                    <div id="subject_div__{{$class->num}}{{$section->id}}" style="display: none;">
-                    <p>     {{$subject->name}} <button id="grades_button_{{$class->num}}{{$section->id}}" onclick="showform(this)">Set grades</button></p>
-                        <div id="grades_form_{{$class->num}}{{$section->id}}{{$subject->id}}">
-                                <form action="{{route('schedules.store',['section'=>$section->id])}}" method="post" enctype="multipart/form-data">
+                        <p>     {{$subject->name}} <button id="grades_button_{{$class->num}}{{$section->id}}{{$subject->id}}" onclick="showform(this)">Set grades</button></p>
+                        <div id="grades_form_{{$class->num}}{{$section->id}}{{$subject->id}}" style="display: none;">
+                                <form action="{{route('grades.store',['subject'=>$subject->id])}}" method="post" enctype="multipart/form-data">
                                     @csrf
                                     Grades File: <input type="file" name="file"><br>
                                     @error('file') <span><small style="color: red;">{{ $massege }}</small></span> @enderror
@@ -54,8 +53,8 @@
                                 </form>
                         </div>
                         
-                    </div>
                     @endforeach
+                    </div>
                 @endif
             @endfor 
         @endforeach
@@ -83,7 +82,7 @@
     {
         var id = ele.id;
         var num = id.split('_');
-        var section_div = document.getElementById('subject_div__'+num[num.length-1]);
+        var section_div = document.getElementById('grades_form_'+num[num.length-1]);
         if(section_div.style.display == 'none')
         {
             section_div.style.display = 'block';
@@ -98,7 +97,7 @@
     {
         var id = ele.id;
         var num = id.split('_');
-        var section_div = document.getElementById('grades_form_'+num[num.length-1]);
+        var section_div = document.getElementById('subject_div_'+num[num.length-1]);
         if(section_div.style.display == 'none')
         {
             section_div.style.display = 'block';

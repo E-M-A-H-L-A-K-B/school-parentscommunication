@@ -86,6 +86,7 @@ Route::middleware('auth.student')->group(function (){
     Route::get('/feedback/myfeedback/student',[FeedbackResponseController::class,'myfeedbackparents'])->name('feedback.myfeedbackparent');
     Route::get('/schedule/view',[GradesAndSchedulesController::class,'ViewSchedule'])->name('schedules.view');
     Route::get('/schedule/{file}/download',[GradesAndSchedulesController::class,'DownloadSchedule'])->name('schedules.download');
+    Route::get('/grades',[GradesAndSchedulesController::class,'showgrades'])->name('grades.view');
 });
 
 Route::middleware('auth.staff')->group(function (){
@@ -104,6 +105,8 @@ Route::middleware('auth.staff')->group(function (){
     Route::get('/feedback/myfeedback',[FeedbackResponseController::class,'myfeedbackstaff'])->name('feedback.myfeedbackstaff');
     Route::get('/schedule',[GradesAndSchedulesController::class,'addschedule'])->name('schedules.add');
     Route::post('/schedule/{section}',[GradesAndSchedulesController::class,'StoreSchedule'])->name('schedules.store');
+    Route::get('/grades/sections',[GradesAndSchedulesController::class,'showsections'])->name('grades.sections');
+    Route::post('/grades/{subject}',[GradesAndSchedulesController::class,'setgrades'])->name('grades.store');
 });
 
 Route::get('/userlogin',[UserAuthController::class, 'login'])->name('user.login');

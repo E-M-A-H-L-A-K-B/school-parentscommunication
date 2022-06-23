@@ -19,6 +19,7 @@ class Students_Grades_Import implements ToModel
 
     public function makeArray(array $row)
     {
+        error_log('Grades Import');
         error_log("row columns: ".sizeof($row));
         $this->data[] = array('name'=> $row[0],
                               'last_name' => $row[1],

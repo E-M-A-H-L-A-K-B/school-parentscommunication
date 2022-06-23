@@ -18,6 +18,7 @@
         <p><a href="{{route('feedback.parentfeedback')}}">Send Feedback</a></p>
         <p><a href="{{route('feedback.myfeedbackparent')}}">View My Feedback</a></p>
         <p><a href="{{route('schedules.view')}}">View Schedule</a></p>
+        <p><a href="{{route('grades.view')}}">View Grades</a></p>
     @endif
 
     @if(Auth::check())
@@ -39,6 +40,7 @@
         @if(Auth::user()->guide)
             <p><a href="{{route('feedback.viewparents')}}">view Parents Feedback</a></p>
             <p><a href="{{route('schedules.add')}}">Add Schedule</a></p>
+            <p><a href="{{route('grades.sections')}}">Set Grades</a></p>
         @endif
     @endif
     <p><a href="{{route('announcements.school')}}">View School Announcments</a></p>

@@ -35,7 +35,9 @@ class GradesAndSchedulesController extends Controller
         ]);
         $file = '';
 
-        $pic = $request->file('pic')->move(public_path('schedules'));
+        $pic = $request->file('pic');
+        $pic_name = time().".".$pic->extension();
+        $pic->move(public_path('schedules'),$pic_name);
         if(WeeklySchedule::where('section_id',$section)->exists())
         {
             $new = WeeklySchedule::where('section_id',$section)->get()[0];
@@ -48,10 +50,13 @@ class GradesAndSchedulesController extends Controller
         
         if($request->file('file'))
         {
-            $file = $request->file('file')->store('public/PDFs');
-            $new->file = $file;
+            
+            $file = $request->file('file');
+            $file_name = time().".".$file->extension();
+            $file->move(public_path('PDFs'),$file_name);
+            $new->file = $file_name;
         }
-        $new->picture = $pic;
+        $new->picture = $pic_name;
         $new->section_id = $section;
         $new->save();
 
@@ -65,10 +70,10 @@ class GradesAndSchedulesController extends Controller
         return view('viewschedule',['schedule'=>$schedule]);
     }
 
-    public function DownloadSchedule($file)
+    /*public function DownloadSchedule($file)
     {
-        return Storage::download($file,'Schedule for Section '.Auth::guard('student')->user()->section->num.' from class '.Auth::guard('student')->user()->class_num);
-    }
+        return Storage::download(public_path('PDFs').'/'.$file,'Schedule for Section '.Auth::guard('student')->user()->section->num.' from class '.Auth::guard('student')->user()->class_num);
+    }*/
 
     public function showsections()
     {
@@ -93,6 +98,10 @@ class GradesAndSchedulesController extends Controller
 
             foreach($array as $row)
             {
+                error_log('Name: '.$row['name']);
+                error_log('Father: '.$row['father']);
+                error_log('Last Name: '.$row['last_name']);
+                error_log('grade: '.$row['grade']);
                 $student=Student::where('name',$row['name'])
                                 ->where('father',$row['father'])
                                 ->where('last_name',$row['last_name'])
