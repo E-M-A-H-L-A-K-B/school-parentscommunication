@@ -87,6 +87,7 @@ Route::middleware('auth.student')->group(function (){
     Route::get('/schedule/view',[GradesAndSchedulesController::class,'ViewSchedule'])->name('schedules.view');
     Route::get('/schedule/{file}/download',[GradesAndSchedulesController::class,'DownloadSchedule'])->name('schedules.download');
     Route::get('/grades',[GradesAndSchedulesController::class,'showgrades'])->name('grades.view');
+    Route::get('/staff',[UserAuthController::class,'staffinfo'])->name('viewsatff');
 });
 
 Route::middleware('auth.staff')->group(function (){

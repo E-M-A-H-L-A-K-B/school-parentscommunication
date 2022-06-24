@@ -19,6 +19,7 @@
         <p><a href="{{route('feedback.myfeedbackparent')}}">View My Feedback</a></p>
         <p><a href="{{route('schedules.view')}}">View Schedule</a></p>
         <p><a href="{{route('grades.view')}}">View Grades</a></p>
+        <p><a href="{{route('viewsatff')}}">View Staff</a></p>
     @endif
 
     @if(Auth::check())

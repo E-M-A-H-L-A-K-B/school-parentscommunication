@@ -156,4 +156,9 @@ class UserAuthController extends Controller
 
         return redirect()->intended('/');
     }
+
+    public function staffinfo()
+    {
+        return view('staffinfo');
+    }
 }
