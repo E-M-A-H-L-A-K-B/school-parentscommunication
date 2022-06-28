@@ -10,6 +10,12 @@ use Illuminate\Support\Str;
 use Carbon\Carbon;
 class StudentAuthController extends Controller
 {
+
+    public function page()
+    {
+        return view('index/addStudent');
+    }
+
     public function login(Request $req)
     {
         return view('studentlogin');

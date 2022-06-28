@@ -11,6 +11,12 @@ use Illuminate\Support\Str;
 
 class UserAuthController extends Controller
 {
+
+    public function page()
+    {
+        return view('index/addStaff');
+    }
+
     public function login(Request $req)
     {
         return view('userlogin');

@@ -35,7 +35,7 @@
           <li>
             @if(Auth::check())
               @if(Auth::user()->admin)
-                <a class="nav-link" href="{{route('adminmain')}}"><i id="iconbar" class="fas fa-user-circle"></i>My Panel</a>
+                <a class="nav-link" href="{{route('adminmain')}}"><i id="iconbar" class="fas fa-user-circle"></i>Admin Panel</a>
               @elseif(Auth::user()->guide)
                 <a class="nav-link" href="{{route('guidemain')}}"><i id="iconbar" class="fas fa-user-circle"></i>My Panel</a>
               @elseif(Auth::user()->teacher)

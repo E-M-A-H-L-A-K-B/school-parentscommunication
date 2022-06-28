@@ -72,7 +72,9 @@ Route::middleware('auth.admin')->group(function (){
     Route::post('/announcements/add-school-announcement',[AnnouncementsController::class,'storeschoolannouncement'])->name('announcements.storeschool');
 
     Route::get('/main/admin',[StructureController::class,'student_main'])->name('adminmain');
-    Route::get('/add',[StructureController::class,'admin_add'])->name('adminadd');
+
+    Route::get('add/staff',[UserAuthController::class,'page'])->name('addstaff');
+    Route::get('add/student',[StudentAuthController::class,'page'])->name('addstudent');
 
 });
 

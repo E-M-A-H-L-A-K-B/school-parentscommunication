@@ -47,9 +47,6 @@
             <div id="class_div_1" style="display: none;">
                 @foreach($classes as $class)
                 <p>Class {{$class->num}} <button id="class_button_{{$class->num}}" class="sele" onclick="showsection(this)">Select</button></p><br/>
-                    @if($class->sections->count())
-                    <p id="se">No Sections In This Class Yet</p>
-                    @else
                     <div id="section_div_{{$class->num}}" style="display: none;">
                         @foreach($class->sections as $section)
                         <p id="se">Section {{$section->num}} <a href="{{route('structure.guide.storesectionguide'
@@ -57,7 +54,6 @@
                                                                     ,'section'=>$section->id])}}"><input type="button" value="Add"></a></p>
                         @endforeach
                     </div>
-                    @endif
                 @endforeach
                 <p>Class 1 <button id="class_button_10" class="sele" onclick="showsection(this)">Select</button></p><br/>
                 <div id="section_div_10" style="display: none;">

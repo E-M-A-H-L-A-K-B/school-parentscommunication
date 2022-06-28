@@ -227,11 +227,6 @@ class StructureController extends Controller
         return view('index/structuremain');
     }
 
-    public function admin_add()
-    {
-
-    }
-
     public function student_main()
     {
         return view('index/Student_main');
