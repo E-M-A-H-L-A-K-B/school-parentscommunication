@@ -1,0 +1,144 @@
+*
+{
+    margin: 0;
+    padding: 0;
+    font-family: Arial;
+    box-sizing: border-box;
+
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: serif;
+ 
+background: linear-gradient(#180dc7, rgb(50 51 52));
+}
+
+.fa-arrow-alt-circle-left:before {
+  position: relative;
+  left: 20px;
+  top: 10px;
+  color: #e5e1f3;
+}
+
+.fa-arrow-alt-circle-left:hover {
+
+  color: #50a2dd;
+  font-size: 30px;
+}
+
+label {
+  position: relative;
+  left: 640px;
+  top: -70px;
+  transform: translate(-50%, -50%);
+  letter-spacing: 5px;
+  list-style: none;
+  font-size: 40px;
+  font-weight: bolder;
+  color: #051b35;
+}
+
+ul {
+  display: flex;
+}
+
+ul li {
+  list-style: none;
+  display: flex;
+  text-shadow: 0 0 10px #e5ecf7, 0 0 10px #c6d6ee;
+}
+
+.dots {
+  position: relative;
+  display: flex;
+  top: -150px;
+  left: 38%;
+}
+
+.dot {
+  position: relative;
+  display: block;
+  width: 20px;
+  height: 20px;
+  background: #e1e9f3;
+  box-shadow: 0 0px 10px #b8d6fa,
+    0 0px 20px #b8d6fa,
+    0 0px 40px #b8d6fa,
+    0 0px 60px #b8d6fa,
+    0 0px 100px #b8d6fa;
+  margin: 10px 5px;
+  transform: scale(0.1);
+  border-radius: 50%;
+  animation: animatedot 1s linear infinite;
+  animation-delay: calc(0.1s * var(--i));
+}
+
+@keyframes animatedot {
+  0% {
+    transform: scale(0.1);
+  }
+
+  10% {
+    transform: scale(1);
+  }
+
+  50%,
+  100% {
+    transform: scale(0.1);
+  }
+}
+table
+{
+    
+    width: 50%;
+    margin-left: 25%;
+margin-right: 25%;
+margin-top:-10%;
+  border-radius: 30px 30px 0 0;
+   border: 5px #10264d solid;
+
+
+}
+table, td, th{
+    
+padding: 20px;
+
+
+border-collapse: collapse;
+text-align: center;
+}
+td{
+    font-size: 18px;
+
+}
+th{
+    background-color: blue;
+    color: white;
+    
+}
+tr:nth-child(odd)
+{
+    background-color: lightblue;
+}
+tr:nth-child(odd):hover
+{
+    background-color: dodgerblue;
+    color: white;
+    transform: scale(1.2);
+    transition: transform 300ms ease-in;
+}
+
+
+
+tr:nth-child(even)
+{
+    background-color: #ededed;
+}
+tr:nth-child(even):hover
+{
+    background-color: lightgray;
+    
+    transform: scale(1.2);
+    transition: transform 300ms ease-in;
+}

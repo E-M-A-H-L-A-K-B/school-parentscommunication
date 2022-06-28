@@ -71,6 +71,9 @@ Route::middleware('auth.admin')->group(function (){
     Route::get('/announcements/add-school-announcement',[AnnouncementsController::class,'addschoolannoun'])->name('announcements.addschool');
     Route::post('/announcements/add-school-announcement',[AnnouncementsController::class,'storeschoolannouncement'])->name('announcements.storeschool');
 
+    Route::get('/main/admin',[StructureController::class,'student_main'])->name('adminmain');
+    Route::get('/add',[StructureController::class,'admin_add'])->name('adminadd');
+
 });
 
 Route::middleware('auth.student')->group(function (){
@@ -88,6 +91,7 @@ Route::middleware('auth.student')->group(function (){
     Route::get('/schedule/{file}/download',[GradesAndSchedulesController::class,'DownloadSchedule'])->name('schedules.download');
     Route::get('/grades',[GradesAndSchedulesController::class,'showgrades'])->name('grades.view');
     Route::get('/staff',[UserAuthController::class,'staffinfo'])->name('viewsatff');
+    Route::get('/main/student',[StructureController::class,'student_main'])->name('studentmain');
 });
 
 Route::middleware('auth.staff')->group(function (){
@@ -108,6 +112,8 @@ Route::middleware('auth.staff')->group(function (){
     Route::post('/schedule/{section}',[GradesAndSchedulesController::class,'StoreSchedule'])->name('schedules.store');
     Route::get('/grades/sections',[GradesAndSchedulesController::class,'showsections'])->name('grades.sections');
     Route::post('/grades/{subject}',[GradesAndSchedulesController::class,'setgrades'])->name('grades.store');
+    Route::get('/main/guide',[StructureController::class,'guide_main'])->name('guidemain');
+    Route::get('/main/teacher',[StructureController::class,'teacher_main'])->name('teachermain');
 });
 
 Route::get('/userlogin',[UserAuthController::class, 'login'])->name('user.login');

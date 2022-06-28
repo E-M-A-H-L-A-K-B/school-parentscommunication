@@ -1,0 +1,296 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: serif;
+    box-sizing: border-box;
+    background: #143449;
+
+}
+
+#logo {
+    position: relative;
+    left: -50px;
+}
+
+.fa-arrow-alt-circle-left:before {
+    position: relative;
+    left: 20px;
+    top: 10px;
+    color: #e5e1f3;
+}
+
+.fa-arrow-alt-circle-left:hover {
+
+    color: #50a2dd;
+    font-size: 30px;
+}
+
+h1 {
+    position: relative;
+    left: 44%;
+    top: -120px;
+    font-weight: bold;
+    color: #e5e1f3;
+    font-size: 5vw;
+    letter-spacing: 5px;
+    text-shadow: 30px 30px 10px #e1ebfc;
+}
+
+#Class {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vm;
+    flex-wrap: wrap;
+    padding: 40px 0px;
+    position: relative;
+    top: -140px;
+}
+
+.card {
+
+    background-color: #e1ebfc;
+    border-radius: 20px;
+    min-height: 30vh;
+    width: 300px;
+    margin: 20px 30px;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    height: 90px;
+    width: 100%;
+    background-color: #10264d;
+    border-radius: 20px 20px 0 0;
+}
+
+.card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+    position: relative;
+    z-index: 100;
+}
+
+.cards-wrapper {
+
+    display: flex;
+}
+
+.fa-chalkboard {
+    position: relative;
+    top: 30px;
+    object-fit: cover;
+    font-size: 50px;
+    padding: 10px;
+    background-color: #e1ebfc;
+    border: 5px #10264d solid;
+    color: #10264d;
+    border-radius: 50%;
+}
+
+p#classes{
+    position: relative;
+    top: -100px;
+    color: #dee9ed;
+    font-size: 40px;
+    text-align: center;
+}
+button#class_bttn_\{\{\$class-\>num\}\} {
+    color: #052c58;
+    font-family: cursive;
+    background: #e1ebfc;
+    border: none;
+    font-size: 25px;
+    padding: 5px 10px;
+    font-weight: bold;
+    position: relative;
+    top:70px;
+    display: block;
+    cursor: pointer;
+    border-radius: 8px;
+}
+button#class_bttn_\{\{\$class-\>num\}\}:hover {
+  
+    font-size: 30px;
+}
+button:focus {
+border: none;
+outline: none;
+}
+div#section_div_\{\{\$class-\>num\}\} {
+    background: rgb(14 45 54 / 50%);
+    border-radius: 20px;
+}
+button#section_button_\{\{\$class-\>num\}\}\{\{\$section-\>id\}\} {
+    background: #d1d8dc;
+    color: #0d2c5d;
+    position: relative;
+    font-size: 15px;
+    left: 0;
+    cursor: pointer;
+    border: 2px #1c215b inset;
+    border-radius: 20px;
+}
+button#section_button_\{\{\$class-\>num\}\}\{\{\$section-\>id\}\}:hover {
+    background: #0d2c5d;
+    color: #d1d8dc;
+    border: none;
+    font-size: 16px;
+    box-shadow: 0px 0px 20px rgb(15, 39, 63);
+}
+button#section_button_\{\{\$class-\>num\}\}\{\{\$section-\>id\}\}\{\{\$subject-\>id\}\} {
+    border: none;
+    background: transparent;
+    color: #fdfdfd;
+    cursor: pointer;
+}
+.fa-chevron-circle-down:before  {
+   
+    display: block;
+    position: absolute;
+    top: 100%;
+    left: 45%;
+}
+p#sectiones {
+    position: inherit;
+    margin: 10px;
+    left: 0;
+    color: #052c58;
+    font-family: cursive;
+    font-size: 20px;
+    font-weight: bold;
+}
+p#subjectes{
+    position: inherit;
+    left: 0;
+    color: #052c58;
+    font-family: cursive;
+    font-size: 20px;
+    font-weight: bold;
+   margin-left: 50px;
+}
+div#subject_div_\{\{\$class-\>num\}\}\{\{\$section-\>id\}\}{
+    background: rgb(13 59 91 / 60%);
+    border-radius: 8px;
+    margin: 20px;
+}
+.file-field input.file-path {
+    width: 100%;
+    position: absolute;
+    top: 50px;
+}
+
+.file-path-wrapper {
+    display: block;
+    background-color: #10264d;
+    margin-bottom: 20px;
+}
+
+.file-field input[type=file] {
+    position: inherit;
+}
+
+div .btn {
+    background-color: #e1ebfc;
+    color: #10264d;
+
+}
+
+div .btn:hover {
+    background-color: #e1ebfc;
+    color: #10264d;
+    box-shadow: 0 0 10px rgb(1, 26, 54);
+}
+
+h3 {
+    position: relative;
+    left: -20px;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+#path1 {
+    width: 84%;
+    position: absolute;
+    top: 40px;
+    left: 30px;
+}
+
+#path2 {
+    width: 88%;
+    position: absolute;
+    top: 120px;
+    left: 30px;
+}
+
+.file-field .btn {
+    left: 40px;
+    width: 70%;
+    height: 35px;
+    text-align: center;
+    position: relative;
+    margin-bottom: 60px;
+}
+
+.fa-plus-circle:before {
+
+    position: relative;
+    color: #e1ebfc;
+   
+}
+
+.btn-floating {
+    background-color: #10264d;
+    position: relative;
+    left: 60px;
+}
+.btn-floating:hover {
+    background-color: #e1ebfc;
+}
+.btn-floating:hover .fa-plus-circle:before {
+    color: #10264d;
+}
+.pulse::before {
+    display: block;
+    position: absolute;
+    width: 90%;
+    height: 100%;
+  
+}
+
+.file-field .btn-large,
+.file-field .btn-small {
+    bottom: 10px;
+    width: 45px;
+    height: 40px;
+    left: -24px;
+}
+
+.btn-floating.btn-large i {
+    border-radius: 50px;
+    border: none;
+    padding: 5px 10px;
+    color: #e1ebfc;
+    margin: -12px;
+}
+.fa-cloud-upload-alt:hover {
+    font-size: 30px;}
+.btn-small {
+    position: relative;
+    left: 30%;
+    background: #052c58;
+    color: #f8fbfc;
+    border-radius: 20px;
+    font-weight: bold;
+    top: 0px;
+    margin-bottom: 20px;
+}
+
+.btn-small:hover {
+    background: #f8fbfc;
+    color: #052c58;
+    box-shadow: 0 0 10px rgb(1, 26, 54);
+}

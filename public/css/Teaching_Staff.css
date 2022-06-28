@@ -1,0 +1,19 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: serif;
+    background: linear-gradient(#143449, rgb(201, 217, 241));
+}
+
+.fa-arrow-alt-circle-left:before {
+    position: relative;
+    left: 20px;
+    top: 10px;
+    color: #e5e1f3;
+}
+
+.fa-arrow-alt-circle-left:hover {
+
+    color: #50a2dd;
+    font-size: 30px;
+}

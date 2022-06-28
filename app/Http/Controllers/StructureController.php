@@ -222,4 +222,39 @@ class StructureController extends Controller
         return Excel::download(new Student_Section_Export, 'students.xlsx');
     }
 
+    public function admin_main()
+    {
+        return view('index/structuremain');
+    }
+
+    public function admin_add()
+    {
+
+    }
+
+    public function student_main()
+    {
+        return view('index/Student_main');
+    }
+
+    public function teacher_main()
+    {
+        return view('index/Teacher_main');
+    }
+
+    public function guide_main()
+    {
+        return view('index/Guide_main');
+    }
+
+    public function add_staff()
+    {
+        return view('index/addStaff');
+    }
+
+    public function add_student()
+    {
+        return view('index/addStudent');
+    }
+
 }

@@ -140,7 +140,7 @@ class UserAuthController extends Controller
             'password' => ['required'],
         ]);
 
-        if(Auth::attempt(['name'=> $req->name , 'last_name'=> $req->last_name, 'father'=> $req->father, 'password'=> $req->password]))
+        if(Auth::attempt(['name'=> $req->name , 'last_name'=> $req->last_name, 'father'=> $req->father, 'password'=> $req->password],$req->remember_me))
         {
             $req->session()->regenerate();
  

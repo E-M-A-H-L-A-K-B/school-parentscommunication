@@ -3,11 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="stylesheet" href="css/bootstrap.min.css">
-  <link href="css/all.min.css" rel="stylesheet">
-  <script src="js/jquery-3.6.0.min.js"></script>
-  <script src="js/js.js"></script>
-  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="{{ URL::asset('css/bootstrap.min.css')}}">
+  <link href="{{ URL::asset('css/all.min.css')}}" rel="stylesheet">
+  <script src="{{ URL::asset('js/jquery-3.6.0.min.js')}}"></script>
+  <script src="{{ URL::asset('js/js.js')}}"></script>
+  <link rel="stylesheet" href="{{ URL::asset('css/index.css')}}">
   <title>index</title>
 </head>
 
@@ -20,7 +20,7 @@
 
   <section id="home">
     <div id="logo">
-      <img src="img/logo_fixed.png">
+      <img src="{{ URL::asset('img/logo_fixed.png')}}">
     </div>
 
 
@@ -32,6 +32,19 @@
 
       <ul id="menu_list">
         <div id="list">
+          <li>
+            @if(Auth::check())
+              @if(Auth::user()->admin)
+                <a class="nav-link" href="{{route('adminmain')}}"><i id="iconbar" class="fas fa-user-circle"></i>My Panel</a>
+              @elseif(Auth::user()->guide)
+                <a class="nav-link" href="{{route('guidemain')}}"><i id="iconbar" class="fas fa-user-circle"></i>My Panel</a>
+              @elseif(Auth::user()->teacher)
+                <a class="nav-link" href="{{route('teachermain')}}"><i id="iconbar" class="fas fa-user-circle"></i>My Panel</a>
+              @endif
+            @elseif(Auth::guard('student')->check())
+              <a class="nav-link" href="{{route('studentmain')}}"><i id="iconbar" class="fas fa-user-circle"></i>My Panel</a>
+            @endif
+          </li>
           <li>
             <a class="nav-link" href="#home"><i id="iconbar" class="fas fa-home"></i>HOME</a>
           </li>
@@ -47,6 +60,9 @@
           <li>
             <a class="nav-link" href="#contactt"><i id="iconbar" class="fas fa-comments"></i>CONTACT</a>
           </li>
+          <li>
+            <a class="nav-link" href="#"><i id="iconbar" class="fas fa-sign-out-alt"></i>Logout</a>
+          </li>
         </div>
       </ul>
 
@@ -59,14 +75,14 @@
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img class="photo w-100" src="img/IMG_8563+sky.jpg" alt="First slide">
+          <img class="photo w-100" src="{{URL::asset('img/IMG_8563+sky.jpg')}}" alt="First slide">
         </div>
         <div class="carousel-item">
-          <img class="photo w-100" src="img/Nailsea-School-2.jpg" alt="Third slide">
+          <img class="photo w-100" src="{{URL::asset('img/Nailsea-School-2.jpg')}}" alt="Third slide">
         </div>
 
         <div class="carousel-item">
-          <img class="photo w-100" src="img/2429237300000578-2880555-image-a-19_1418993618094.jpg" alt="Third slide">
+          <img class="photo w-100" src="{{URL::asset('img/2429237300000578-2880555-image-a-19_1418993618094.jpg')}}" alt="Third slide">
         </div>
 
         <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -83,14 +99,14 @@
 
     <div>
       <button id="sigin" type="button" class="btn btn-primary " data-toggle="modal" data-target="#myModal">
-        <i class="far fa-user-circle"></i>
+        <i class="fas fa-sign-in-alt"></i>
       </button>
 
       <div class="modal" id="myModal">
         <div class="modal-dialog">
           <div class="modal-content">
 
-            <img src="img/small_2x_6deade1b-c4cf-4458-bb3e-9895a8fd6f6e.png" alt="user" height="100" width="100">
+            <img src="{{URL::asset('img/small_2x_6deade1b-c4cf-4458-bb3e-9895a8fd6f6e.png')}}" alt="user" height="100" width="100">
             <div class="modal-header">
               <h4 class="modal-title">Login</h4>
               <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -110,21 +126,25 @@
                     </a>
 
 
-                    <form action="studentlogin" method="post" id="studentlogin" class="input-group-studentlogin">
+                    <form action="{{route('student.Handlelogin')}}" method="post" id="studentlogin" class="input-group-studentlogin">
+                      @csrf
                       <div class="inputBox">
                         <input class="inputt" name="name" type="text" required placeholder="Student Name"
                           maxlength="25">
                       </div>
+                      @error('name')<span><small style="color: red;">{{ $message }} <br></small></span>@enderror
 
                       <div class="inputBox">
                         <input class="inputt" name="last_name" type="text" required placeholder="Last Name "
                           maxlength="25">
                       </div>
+                      @error('last_name')<span><small style="color: red;">{{ $message }} <br></small></span>@enderror
                       <div class="inputBox">
 
                         <input class="inputt" name="father" type="text" required placeholder="Father's Name"
                           maxlength="25">
                       </div>
+                      @error('father')<span><small style="color: red;">{{ $message }} <br></small></span>@enderror
                       <div class="inputBox">
                         <span onclick="eyedisplay()">
                           <i id="hide1" class="fas fa-eye"></i>
@@ -134,23 +154,34 @@
                           placeholder="Password" maxlength="15">
 
                       </div>
+                      @error('password')<span><small style="color: red;">{{ $message }} <br></small></span>@enderror
+
+                      <div class="custom-control custom-checkbox my-1 mr-sm-2">
+                        <input type="hidden" class="custom-control-input" id="customControlInline" name="remember_me" value="0"> 
+                        <input type="checkbox" class="custom-control-input" id="customControlInline" name="remember_me" value="1">
+                        <label class="custom-control-label" for="customControlInline">Remember me </label>
+                      </div>
+
                       <div class="modal-footer">
                         <button href="#" id="logbutton" class="btn btn-primary"> Login</button>
                       </div>
                     </form>
-
-                    <form action="userlogin" method="post" id="userlogin" class="input-group-userlogin">
+<div id="form2">
+                    <form action="{{route('user.Handlelogin')}}" method="post" id="userlogin" class="input-group-userlogin">
                       <div class="inputBox">
                         <input name="name" class="inputt" v type="text" required placeholder="User Name" maxlength="25">
                       </div>
+                      @error('name')<span><small style="color: red;">{{ $message }} <br></small></span>@enderror
                       <div class="inputBox">
                         <input name="last_name" class="inputt" type="text" required placeholder="Last Name"
                           maxlength="25">
                       </div>
+                      @error('last_name')<span><small style="color: red;">{{ $message }} <br></small></span>@enderror
                       <div class="inputBox">
                         <input name="father" class="inputt" type="text" required placeholder="Father's Name"
                           maxlength="25">
                       </div>
+                      @error('father')<span><small style="color: red;">{{ $message }} <br></small></span>@enderror
 
                       <div class="inputBox">
                         <span onclick="ueyedisplay()">
@@ -160,11 +191,17 @@
                         <input name="password" class="inputt" type="password" id="umyinput" required
                           placeholder="Password" maxlength="15">
                       </div>
-
+                      @error('password')<span><small style="color: red;">{{ $message }} <br></small></span>@enderror
+                      <div class="custom-control custom-checkbox mr-sm-2">
+                        <input type="checkbox" class="custom-control-input" id="customControlAutosizing" name="remember_me" value="0">
+                        <input type="checkbox" class="custom-control-input" id="customControlAutosizing" name="remember_me" value="1">
+                        <label class="custom-control-label" for="customControlAutosizing">Remember me </label>
+                      </div>
                       <div class="modal-footer">
                         <button href="#" id="logbutton" class="btn btn-primary"> Login</button>
                       </div>
                     </form>
+</div>
                   </div>
                 </div>
               </div>
@@ -286,22 +323,24 @@
   <section id="Adv">
 
     <div class="title_text">
-      <p> Advertisement</p>
+      <p> Announcements</p>
     </div>
     <div id="Adv_box">
 
+    @foreach($announs as $announ)
       <div class="row">
         <div class=" col-lg-6 clo col-md-6 clo col-sm-12 col-xs-12">
           <div class="jumbotron">
-            <div class="content_ad">This is a simple aaaaaaa</div>
+            <div class="content_ad">{{$announ->content}}</div>
             <hr class="my-4">
-            <h2>dd-mm-yyyy</h2>
+            <h2>{{$announ->created_at->format('d/M/Y H:i')}}</h2>
           </div>
         </div>
         <div class=" col-lg-6  clo col-d-6 clo col-sm-12 col-xs-12">
           <i  id="icon_ad" class="fas fa-bullhorn"></i>
         </div>
       </div>
+    @endforeach
   
       <div class="row">
         <div class=" col-lg-6 clo col-md-6 clo col-sm-12 col-xs-12">
@@ -379,7 +418,7 @@
   <footer>
 
     <div class="row">
-      <img src="img/Horizontal-line.gif">
+      <img src="URL::asset('img/Horizontal-line.gif')}}">
       <div class="col">
 
         <h3>Nailsea School<div class="underline "><span></span></div>
@@ -405,7 +444,7 @@
         </h3>
         <p id="footer_p"> Mizzymead Road ,
           Nailsea , BS48 2HN</p>
-        <img id="footer-img" src="img/logo_fixed.png">
+        <img id="footer-img" src="URL::asset('img/logo_fixed.png')}}">
       </div>
 
     </div>
@@ -414,7 +453,7 @@
   </footer>
   </div>
 
-  <script src="js/bootstrap.min.js"></script>
+  <script src="URL::asset('js/bootstrap.min.js')}}"></script>
   <script>
 
     function eyedisplay() {
