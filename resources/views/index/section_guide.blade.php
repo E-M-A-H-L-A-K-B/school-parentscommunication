@@ -36,7 +36,7 @@
         <div class="dot" style="--i:6;"></div>
     </div>
     <div class="d">
-
+     @foreach($guides as $guide)
         <h3> {{$guide->name}} {{$guide->father}} {{$guide->last_name}}:</h3>
         <div class="dc">
 
@@ -55,27 +55,6 @@
                         @endforeach
                     </div>
                 @endforeach
-                <p>Class 1 <button id="class_button_10" class="sele" onclick="showsection(this)">Select</button></p><br/>
-                <div id="section_div_10" style="display: none;">
-                    <p id="se">Section 1<input type="button" value="Add"onclick="#"></p>
-                    <p id="se">Section 2<input type="button" value="Add"onclick="#"></p>
-                    <p id="se">Section 3<input type="button" value="Add"onclick="#"></p>
-                </div>
-                <p>Class 2 <button id="class_button_12" class="sele" onclick="showsection(this)">Select</button></p><br/>
-                <div id="section_div_12" style="display: none;">
-                    <p id="se">Section 1<input type="button" value="Add"onclick="#"></p>
-                    <p id="se">Section 2<input type="button" value="Add"onclick="#"></p>
-                    <p id="se">Section 3<input type="button" value="Add"onclick="#"></p>
-
-                </div>
-                <p>Class 3 <button id="class_button_13" class="sele"onclick="showsection(this)">Select</button></p><br/>
-                <div id="section_div_13" style="display: none;">
-                    <p id="se">Section 1<input type="button" value="Add"onclick="#"></p>
-                    <p id="se">Section 2<input type="button" value="Add"onclick="#"></p>
-                    <p id="se">Section 3<input type="button" value="Add"onclick="#"></p>
-                    <p id="se">Section 2<input type="button" value="Add"onclick="#"></p>
-                    <p id="se">Section 2<input type="button" value="Add"onclick="#"></p>
-                </div>
             </div>
 
             <div id="divv_div_11" style="display: none;">
@@ -92,8 +71,7 @@
             </div>
 
         </div>
-        
-        
+     @endforeach
 
     </div>
     <br>

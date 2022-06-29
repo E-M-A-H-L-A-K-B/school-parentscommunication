@@ -3,9 +3,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link href="css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="tea-gu.css">
+    <link rel="stylesheet" href="{{URL::asset('css/bootstrap.min.css')}}">
+    <link href="{{URL::asset('css/all.min.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="{{URL::asset('css/tea-gu.css')}}">
     <title>guided</title>
 </head>
 
@@ -13,7 +13,7 @@
     <a href="structuremain.html"> <i id="left" class="fas fa-arrow-alt-circle-left"></i></a>
     <div class="container">
         <div id="logo">
-            <img src="img/logo_fixed.png">
+            <img src="{{URL::asset('img/logo_fixed.png')}}">
         </div>
     </div>
     <label>
@@ -37,6 +37,7 @@
     </div>
     <div class="d">
 
+    @foreach($guides as $guide)
         <h3> Alaa Alahmad:</h3>
         <div class="dc">
 
@@ -75,7 +76,7 @@
             </div>
 
         </div>
-        
+    @endforeach
     
 
     </div>

@@ -142,7 +142,8 @@ class StructureController extends Controller
     public function guides()
     {
         $guides = User::where('guide',true)->get();
-        return view('guides',['guides'=>$guides,]);
+        $classes = SClass::all()->sortBy('num');
+        return view('index/section_guide',['guide'=>$guides,'classes'=>$classes,]);
     }
 
     public function section_guide($id)

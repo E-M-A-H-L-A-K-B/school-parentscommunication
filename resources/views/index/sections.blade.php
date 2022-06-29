@@ -48,19 +48,22 @@
 
         @foreach($classes as $class)
         <h3>Class {{$class->num}}:</h3>
-        @if(Session::has('section_exist_'.$class->num))
-            <span><small style="color: red;">{{Session::get('section_exist_'.$class->num)}}</small></span>
-        @endif
         <div class="dc">
 
             <button id="section_button_{{$class->num}}" class="tittle1"  onclick="showsdiv(this)">View Section</button>
 
             <button id="section_button_{{$class->num}}"  class="tittle2"  onclick="showsform(this)">Add section</button>
-            
+            @if(Session::has('section_exist_'.$class->num))
+            <form id="form_div_{{$class->num}}" method="post" action="{{route('structure.storesection')}}" style="display: block;">
+            @else
             <form id="form_div_{{$class->num}}" method="post" action="{{route('structure.storesection')}}" style="display: none;">
+            @endif
                 <input type="number" id="idF" name="section_number" placeholder="Section Number">
                 <input type="hidden" name="class_number" value="{{ $class->num }}">
                 <input type="submit" value="Add">
+                @if(Session::has('section_exist_'.$class->num))
+                    <span><small style="color: red;">{{Session::get('section_exist_'.$class->num)}}</small></span>
+                @endif
             </form>
 
             <div id="div_div_{{$class->num}}" style="display: none;">
