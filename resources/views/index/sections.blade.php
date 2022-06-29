@@ -38,9 +38,19 @@
             <div class="dot" style="--i:6;"></div>
         </div>
     <div class="d">
+    @if(Session::has('section_created'))
+        <span><small style="color: green;">{{Session::get('section_created')}}</small></span>
+    @endif
+
+    @if(Session::has('section_deleted'))
+        <span><small style="color: green;">{{Session::get('section_deleted')}}</small></span>
+    @endif
 
         @foreach($classes as $class)
         <h3>Class {{$class->num}}:</h3>
+        @if(Session::has('section_exist_'.$class->num))
+            <span><small style="color: red;">{{Session::get('section_exist_'.$class->num)}}</small></span>
+        @endif
         <div class="dc">
 
             <button id="section_button_{{$class->num}}" class="tittle1"  onclick="showsdiv(this)">View Section</button>
