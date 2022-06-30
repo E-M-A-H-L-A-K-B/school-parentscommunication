@@ -39,59 +39,69 @@
     </div>
     <div class="d">
 
+        @if(Session::has('subject_teacher_added'))
+        <span><small style="color: green;">{{Session::get('subject_teacher_added')}}</small></span>
+        @endif
 
+        @if(Session::has('subject_teacher_deleted'))
+        <span><small style="color: green;">{{Session::get('subject_teacher_deleted')}}</small></span>
+        @endif
 
-        <h3> Alaa Alahmad:</h3>
+        @foreach($teachers as $teacher)
+        <h3> {{ $teacher->name }} {{ $teacher->father }} {{ $teacher->last_name }}:</h3>
 
 
         <div class="dc">
 
-            <button id="class_button_11"class="tittle2" onclick="showsdiv(this)">View The Sections</button>
-            <button id="class_button_1" class="tittle1" onclick="showclass(this)">Select subjest</button>
+            <button id="class_button_11" class="tittle2" onclick="showsdiv(this)">View The Subjects</button>
+            <button id="class_button_1" class="tittle1" onclick="showclass(this)">Select subject</button>
 
 
             <div id="class_div_1" style="display: none;">
 
-                <p>Class 1 <button id="class_button_110"class="sele" onclick="showsection(this)">Select</button></p><br/>
+                @foreach($classes as $class)
+                <p>Class {{ $class->num }} <button id="class_button_110" class="sele" onclick="showsection(this)">Select</button></p><br />
                 <div id="section_div_110" style="display: none;">
-
-                    <p id="se">Section 1<button id="class_button_111" class="sele" onclick="showsubject(this)">Select</button></p><br/>
+                    @foreach($class->sections as $section)
+                    <p id="se">Section {{ $section->num }}<button id="class_button_111" class="sele" onclick="showsubject(this)">Select</button></p><br />
                     <div id="subject_div_111" style="display: none;">
-                        <p id="cho">Art<input type="button" value="choose"onclick="#"></p>
-                        <p id="cho">math<input type="button" value="choose"onclick="#"></p>
-                        <p id="cho">Music<input type="button" value="choose"onclick="#"></p>
+                        @foreach($class->subjects as $subject)
+                        <p id="cho">{{ $subject->name }}<a href="{{route('structure.teachers.storesubjectteacher'
+                                                                    ,['id'=>$teacher->id
+                                                                    ,'section'=>$section->id
+                                                                    ,'subject'=>$subject->id])}}"><input type="button" value="choose"></a></p>
+                        @endforeach
                     </div>
-                    <p id="se">Section 2<button id="class_button_112" class="sele" onclick="showsubject(this)">Select</button></p><br/>
-                    <div id="subject_div_112" style="display: none;">
-                        <p id="cho">Art<input type="button" value="choose"onclick="#"></p>
-                        <p id="cho">algo<input type="button" value="choose"onclick="#"></p>
-                        <p id="cho">Frensh<input type="button" value="choose"onclick="#"></p>
-                    </div>
-                    
+                    @endforeach
                 </div>
-             
-
-                <p>Class 2 <button id="class_button_12" class="sele" onclick="showsection(this)">Select</button></p><br/>
-                <div id="section_div_12" style="display: none;">
-
-                    <p id="se">Section 1<button id="class_button_121" class="sele" onclick="showsubject(this)">Select</button></p><br/>
-                    <div id="subject_div_121" style="display: none;">
-                        <p id="cho">Art<input type="button" value="choose"onclick="#"></p>
-                    </div>
-                  
-                </div>
+                @endforeach
 
             </div>
 
             <div id="divv_div_11" style="display: none;">
-                <p>Third section in second Class <button  class="de" id="class_button_2"onclick="#">Delete</button> </p>
-                <p>Third section in second Class <button class="de" id="class_button_2"onclick="#">Delete</button></p>
-                <p >Third section in Fourth Class <button class="de"id="class_button_2"onclick="#">Delete</button></p>
+                @if($teacher->subjects)
+                @foreach($teacher->subjects as $subject)
+
+                @php
+                $dbsection = DB::table('sections')
+                ->join('subject_teacher','sections.id','=','subject_teacher.section_id')
+                ->select('sections.num','sections.id')
+                ->where('subject_teacher.subject_id','=',$subject->id)
+                ->get()[0];
+                @endphp
+                <p>{{ $subject->name }} for Class {{ $subject->myClass->num }} Section {{ $dbsection->num }} <a href="{{route('structure.teachers.deletesubjectteacher'
+                                                                                                                        ,['id'=>$teacher->id
+                                                                                                                        ,'section'=>$dbsection->id
+                                                                                                                        ,'subject'=>$subject->id])}}"><button class="de" id="class_button_2">Delete</button></a> </p>
+                @endforeach
+                @else
+                <p>This Teacher Does Not Have Any Subjects Currently</p>
+                @endif
             </div>
 
         </div>
+        @endforeach
 
-    
     </div>
     <br>
 
@@ -105,8 +115,7 @@
             var class_div = document.getElementById('class_div_' + num[num.length - 1]);
             if (class_div.style.display == 'none') {
                 class_div.style.display = 'block';
-            }
-            else {
+            } else {
                 class_div.style.display = 'none';
             }
 
@@ -119,8 +128,7 @@
             var subject_div = document.getElementById('subject_div_' + num[num.length - 1]);
             if (subject_div.style.display == 'none') {
                 subject_div.style.display = 'block';
-            }
-            else {
+            } else {
                 subject_div.style.display = 'none';
             }
 
@@ -132,8 +140,7 @@
             var section_div = document.getElementById('section_div_' + num[num.length - 1]);
             if (section_div.style.display == 'none') {
                 section_div.style.display = 'block';
-            }
-            else {
+            } else {
                 section_div.style.display = 'none';
             }
         }
@@ -147,8 +154,7 @@
             var divv_div = document.getElementById('divv_div_' + num[num.length - 1])
             if (divv_div.style.display == 'none') {
                 divv_div.style.display = 'block';
-            }
-            else {
+            } else {
                 divv_div.style.display = 'none';
             }
         }

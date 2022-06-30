@@ -107,8 +107,10 @@ class StructureController extends Controller
 
     public function teachers()
     {
+        $classes = SClass::all();
         $teachers = User::where('teacher',true)->get();
-        return view('teachers',['teachers'=>$teachers,]);
+        return view('subject_teacher',['teachers'=>$teachers,'classes'=>$classes,]);
+        //return view('teachers',['teachers'=>$teachers,]);
     }
 
     public function subject_teacher($id)
