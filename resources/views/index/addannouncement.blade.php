@@ -53,7 +53,8 @@
                 @csrf
                 
             <textarea rows="6" cols="5" type="text" id="textarea" class="form-control" name="content" required
-                pattern="[a-zA-Z0-9 .]+" placeholder="Enter The Announcements"></textarea>
+                pattern="[a-zA-Z0-9 .]+" placeholder="Enter The Announcements"></textarea><br>
+                @error('content') <span><small style="color: red;">{{ $massege}}</small></span> @enderror
 
                 @if(Session::has('announ_stored'))
                 <p style="color: green;">{{ Session::get('announ_stored') }}</p>

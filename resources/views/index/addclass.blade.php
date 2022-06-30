@@ -55,11 +55,9 @@
 
             <div id="div_div_11">
                 @foreach($classes as $class)
-                <p id="se">Class {{$class->num}} <form action="{{route('structure.deleteclass',['id'=>$class->num,])}}" method="post">@csrf<input type="button" value="delete"onclick="#"></form></p>
+                <p id="se">Class {{$class->num}} <a href="{{route('structure.deleteclass',['id'=>$class->num,])}}"><input type="button" value="delete"onclick="#"></a></p>
                 @endforeach
-                <p id="se">Class 1 <form action="" method="post">@csrf<input type="button" value="delete"onclick="#"></form></p>
-                <p id="se">Class 2 <input type="button" value="delete"onclick="#"></p>
-                <p id="se">Class 3<input type="button" value="delete"onclick="#"></p>
+                
             </div>
 
         </div>

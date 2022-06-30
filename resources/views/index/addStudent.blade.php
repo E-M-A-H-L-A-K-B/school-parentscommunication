@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="stylesheet" href="URL::asset('css/bootstrap.min.css')}}">
+  <link rel="stylesheet" href="{{URL::asset('css/bootstrap.min.css')}}">
   <link href="URL::asset('css/all.min.css')}}" rel="stylesheet">
-  <link rel="stylesheet" href="URL::asset('css/addS.css')}}">
+  <link rel="stylesheet" href="{{URL::asset('css/addS.css')}}">
   <title>addStudent</title>
 </head>
 
@@ -14,7 +14,7 @@
 
   <div class="container">
     <div id="logo">
-      <img src="URL::asset('img/logo_fixed.png')}}">
+      <img src="{{URL::asset('img/logo_fixed.png')}}">
     </div>
     <div class="row">
 
@@ -48,7 +48,7 @@
               <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroup-sizing-default">Father</span>
               </div>
-              <input name="father" type="text" maxlength="10" placeholder="Father's Name" required class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+              <input name="father_name" type="text" maxlength="10" placeholder="Father's Name" required class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
               @error('father_name')<span><small style="color: red;">{{ $message }} </small></span>@enderror
             </div>
 
@@ -64,7 +64,7 @@
               <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroup-sizing-default"><i class="fas fa-user-circle"></i></span>
               </div>
-              <input name="national_number" type="text" maxlength="10" placeholder="National Id" required class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+              <input name="national_number" type="text" maxlength="11" placeholder="National Id" required class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
               @error('national_number')<span><small style="color: red;">{{ $message }} </small></span>@enderror
               @if(Session::has('national_number_exist'))
               <span><small style="color: red;">{{ Session::get('national_number_exist') }}</small></span><br>

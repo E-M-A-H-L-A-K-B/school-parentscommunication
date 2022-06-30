@@ -25,7 +25,7 @@ class GradesAndSchedulesController extends Controller
             array_push($sections,$section->id);
         }
         $classes = SClass::all()->sortBy('num');
-        return view('schedules',['classes'=>$classes,'sections'=>$sections]);
+        return view('index/schedules',['classes'=>$classes,'sections'=>$sections]);
     }
 
     public function StoreSchedule(Request $request,$section)

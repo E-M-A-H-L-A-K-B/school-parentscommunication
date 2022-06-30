@@ -40,14 +40,14 @@
         <h3> {{$guide->name}} {{$guide->father}} {{$guide->last_name}}:</h3>
         <div class="dc">
 
-            <button id="class_button_11" class="tittle2" onclick="showsdiv(this)">View The Sections</button>
-            <button id="class_button_1" class="tittle1" onclick="showclass(this)">Select Section</button>
+            <button id="class_button_{{$guide->id}}" class="tittle2" onclick="showsdiv(this)">View The Sections</button>
+            <button id="class_button_{{$guide->id}}" class="tittle1" onclick="showclass(this)">Select Section</button>
 
 
-            <div id="class_div_1" style="display: none;">
+            <div id="class_div_{{$guide->id}}" style="display: none;">
                 @foreach($classes as $class)
-                <p>Class {{$class->num}} <button id="class_button_{{$class->num}}" class="sele" onclick="showsection(this)">Select</button></p><br/>
-                    <div id="section_div_{{$class->num}}" style="display: none;">
+                <p>Class {{$class->num}} <button id="class_button_{{$guide->id}}{{$class->num}}" class="sele" onclick="showsection(this)">Select</button></p><br/>
+                    <div id="section_div_{{$guide->id}}{{$class->num}}" style="display: none;">
                         @foreach($class->sections as $section)
                         <p id="se">Section {{$section->num}} <a href="{{route('structure.guide.storesectionguide'
                                                                     ,['id'=>$guide->id
@@ -57,7 +57,7 @@
                 @endforeach
             </div>
 
-            <div id="divv_div_11" style="display: none;">
+            <div id="divv_div_{{$guide->id}}" style="display: none;">
                 @if($guide->sections)
             @foreach($guide->sections as $section)
                 <p>Section {{ $section->num }} Of Class {{ $section->SClass->num }} <a href="{{route('structure.guide.deletesectionguide'
@@ -65,9 +65,6 @@
                                                                                                             ,'section'=>$section->id])}}"><button>Delete Section</button></a></p>
             @endforeach
             @endif
-                <p>First sectio in first Class <button class="de" id="class_button_2"onclick="#">Delete</button> </p>
-                <p>Third section in second Class <button class="de" id="class_button_2"onclick="#">Delete</button></p>
-                <p>Third section in Fourth Class <button class="de" id="class_button_2"onclick="#">Delete</button></p>
             </div>
 
         </div>

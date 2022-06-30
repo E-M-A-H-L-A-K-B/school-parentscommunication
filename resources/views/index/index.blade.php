@@ -60,9 +60,15 @@
           <li>
             <a class="nav-link" href="#contactt"><i id="iconbar" class="fas fa-comments"></i>CONTACT</a>
           </li>
+          @if(Auth::check() || Auth::guard('student')->check())
           <li>
-            <a class="nav-link" href="#"><i id="iconbar" class="fas fa-sign-out-alt"></i>Logout</a>
+            @if(Auth::check())
+            <a class="nav-link" href="{{route('user.logout')}}"><i id="iconbar" class="fas fa-sign-out-alt"></i>Logout</a>
+            @elseif(Auth::guard('student')->check())
+            <a class="nav-link" href="{{route('student.logout')}}"><i id="iconbar" class="fas fa-sign-out-alt"></i>Logout</a>
+            @endif
           </li>
+          @endif
         </div>
       </ul>
 
@@ -78,7 +84,7 @@
           <img class="photo w-100" src="{{URL::asset('img/IMG_8563+sky.jpg')}}" alt="First slide">
         </div>
         <div class="carousel-item">
-          <img class="photo w-100" src="{{URL::asset('img/Nailsea-School-2.jpg')}}" alt="Third slide">
+          <img class="photo w-100" src="{{URL::asset('img/Nailsea-School-2.jpg')}}" alt="second slide">
         </div>
 
         <div class="carousel-item">
@@ -168,6 +174,7 @@
                     </form>
 <div id="form2">
                     <form action="{{route('user.Handlelogin')}}" method="post" id="userlogin" class="input-group-userlogin">
+                      @csrf
                       <div class="inputBox">
                         <input name="name" class="inputt" v type="text" required placeholder="User Name" maxlength="25">
                       </div>
@@ -243,10 +250,10 @@
         We set high standards of behaviour, Our young people gain the confidence to take their place in society
         and develop the skills and attitudes to enable them to succeed in their chosen paths.  
       </p>
-      <div class="about_imgss"><img src="img/Classroom-2.jpg"></div>
-      <div class="about_imgss"><img src="img/Science-Super-Laboratory-Room-2.jpg"></div>
-      <div class="about_imgss"><img src="img/music-3.jpg"></div>
-      <div class="about_imgss"><img src="img/Canteen-2 (1).jpg"></div>
+      <div class="about_imgss"><img src="{{URL::asset('img/Classroom-2.jpg')}}"></div>
+      <div class="about_imgss"><img src="{{URL::asset('img/Science-Super-Laboratory-Room-2.jpg')}}"></div>
+      <div class="about_imgss"><img src="{{URL::asset('img/music-3.jpg')}}"></div>
+      <div class="about_imgss"><img src="{{URL::asset('img/Canteen-2 (1).jpg')}}"></div>
 
       <div id="accordion">
         <div class="card">
@@ -341,19 +348,7 @@
         </div>
       </div>
     @endforeach
-  
-      <div class="row">
-        <div class=" col-lg-6 clo col-md-6 clo col-sm-12 col-xs-12">
-          <div class="jumbotron">
-            <div class="content_ad">This is a simple aaaaaaa</div>
-            <hr class="my-4">
-            <h2>dd-mm-yyyy</h2>
-          </div>
-        </div>
-        <div class=" col-lg-6  clo col-d-6 clo col-sm-12 col-xs-12">
-          <i  id="icon_ad" class="fas fa-bullhorn"></i>
-        </div>
-      </div>
+
     </div>
   </section>
   <section id="contactt">
@@ -418,7 +413,7 @@
   <footer>
 
     <div class="row">
-      <img src="URL::asset('img/Horizontal-line.gif')}}">
+      <img src="{{URL::asset('img/Horizontal-line.gif')}}">
       <div class="col">
 
         <h3>Nailsea School<div class="underline "><span></span></div>
@@ -444,7 +439,7 @@
         </h3>
         <p id="footer_p"> Mizzymead Road ,
           Nailsea , BS48 2HN</p>
-        <img id="footer-img" src="URL::asset('img/logo_fixed.png')}}">
+        <img id="footer-img" src="{{URL::asset('img/logo_fixed.png')}}">
       </div>
 
     </div>
@@ -453,7 +448,7 @@
   </footer>
   </div>
 
-  <script src="URL::asset('js/bootstrap.min.js')}}"></script>
+  <script src="{{URL::asset('js/bootstrap.min.js')}}"></script>
   <script>
 
     function eyedisplay() {

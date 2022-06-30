@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\SClass;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
@@ -13,7 +14,8 @@ class StudentAuthController extends Controller
 
     public function page()
     {
-        return view('index/addStudent');
+        $classes = SClass::all();
+        return view('index/addStudent',['classes'=>$classes]);
     }
 
     public function login(Request $req)

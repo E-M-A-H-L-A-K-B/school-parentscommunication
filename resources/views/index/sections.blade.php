@@ -67,7 +67,7 @@
             </form>
 
             <div id="div_div_{{$class->num}}" style="display: none;">
-                @if($class->sections->count())
+                @if(!$class->sections)
                 <p id="se">There Are No Sections For This Class Yet</p>
                 @else
                 @foreach($class->sections as $section)

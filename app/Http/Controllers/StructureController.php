@@ -83,7 +83,7 @@ class StructureController extends Controller
     public function subject()
     {
         $classes = SClass::all()->sortBy('num');
-        return view('index/subjects',['classes'=>$classes,]);
+        return view('index/subject',['classes'=>$classes,]);
     }
 
     public function storesubject(Request $request)
@@ -109,7 +109,7 @@ class StructureController extends Controller
     {
         $classes = SClass::all();
         $teachers = User::where('teacher',true)->get();
-        return view('subject_teacher',['teachers'=>$teachers,'classes'=>$classes,]);
+        return view('index/teachers',['teachers'=>$teachers,'classes'=>$classes,]);
         //return view('teachers',['teachers'=>$teachers,]);
     }
 
@@ -145,7 +145,7 @@ class StructureController extends Controller
     {
         $guides = User::where('guide',true)->get();
         $classes = SClass::all()->sortBy('num');
-        return view('index/section_guide',['guide'=>$guides,'classes'=>$classes,]);
+        return view('index/section_guide',['guides'=>$guides,'classes'=>$classes,]);
     }
 
     public function section_guide($id)

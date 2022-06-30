@@ -3,9 +3,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link href="css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="tea-gu.css">
+    <link rel="stylesheet" href="{{URL::asset('css/bootstrap.min.css')}}">
+    <link href="{{URL::asset('css/all.min.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="{{URL::asset('css/tea-gu.css')}}">
     <title>teachers</title>
 </head>
 
@@ -13,7 +13,7 @@
     <a href="structuremain.html"> <i id="left" class="fas fa-arrow-alt-circle-left"></i></a>
     <div class="container">
         <div id="logo">
-            <img src="img/logo_fixed.png">
+            <img src="{{URL::asset('img/logo_fixed.png')}}">
         </div>
     </div>
     <label>
@@ -53,18 +53,18 @@
 
         <div class="dc">
 
-            <button id="class_button_11" class="tittle2" onclick="showsdiv(this)">View The Subjects</button>
-            <button id="class_button_1" class="tittle1" onclick="showclass(this)">Select subject</button>
+            <button id="class_button_{{$teacher->id}}" class="tittle2" onclick="showsdiv(this)">View The Subjects</button>
+            <button id="class_button_{{$teacher->id}}" class="tittle1" onclick="showclass(this)">Select subject</button>
 
 
-            <div id="class_div_1" style="display: none;">
+            <div id="class_div_{{$teacher->id}}" style="display: none;">
 
                 @foreach($classes as $class)
-                <p>Class {{ $class->num }} <button id="class_button_110" class="sele" onclick="showsection(this)">Select</button></p><br />
-                <div id="section_div_110" style="display: none;">
+                <p>Class {{ $class->num }} <button id="class_button_{{$teacher->id}}{{$class->num}}" class="sele" onclick="showsection(this)">Select</button></p><br />
+                <div id="section_div_{{$teacher->id}}{{$class->num}}" style="display: none;">
                     @foreach($class->sections as $section)
-                    <p id="se">Section {{ $section->num }}<button id="class_button_111" class="sele" onclick="showsubject(this)">Select</button></p><br />
-                    <div id="subject_div_111" style="display: none;">
+                    <p id="se">Section {{ $section->num }}<button id="class_button_{{$teacher->id}}{{$class->num}}{{$section->id}}" class="sele" onclick="showsubject(this)">Select</button></p><br />
+                    <div id="subject_div_{{$teacher->id}}{{$class->num}}{{$section->id}}" style="display: none;">
                         @foreach($class->subjects as $subject)
                         <p id="cho">{{ $subject->name }}<a href="{{route('structure.teachers.storesubjectteacher'
                                                                     ,['id'=>$teacher->id
@@ -78,7 +78,7 @@
 
             </div>
 
-            <div id="divv_div_11" style="display: none;">
+            <div id="divv_div_{{$teacher->id}}" style="display: none;">
                 @if($teacher->subjects)
                 @foreach($teacher->subjects as $subject)
 
@@ -144,9 +144,6 @@
                 section_div.style.display = 'none';
             }
         }
-
-
-        f
 
         function showsdiv(ele) {
             var id = ele.id;

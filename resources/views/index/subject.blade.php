@@ -65,43 +65,6 @@
 
         </div>
         @endforeach
-        <h3>Class 1:</h3>
-        <div class="dc">
-            <button id="section_button_11" class="tittle1" onclick="showsdiv(this)">View Subject</button>
-            <button id="section_button_12" class="tittle2" onclick="showsform(this)">Add Subject</button>
-           
-
-            <form id="form_div_12" style="display: none;">
-                <input type="text" id="idF" name="nameF" placeholder="Name Subject">
-                <input type="submit" value="Add">
-            </form>
-
-            <div id="div_div_11" style="display: none;">
-                <p id="su">Art <input type="button" value="delete"onclick="#"></p>
-                <p id="su"> Math <input type="button" value="delete"onclick="#"></p>
-                <p id="su">Arabic  <input type="button" value="delete"onclick="#"></p>
-            </div>
-
-        </div>
-
-        <h3>Class 1:</h3>
-        <div class="dc">
-
-            <button id="section_button_13" class="tittle1" onclick="showsform(this)">Add Subject</button>
-            <button id="section_button_14" class="tittle2" onclick="showsdiv(this)">View Subject</button>
-
-            <form id="form_div_13" style="display: none;">
-                <input type="text" id="idF" name="nameF" placeholder="Name Section">
-                <input type="submit" value="Add">
-            </form>
-
-            <div id="div_div_14" style="display: none;">
-                <p id="su">Art <input type="button" value="delete"onclick="#"></p>
-                <p id="su"> Math <input type="button" value="delete"onclick="#"></p>
-                <p id="su">Arabic  <input type="button" value="delete"onclick="#"></p>
-            </div>
-
-        </div>
 
     </div>
     <br>

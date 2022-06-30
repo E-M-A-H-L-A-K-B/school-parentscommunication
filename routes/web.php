@@ -8,6 +8,7 @@ use App\Http\Controllers\StructureController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentAuthController;
 use App\Http\Controllers\UserAuthController;
+use App\Models\SchoolAnnouncement;
 use Nette\Schema\Elements\Structure;
 
 /*
@@ -22,7 +23,8 @@ use Nette\Schema\Elements\Structure;
 */
 
 Route::get('/', function () {
-    return view('register');
+    $announs = SchoolAnnouncement::all()->sortByDesc('created_at')->take(5);
+    return view('index/index',['announs'=>$announs]);
 });
 
 
@@ -71,7 +73,7 @@ Route::middleware('auth.admin')->group(function (){
     Route::get('/announcements/add-school-announcement',[AnnouncementsController::class,'addschoolannoun'])->name('announcements.addschool');
     Route::post('/announcements/add-school-announcement',[AnnouncementsController::class,'storeschoolannouncement'])->name('announcements.storeschool');
 
-    Route::get('/main/admin',[StructureController::class,'student_main'])->name('adminmain');
+    Route::get('/main/admin',[StructureController::class,'admin_main'])->name('adminmain');
 
     Route::get('add/staff',[UserAuthController::class,'page'])->name('addstaff');
     Route::get('add/student',[StudentAuthController::class,'page'])->name('addstudent');

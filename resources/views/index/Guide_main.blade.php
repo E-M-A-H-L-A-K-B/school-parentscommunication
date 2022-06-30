@@ -3,10 +3,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="URL::asset('css/bootstrap.min.css')}}">
-    <link href="URL::asset('css/all.min.css')}}" rel="stylesheet">
-    <script src="URL::asset('js/jquery-3.6.0.min.js')}}"></script>
-    <link rel="stylesheet" href="URL::asset('css/structuremain.css')}}">
+    <link rel="stylesheet" href="{{URL::asset('css/bootstrap.min.css')}}">
+    <link href="{{URL::asset('css/all.min.css')}}" rel="stylesheet">
+    <script src="{{URL::asset('js/jquery-3.6.0.min.js')}}"></script>
+    <link rel="stylesheet" href="{{URL::asset('css/structuremain.css')}}">
     <title>Guide_main</title>
 </head>
 
@@ -14,7 +14,7 @@
     <a href="index.html"> <i id="left" class="fas fa-arrow-alt-circle-left"></i></a>
     <a href="#"> <i id="left" class="fas fa-sign-out-alt"></i></a>
     <div id="logo">
-        <img src="URL::asset('img/logo_fixed.png')}}">
+        <img src="{{URL::asset('img/logo_fixed.png')}}">
     </div>
     <ul>
         <li>

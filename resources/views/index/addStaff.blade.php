@@ -55,13 +55,13 @@
                 <label id="Role"><i class="fas fa-user-check"></i>Role</label>
                 <div class="col-sm-10">
                   <div class="form-check">
-                    <input class="form-check-input" maxlength="20" type="radio" name="gridRadios" id="gridRadios1" value="1">
+                    <input class="form-check-input" maxlength="20" type="radio" name="role" id="gridRadios1" value="1">
                     <label type="radio" name="role" id="Role" class="form-check-label" for="gridRadios1">
                       Teacher
                     </label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" maxlength="20" type="radio" name="gridRadios" id="gridRadios2" value="2">
+                    <input class="form-check-input" maxlength="20" type="radio" name="role" id="gridRadios2" value="2">
                     <label type="radio" name="role" id="Role" class="form-check-label" for="gridRadios2">
                       Guide
                     </label>
