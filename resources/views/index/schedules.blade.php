@@ -29,10 +29,17 @@
             @endphp
             @for($i=0;$i < count($sections);$i++)
                 @if($sections[$i] == $section->id)
-                    @if(!$class_test)
-                        @php
-                            $class_test = true;
-                        @endphp
+                    @php
+                        $class_test = true;
+                    @endphp
+                    @break
+                @endif
+            @endfor
+            @if($class_test)
+                @break 
+            @endif
+        @endforeach
+        @if($class_test)
             <section id="Class">
 
 
@@ -46,56 +53,56 @@
                             </button></p>
 
                             <div id='section_div_{{$class->num}}' style="display: none;">
-                            @foreach($class->sections as $section)
-
-                                @for($i=0;$i < count($sections);$i++)
-                                    @if($sections[$i] == $section->id)
-                                <p id="sectiones"> Section {{$section->num}}<button id="section_button_{{$class->num}}{{$section->id}}"
-                                        onclick="showform(this)"><i class="fas fa-cloud-upload-alt"></i>
-                                    </button></p>
-
-                                <div id="schedule_form_{{$class->num}}{{$section->id}}" style="display: none;">
-                                    <form action="{{route('schedules.store',['section'=>$section->id])}}" method="post"
-                                        enctype="multipart/form-data">
-                                        @csrf
-                                        @error('pic') <span><small style="color: red;">{{ $massege }}</small></span> @enderror
-                                        <div class="file-field input-field">
-                                            <div class="btn">
-                                                <span>
-                                                    <label class="btn-floating btn-large pulse" for="file-img">
-                                                        <i class="fas fa-plus-circle"></i></label>
-                                                    <h3> Image <i class="fas fa-image"></i></h3>
-                                                </span>
-                                                <input type="file" accept="image/*" name="pic" id="file-img" readonly>
+                                @foreach($class->sections as $section)
+    
+                                    @for($i=0;$i < count($sections);$i++)
+                                        @if($sections[$i] == $section->id)
+                                            <p id="sectiones"> Section {{$section->num}}<button id="section_button_{{$class->num}}{{$section->id}}"
+                                                    onclick="showform(this)"><i class="fas fa-cloud-upload-alt"></i>
+                                                </button></p>
+    
+                                            <div id="schedule_form_{{$class->num}}{{$section->id}}" style="display: none;">
+                                                <form action="{{route('schedules.store',['section'=>$section->id])}}" method="post"
+                                                    enctype="multipart/form-data">
+                                                    @csrf
+                                                    @error('pic') <span><small style="color: red;">{{ $massege }}</small></span> @enderror
+                                                    <div class="file-field input-field">
+                                                        <div class="btn">
+                                                            <span>
+                                                                <label class="btn-floating btn-large pulse" for="file-img">
+                                                                    <i class="fas fa-plus-circle"></i></label>
+                                                                <h3> Image <i class="fas fa-image"></i></h3>
+                                                            </span>
+                                                            <input type="file" accept="image/*" name="pic" id="file-img" readonly>
+                                                        </div>
+                                                        <div class="file-path-wrapper">
+                                                            <input class="file-path validate" id="path1" type="text"
+                                                                placeholder="No Photo Chosen">
+                                                        </div>
+                                                    </div>
+    
+                                                    <div class="file-field input-field">
+                                                        <div class="btn">
+                                                            <span>
+                                                                <label class="btn-floating btn-large pulse" for="file">
+                                                                    <i class="fas fa-plus-circle"></i></label>
+                                                                <h3> PDF File <i class="fas fa-file-pdf"></i></h3>
+                                                            </span>
+                                                            <input name="file" accept="PDF/*" id="file" type="file" required>
+                                                        </div>
+                                                        <div class="file-path-wrapper">
+                                                            <input class="file-path validate" id="path2" type="text"
+                                                                placeholder="No File Chosen">
+                                                        </div>
+                                                    </div>
+    
+                                                    <button type="submit" class="waves-effect waves-light btn-small">Submit</button>
+    
+                                                </form>
                                             </div>
-                                            <div class="file-path-wrapper">
-                                                <input class="file-path validate" id="path1" type="text"
-                                                    placeholder="No Photo Chosen">
-                                            </div>
-                                        </div>
-
-                                        <div class="file-field input-field">
-                                            <div class="btn">
-                                                <span>
-                                                    <label class="btn-floating btn-large pulse" for="file">
-                                                        <i class="fas fa-plus-circle"></i></label>
-                                                    <h3> PDF File <i class="fas fa-file-pdf"></i></h3>
-                                                </span>
-                                                <input name="file" accept="PDF/*" id="file" type="file" required>
-                                            </div>
-                                            <div class="file-path-wrapper">
-                                                <input class="file-path validate" id="path2" type="text"
-                                                    placeholder="No File Chosen">
-                                            </div>
-                                        </div>
-
-                                        <button type="submit" class="waves-effect waves-light btn-small">Submit</button>
-
-                                    </form>
-                                </div>
-                                @endif
-                                @endfor
-                                @endforeach
+                                        @endif
+                                    @endfor
+                                 @endforeach
                             </div>
                         </div>
                     </div>
@@ -103,11 +110,7 @@
 
 
             </section>
-            @endif
-                @break
-                    @endif
-                @endfor 
-        @endforeach
+        @endif   
     @endforeach
     <script>
         function showsections(ele) {

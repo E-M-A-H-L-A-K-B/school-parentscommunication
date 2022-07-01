@@ -65,7 +65,7 @@
                         <p>Class {{$section->SClass->num}} <button id="class_button_{{$section->SClass->num}}" class="sele" onclick="showsection(this)">Select</button></p><br/>
                         <div id="section_div_{{$section->SClass->num}}" style="display: none;">
                     @endif
-                    <p id="se">Section {{$section->num}} <a href="{{route('sections.announcement',['id'=>$section->id])}}"><input type="button" value="Add"></a></p>
+                    <p id="se">Section {{$section->num}} <a href="{{route('sections.announcement',['id'=>$section->id])}}"><input type="button" value="Select"></a></p>
                 @endforeach
                 </div>
                 <p>Class 1 <button id="class_button_10" class="sele" onclick="showsection(this)">Select</button></p><br/>

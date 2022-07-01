@@ -14,7 +14,7 @@ class FeedbackController extends Controller
 {
     public function sendparentfeedback()
     {
-        return view('sendfeedback',['student'=>false]);
+        return view('index/sendfeedback',['student'=>false]);
     }
     
     public function storeparentfeedback(Request $request)
@@ -42,7 +42,7 @@ class FeedbackController extends Controller
 
     public function sendstafffeedback($id)
     {
-        return view('sendfeedback',['student'=>$id]);
+        return view('index/sendfeedback',['student'=>$id]);
     }
 
     public function storestafffeedback(Request $request, $id)
@@ -92,7 +92,24 @@ class FeedbackController extends Controller
             array_push($sections,$section->id);
         }
         $classes = SClass::all();
-
-        return view('staffstudents',['classes'=>$classes,'sections'=>$sections]);
+        for($i=0;$i<count($sections);$i++)
+        {
+            error_log($sections[$i]);
+        }
+        error_log('class');
+        foreach($classes as $class)
+        {
+            error_log('Class Num: '.$class->num);
+            if($class->num == 10)
+            {
+                error_log("Entered Test");
+                foreach($class->sections as $section)
+                {
+                    error_log($section->id);
+                }
+            }
+        }
+        
+        return view('index/staffstudents',['classes'=>$classes,'sections'=>$sections]);
     }
 }

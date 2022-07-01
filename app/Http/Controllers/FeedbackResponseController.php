@@ -70,7 +70,7 @@ class FeedbackResponseController extends Controller
         $parents = true;
         $feedbacks = ParentNote::where('student_id',Auth::guard('student')->user()->id)->orderBy('created_at','desc')->get();
 
-        return view('myfeedback',['feedbacks'=>$feedbacks,'parent'=>$parents]);
+        return view('index/My_Feedback',['feedbacks'=>$feedbacks,'parent'=>$parents]);
     }
 
     public function myfeedbackstaff()
@@ -78,6 +78,6 @@ class FeedbackResponseController extends Controller
         $parents = false;
         $feedbacks = SchoolNote::where('user_id',Auth::user()->id)->orderBy('created_at','desc')->get();
 
-        return view('myfeedback',['feedbacks'=>$feedbacks,'parent'=>$parents]);
+        return view('index/My_Feedback',['feedbacks'=>$feedbacks,'parent'=>$parents]);
     }
 }

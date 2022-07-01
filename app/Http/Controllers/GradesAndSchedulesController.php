@@ -83,7 +83,7 @@ class GradesAndSchedulesController extends Controller
             array_push($sections,$section->id);
         }
         $classes = SClass::all()->sortBy('num');
-        return view('setgrades',['classes'=>$classes,'sections'=>$sections,]);
+        return view('index/marks',['classes'=>$classes,'sections'=>$sections,]);
     }
 
     public function setgrades(Request $request,$subject)
