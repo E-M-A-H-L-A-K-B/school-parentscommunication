@@ -38,13 +38,13 @@ class AnnouncementsController extends Controller
 
     public function sectionannouncements($id)
     {
-        $announs = SectionAnnouncement::where('section_id',1)->get();
+        $announs = SectionAnnouncement::where('section_id',$id)->get();
         foreach($announs as $announ)
         {
             error_log($announ->id);
         }
         
-        return view('sectionannouncments',['announs'=>$announs,'section'=>$id,]);
+        return view('index/ViewAnnouncement',['announs'=>$announs,'section'=>$id,]);
     }
 
     public function addsectionannoun($id)

@@ -3,10 +3,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link href="css/all.min.css" rel="stylesheet">
-    <script src="js/jquery-3.6.0.min.js"></script>
-    <link rel="stylesheet" href="structuremain.css">
+    <link rel="stylesheet" href="{{URL::asset('css/bootstrap.min.css')}}">
+    <link href="{{URL::asset('css/all.min.css')}}" rel="stylesheet">
+    <script src="{{URL::asset('js/jquery-3.6.0.min.js')}}"></script>
+    <link rel="stylesheet" href="{{URL::asset('css/structuremain.css')}}">
     <title>Teacher_main</title>
 </head>
 
@@ -14,7 +14,7 @@
     <a href="index.html"> <i id="left" class="fas fa-arrow-alt-circle-left"></i></a>
     <a href="#"> <i id="left" class="fas fa-sign-out-alt"></i></a>
     <div id="logo">
-        <img src="img/logo_fixed.png">
+        <img src="{{URL::asset('img/logo_fixed.png')}}">
     </div>
     
 
@@ -29,26 +29,26 @@
     <div class="row">
        
         <div id="icon" class=" col-lg-4 clo col-md-6 clo col-sm-12 col-xs-12">
-            <a id="Add" class="add1" href="addStudent.html">
+            <a id="Add" class="add1" href="{{route('feedback.students')}}">
                 <span id="s"></span>
                 <span id="s"></span>
                 <span id="s"></span>
                 <span id="s"></span>
-                Add Student
+                Send Feedback
             </a>
-            <a id="Add" class="add2" href="addStaff.html">
+            <a id="Add" class="add2" href="{{route('feedback.myfeedbackstaff')}}">
                 <span id="s"></span>
                 <span id="s"></span>
                 <span id="s"></span>
                 <span id="s"></span>
-                Add Staff
+                My Feedback
             </a>
         </div>
 
         <div class=" col-lg-4  clo col-d-6 clo col-sm-12 col-xs-12">
             <div class="center">
                 <div class="icon_ann">
-                    <a href="AddAnnouncement.html"><i class="fas fa-bullhorn" id="annn"></i></a>
+                    <a href="{{route('sections.view')}}"><i class="fas fa-bullhorn" id="annn"></i></a>
                     <h3 id="ann">Announcements</h3>
                 </div>
             </div>

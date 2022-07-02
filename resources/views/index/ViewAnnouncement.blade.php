@@ -22,19 +22,24 @@
           <h1 data-text="Announcements">Announcements</h1>
         </div>
         <div class="Announcements_box">
-
-            <div class="Announcements_item">
-                <h3>Announcement</h3>
-                <hr>
-                <h4> Guide</h4>
-                <h5>Full Name</h5>
-                <hr>
-                <h6>02-05-2020</h6>
-                <div class="Announcements_desc">
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Animi, 
-                    </p>
+            @foreach($announs as $announ)
+                <div class="Announcements_item">
+                    <h3>Announcement</h3>
+                    <hr>
+                    @if($announ->user->teacher)
+                        <h4> Guide</h4>
+                    @else
+                        <h4> Teacher</h4>
+                    @endif
+                    <h5>{{$announ->user->name}} {{$announ->user->father}} {{$announ->user->last_name}}</h5>
+                    <hr>
+                    <h6>{{ $announ->created_at->format('d-M-Y') }}</h6>
+                    <div class="Announcements_desc">
+                        <p>{{$announ->content}} 
+                        </p>
+                    </div>
                 </div>
-            </div>
+            @endforeach
             <div class="Announcements_item">
                 <h3>Announcement</h3>
                 <hr>

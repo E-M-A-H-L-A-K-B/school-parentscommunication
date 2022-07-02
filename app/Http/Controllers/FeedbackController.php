@@ -37,7 +37,7 @@ class FeedbackController extends Controller
     {
         $feedbacks = SchoolNote::where('student_id',Auth::guard('student')->user()->id)->orderBy('created_at','desc')->get();
 
-        return view('schoolfeedback',['feedbacks'=>$feedbacks,]);
+        return view('index/receive_feedback',['feedbacks'=>$feedbacks,'student'=>true]);
     }
 
     public function sendstafffeedback($id)
@@ -81,7 +81,7 @@ class FeedbackController extends Controller
 
         $feedbacks = ParentNote::whereIn('section_id',$sections)->orderBy('created_at','desc')->get();
 
-        return view('parentsfeedback',['feedbacks'=>$feedbacks,]);
+        return view('index/receive_feedback',['feedbacks'=>$feedbacks,'student'=>false]);
     }
 
     public function viewstudents()
@@ -92,23 +92,6 @@ class FeedbackController extends Controller
             array_push($sections,$section->id);
         }
         $classes = SClass::all();
-        for($i=0;$i<count($sections);$i++)
-        {
-            error_log($sections[$i]);
-        }
-        error_log('class');
-        foreach($classes as $class)
-        {
-            error_log('Class Num: '.$class->num);
-            if($class->num == 10)
-            {
-                error_log("Entered Test");
-                foreach($class->sections as $section)
-                {
-                    error_log($section->id);
-                }
-            }
-        }
         
         return view('index/staffstudents',['classes'=>$classes,'sections'=>$sections]);
     }
