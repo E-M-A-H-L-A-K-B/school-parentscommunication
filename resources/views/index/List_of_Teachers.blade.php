@@ -3,9 +3,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link href="css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="List_of_Teachers.css">
+    <link rel="stylesheet" href="{{URL::asset('css/bootstrap.min.css')}}">
+    <link href="{{URL::asset('css/all.min.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="{{URL::asset('css/List_of_Teachers.css')}}">
     <title>subject</title>
 </head>
 
@@ -13,7 +13,7 @@
     <a href="structuremain.html"> <i id="left" class="fas fa-arrow-alt-circle-left"></i></a>
     <div class="container">
         <div id="logo">
-            <img src="img/logo_fixed.png">
+            <img src="{{URL::asset('img/logo_fixed.png')}}">
         </div>
     </div>
     <label>
@@ -52,6 +52,11 @@
         <div class="dot" style="--i:6;"></div>
     </div>
 
+    @php
+        $section = Auth::guard('student')->user()->section_id;
+        
+    @endphp
+
     <table>
         <tr>
             <th>Teacher </th>
@@ -59,6 +64,32 @@
             </th>
 
         </tr>
+        @foreach(Auth::guard('student')->user()->section->guides as $guide)
+            <tr>
+                <td>{{ $guide->name}} {{ $guide->father}} {{ $guide->last_name}}</td>
+                <td>Guide</td>
+            </tr>
+        @endforeach
+        @foreach(Auth::guard('student')->user()->section->teachers as $teacher)
+            @foreach($teacher->subjects as $subject)
+                @php
+                    $test = false;
+                    if(DB::table('subject_teacher')
+                    ->where('teacher_id','=',$teacher->id)
+                    ->where('subject_id','=',$subject->id)
+                    ->where('section_id','=',$section)->exists())
+                    {
+                        $test= true;
+                    }
+                @endphp
+                @if($test)
+                    <tr>
+                        <td>{{$teacher->name}} {{$teacher->father}} {{$teacher->last_name}}</td>
+                        <td>{{ $subject->name }}</td>
+                    </tr>
+                @endif
+            @endforeach
+        @endforeach
         <tr>
             <td>omar</td>
             <td>arabic</td>

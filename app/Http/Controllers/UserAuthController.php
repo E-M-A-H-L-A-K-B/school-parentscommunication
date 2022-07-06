@@ -165,6 +165,6 @@ class UserAuthController extends Controller
 
     public function staffinfo()
     {
-        return view('staffinfo');
+        return view('index/List_of_Teachers');
     }
 }

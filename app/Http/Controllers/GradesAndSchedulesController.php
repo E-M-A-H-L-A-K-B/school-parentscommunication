@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\Response;
 
 class GradesAndSchedulesController extends Controller
 {
@@ -67,13 +68,15 @@ class GradesAndSchedulesController extends Controller
     {
         $schedule = WeeklySchedule::where('section_id',Auth::guard('student')->user()->section_id)->get()[0];
 
-        return view('viewschedule',['schedule'=>$schedule]);
+        return view('index/viewschedule',['schedule'=>$schedule]);
     }
 
-    /*public function DownloadSchedule($file)
+    public function DownloadSchedule($file)
     {
-        return Storage::download(public_path('PDFs').'/'.$file,'Schedule for Section '.Auth::guard('student')->user()->section->num.' from class '.Auth::guard('student')->user()->class_num);
-    }*/
+        $pdf = WeeklySchedule::find($file);
+        $filepath = public_path('PDFs').'/'.$pdf->file;
+        return Response::download($filepath);
+    }
 
     public function showsections()
     {
@@ -128,6 +131,6 @@ class GradesAndSchedulesController extends Controller
     public function showgrades()
     {
         $grades = Grade::where('student_id',Auth::guard('student')->user()->id)->get();
-        return view('showgrades',['grades'=>$grades,]);
+        return view('index/Viewmarks',['grades'=>$grades,]);
     }
 }

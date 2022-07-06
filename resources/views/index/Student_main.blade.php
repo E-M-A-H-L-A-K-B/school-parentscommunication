@@ -3,10 +3,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link href="css/all.min.css" rel="stylesheet">
-    <script src="js/jquery-3.6.0.min.js"></script>
-    <link rel="stylesheet" href="structuremain.css">
+    <link rel="stylesheet" href="{{URL::asset('css/bootstrap.min.css')}}">
+    <link href="{{URL::asset('css/all.min.css')}}" rel="stylesheet">
+    <script src="{{URL::asset('js/jquery-3.6.0.min.js')}}"></script>
+    <link rel="stylesheet" href="{{URL::asset('css/structuremain.css')}}">
     <title>Student_main</title>
 </head>
 
@@ -14,12 +14,12 @@
     <a href="index.html"> <i id="left" class="fas fa-arrow-alt-circle-left"></i></a>
     <a href="#"> <i id="left" class="fas fa-sign-out-alt"></i></a>
     <div id="logo">
-        <img src="img/logo_fixed.png">
+        <img src="{{URL::asset('img/logo_fixed.png')}}">
     </div>
     <ul>
     
         <li>
-            <a href="#">
+            <a href="{{route('schedules.view')}}">
                 <div class="icon">
                     <i class="fa fa-table" aria-hidden="true"> </i>
                     <i class="fa fa-table" aria-hidden="true"> </i>
@@ -31,7 +31,7 @@
         </li>
 
         <li>
-            <a href="#">
+            <a href="{{route('grades.view')}}">
                 <div class="icon">
                     <i class="fa fa-check-square" aria-hidden="true"> </i>
                     <i class="fa fa-check-square" aria-hidden="true"> </i>
@@ -43,7 +43,7 @@
         </li>
       
         <li>
-            <a href="#">
+            <a href="{{route('viewsatff')}}">
                 <div class="icon">
                     <i class="fa fa-users" aria-hidden="true"> </i>
                     <i class="fa fa-users" aria-hidden="true"> </i>
@@ -55,7 +55,7 @@
         </li>
 
         <li>
-            <a href="#">
+            <a href="{{route('feedback.myfeedbackparent')}}">
                 <div class="icon">
                     <i class="fa fa-comments" aria-hidden="true"> </i>
                     <i class="fa fa-comments" aria-hidden="true"> </i>
@@ -79,14 +79,14 @@
     <div class="row">
        
         <div id="icon" class=" col-lg-4 clo col-md-6 clo col-sm-12 col-xs-12">
-            <a id="Add" class="add1" href="addStudent.html">
+            <a id="Add" class="add1" href="{{route('feedback.parentfeedback')}}">
                 <span id="s"></span>
                 <span id="s"></span>
                 <span id="s"></span>
                 <span id="s"></span>
                 Send Feedback
             </a>
-            <a id="Add" class="add2" href="addStaff.html">
+            <a id="Add" class="add2" href="{{route('feedback.viewschool')}}">
                 <span id="s"></span>
                 <span id="s"></span>
                 <span id="s"></span>
@@ -98,8 +98,8 @@
             <div class=" col-lg-4  clo col-d-6 clo col-sm-12 col-xs-12">
                 <div class="center">
                     <div class="icon_ann">
-                        <a href="#"><i class="fas fa-bullhorn" id="annn"></i></a>
-                        <h3 id="ann">View Announcements</h3>
+                        <a href="{{route('announcements.sections',['id'=>Auth::guard('student')->user()->section_id])}}"><i class="fas fa-bullhorn" id="annn"></i></a>
+                        <h3 id="ann">Announcements</h3>
                     </div>
                 </div>
             </div>
