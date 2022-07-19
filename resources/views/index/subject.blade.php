@@ -38,6 +38,11 @@
             <div class="dot" style="--i:6;"></div>
         </div>
     <div class="d">
+        
+        @if(Session::has('subject_assiged_teacher'))
+        <span><small style="color: red;">{{Session::get('subject_assiged_teacher')}}</small></span>
+        @endif
+
         @foreach($classes as $class)
         <h3>Class {{$class->num}}:</h3>
         <div class="dc">
@@ -49,6 +54,7 @@
             @else
             <form id="form_div_{{$class->num}}" action="{{route('structure.storesubject')}}" method="POST" style="display: none;">
             @endif
+                @csrf
                 <input type="text" id="idF" name="subject_name">
                 <input type="hidden" name="class_number" value="{{ $class->num }}">
                 <input type="submit" value="Add">

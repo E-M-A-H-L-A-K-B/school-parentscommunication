@@ -43,6 +43,14 @@
         <span><small style="color: green;">{{Session::get('subject_teacher_added')}}</small></span>
         @endif
 
+        @if(Session::has('subject_teacher_exists'))
+            <span><small style="color: red;">{{Session::get('subject_teacher_exists')}}</small></span>
+        @endif
+
+        @if(Session::has('subject_exists'))
+            <span><small style="color: red;">{{Session::get('subject_exists')}}</small></span>
+        @endif
+
         @if(Session::has('subject_teacher_deleted'))
         <span><small style="color: green;">{{Session::get('subject_teacher_deleted')}}</small></span>
         @endif

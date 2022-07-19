@@ -38,6 +38,9 @@
     </div>
     <div class="d">
 
+        @if(Session::has('class_deleted'))
+            <span><small style="color: green;">{{Session::get('class_deleted')}}</small></span>
+        @endif
         <div class="dc">
 
 
@@ -56,6 +59,17 @@
             <div id="div_div_11">
                 @foreach($classes as $class)
                 <p id="se">Class {{$class->num}} <a href="{{route('structure.deleteclass',['id'=>$class->num,])}}"><input type="button" value="delete"onclick="#"></a></p>
+                @if(Session::has('class_with_section_subjects_'.$class->num))
+                <span><small style="color: red;">{{Session::get('class_with_section_subjects_'.$class->num)}}</small></span>
+                @endif
+
+                @if(Session::has('class_with_section_'.$class->num))
+                <span><small style="color: red;">{{Session::get('class_with_section_'.$class->num)}}</small></span>
+                @endif
+
+                @if(Session::has('class_with_subject_'.$class->num))
+                <span><small style="color: red;">{{Session::get('class_with_section_subjects_'.$class->num)}}</small></span>
+                @endif
                 @endforeach
                 
             </div>

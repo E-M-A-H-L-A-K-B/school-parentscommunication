@@ -36,6 +36,23 @@
         <div class="dot" style="--i:6;"></div>
     </div>
     <div class="d">
+
+    @if(Session::has('section_guide_exists'))
+        <span><small style="color: red;">{{Session::get('section_guide_exists')}}</small></span>
+    @endif
+
+    @if(Session::has('section_exists'))
+        <span><small style="color: red;">{{Session::get('section_exists')}}</small></span>
+    @endif
+
+    @if(Session::has('section_guide_added'))
+    <span><small style="color: green;">{{Session::get('section_guide_added')}}</small></span>
+    @endif
+
+    @if(Session::has('section_guide_deleted'))
+    <span><small style="color: green;">{{Session::get('section_guide_deleted')}}</small></span>
+    @endif
+
      @foreach($guides as $guide)
         <h3> {{$guide->name}} {{$guide->father}} {{$guide->last_name}}:</h3>
         <div class="dc">

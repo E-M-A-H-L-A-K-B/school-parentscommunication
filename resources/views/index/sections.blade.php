@@ -46,6 +46,18 @@
         <span><small style="color: green;">{{Session::get('section_deleted')}}</small></span>
     @endif
 
+    @if(Session::has('section_assigned_guide'))
+    <span><small style="color: red;">{{Session::get('section_assigned_guide')}}</small></span>
+    @endif
+    
+    @if(Session::has('section_assigned_guide_student'))
+    <span><small style="color: red;">{{Session::get('section_assigned_guide_student')}}</small></span>
+    @endif
+
+    @if(Session::has('section_assigned_student'))
+    <span><small style="color: red;">{{Session::get('section_assigned_student')}}</small></span>
+    @endif
+
         @foreach($classes as $class)
         <h3>Class {{$class->num}}:</h3>
         <div class="dc">
@@ -58,6 +70,7 @@
             @else
             <form id="form_div_{{$class->num}}" method="post" action="{{route('structure.storesection')}}" style="display: none;">
             @endif
+                @csrf
                 <input type="number" id="idF" name="section_number" placeholder="Section Number">
                 <input type="hidden" name="class_number" value="{{ $class->num }}">
                 <input type="submit" value="Add">

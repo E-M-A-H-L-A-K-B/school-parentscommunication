@@ -51,6 +51,24 @@ class StructureController extends Controller
 
     public function deleteclass($id)
     {
+        if(Section::where('class_num',$id)->exists() && Subject::where('class_num',$id)->exists())
+        {
+            print('In Section Subject');
+            return back()->with('class_with_section_subjects_'.$id,'The Class Has Sections And Subjects Assigned To It');
+        }
+
+        else if(Section::where('class_num',$id)->exists())
+        {
+            print('In Section');
+            return back()->with('class_with_section_'.$id,'The Class Has Sections Assigned To It');
+        }
+
+        else if(Subject::where('class_num',$id)->exists())
+        {
+            print('In Subject');
+            return back()->with('class_with_subject_'.$id,'The Class Has Subjects Assigned To It');
+        }
+
         SClass::where('num',$id)->delete();
         return back()->with('class_deleted','The Class Was Deleted Successfully');
     }
@@ -76,6 +94,23 @@ class StructureController extends Controller
 
     public function deletesection($id)
     {
+        if(DB::table('section_guide')
+        ->where('section_id','=',$id)->exists() && Student::where('section_id',$id)->exists())
+        {
+            return back()->with('section_assigned_guide_student','Section Was Assigned To Students And A guide');
+        }
+
+        else if(DB::table('section_guide')
+        ->where('section_id','=',$id)->exists())
+        {
+            return back()->with('section_assigned_guide','Section Was Assigned To A guide');
+        }
+
+        else if(Student::where('section_id',$id)->exists())
+        {
+            return back()->with('section_assigned_student','Section Was Assigned To Students');
+        }
+
         Section::find($id)->delete();
         return back()->with('section_deleted',"Section Was Deleted Successfully");
     }
@@ -101,6 +136,12 @@ class StructureController extends Controller
 
     public function deletesubject($id)
     {
+        if(DB::table('subject_teacher')
+        ->where('subject_id','=',$id)->exists())
+        {
+            return back()->with('subject_assiged_teacher','Subject Is Assigned To A Teacher');
+        }
+        
         Subject::find($id)->delete();
         return back()->with('subject_deleted',"Subject Was Deleted Successfully");
     }
@@ -122,6 +163,21 @@ class StructureController extends Controller
 
     public function storesubject_teacher($id, $section, $subject)
     {
+        if(DB::table('subject_teacher')
+        ->where('teacher_id','=',$id)
+        ->where('section_id','=',$section)
+        ->where('subject_id','=',$subject)->exists())
+        {
+            return back()->with('subject_teacher_exists','Subject Already Assigned To The Teacher');
+        }
+
+        if(DB::table('subject_teacher')
+        ->where('section_id','=',$section)
+        ->where('subject_id','=',$subject)->exists())
+        {
+            return back()->with('subject_exists','Subject Already Assigned To Another Teacher');
+        }
+
         DB::table('subject_teacher')
         ->insert([
             'teacher_id'=>$id,
@@ -158,6 +214,20 @@ class StructureController extends Controller
 
     public function storesection_guide($id,$section)
     {
+
+        if(DB::table('section_guide')
+        ->where('guide_id','=',$id)
+        ->where('section_id','=',$section)->exists())
+        {
+            return back()->with('section_guide_exists','Section Already Assigned To Guide');
+        }
+
+        if(DB::table('section_guide')
+        ->where('section_id','=',$section)->exists())
+        {
+            return back()->with('section_exists','Section Already Assigned To Another Guide');
+        }
+
         DB::table('section_guide')
         ->insert([
             'guide_id'=>$id,
