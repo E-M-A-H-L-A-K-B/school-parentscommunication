@@ -25,8 +25,11 @@
             $class_test = false;
         @endphp
         @foreach($class->sections as $section)
+            @php
+                $section_test = false;
+            @endphp
             @for($i=0;$i < count($sections);$i++)
-                @if($section->id == $sections[$i])
+                @if($sections[$i] == $section->id)
                     @php
                         $class_test = true;
                     @endphp
@@ -34,29 +37,26 @@
                 @endif
             @endfor
             @if($class_test)
-                @break
+                @break 
             @endif
         @endforeach
         @if($class_test)
             <section id="Class">
-
+            
                 <div class="card">
                     <div class="content">
                         <div class="card-content">
                             <div id="icon"><i class="fas fa-chalkboard"></i></div>
-
+                        
                             <p id="classes">Class {{$class->num}}
                                 <button id='class_bttn_{{$class->num}}' onclick="showsections(this)">Show Sections<i
                                         class="fas fa-chevron-circle-down "></i>
                                 </button>
                             </p>
-
-                            
+                        
                             <div id='section_div_{{$class->num}}' style="display: none;">
                                 @foreach($class->sections as $section)
-                                    @php
-                                        $section_test = false;
-                                    @endphp
+    
                                     @for($i=0;$i < count($sections);$i++)
                                         @if($sections[$i] == $section->id)
                                             <p id="sectiones"> Section {{$section->num}}
@@ -64,40 +64,40 @@
                                                     onclick="showstudents(this)">Show Subject
                                                 </button>
                                             </p>
-
+                                        
                                             <div id="subject_div_{{$class->num}}{{$section->id}}" style="display: none;">
                                                 @foreach($class->subjects as $subject)
-                                                    <p id="subjectes"> {{$subject->name}}
-                                                        <button id="section_button_{{$class->num}}{{$section->id}}{{$subject->id}}"
-                                                            onclick="showform(this)"><i class="fas fa-cloud-upload-alt"></i>
-                                                        </button>
-                                                    </p>
-
-                                                    <div id="schedule_form_{{$class->num}}{{$section->id}}{{$subject->id}}"
-                                                        style="display: none;">
-
-                                                        <form action="{{route('grades.store',['subject'=>$subject->id])}}" method="post"
-                                                            enctype="multipart/form-data">
-
-                                                            <div class="file-field input-field">
-                                                                <div class="btn">
-                                                                    <span>
-                                                                        <label class="btn-floating btn-large pulse" for="file">
-                                                                            <i class="fas fa-plus-circle"></i></label>
-                                                                        <h3> Excel File <i class="fas fa-file-pdf"></i></h3>
-                                                                    </span>
-                                                                    <input name="file" accept=".xlsx | .csv" id="file" type="file" required>
-                                                                </div>
-                                                                <div class="file-path-wrapper">
-                                                                    <input class="file-path validate" id="path1" type="text"
-                                                                        placeholder="No File Chosen">
-                                                                </div>
+                                                <p id="subjectes"> {{$subject->name}}
+                                                    <button id="section_button_{{$class->num}}{{$section->id}}{{$subject->id}}"
+                                                        onclick="showform(this)"><i class="fas fa-cloud-upload-alt"></i>
+                                                    </button>
+                                                </p>
+                                            
+                                                <div id="schedule_form_{{$class->num}}{{$section->id}}{{$subject->id}}"
+                                                    style="display: none;">
+                                                
+                                                    <form action="{{route('schedules.store',['section'=>$section->id])}}" method="post"
+                                                        enctype="multipart/form-data">
+                                                    
+                                                        <div class="file-field input-field">
+                                                            <div class="btn">
+                                                                <span>
+                                                                    <label class="btn-floating btn-large pulse" for="file">
+                                                                        <i class="fas fa-plus-circle"></i></label>
+                                                                    <h3> PDF File <i class="fas fa-file-pdf"></i></h3>
+                                                                </span>
+                                                                <input name="file" accept="PDF/*" id="file" type="file" required>
                                                             </div>
-
-                                                            <button type="submit" class="waves-effect waves-light btn-small">Submit</button>
-
-                                                        </form>
-                                                    </div>
+                                                            <div class="file-path-wrapper">
+                                                                <input class="file-path validate" id="path1" type="text"
+                                                                    placeholder="No File Chosen">
+                                                            </div>
+                                                        </div>
+                                                    
+                                                        <button type="submit" class="waves-effect waves-light btn-small">Submit</button>
+                                                    
+                                                    </form>
+                                                </div>
                                                 @endforeach
                                             </div>
                                         @endif
@@ -105,16 +105,17 @@
                                 @endforeach
                             </div>
 
-
+                        
 
                         </div>
                     </div>
                 </div>
-
-
+            
+            
             </section>
-        @endif
+        @endif   
     @endforeach
+
     <script>
         function showsections(ele) {
             var id = ele.id;

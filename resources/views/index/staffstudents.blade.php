@@ -71,7 +71,7 @@
                         @foreach($class->sections as $section)
                             @for($i=0; $i< count($sections);$i++)
                                 @if($section->id == $sections[$i])
-                                    <p id="section"> {{$sections[$i]}} {{$i}} Section {{$section->num}} {{$section->id}} <button id="section_button_{{$class->num}}{{$section->id}}"
+                                    <p id="section"> Section {{$section->num}}<button id="section_button_{{$class->num}}{{$section->id}}"
                                             onclick="showstudents(this)">Show
                                             Students</button></p>
                                     <div id="students_div_{{$class->num}}{{$section->id}}" style="display: none;">

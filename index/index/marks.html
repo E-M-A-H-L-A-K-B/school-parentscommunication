@@ -74,6 +74,38 @@
 
                                 </form>
                             </div>
+
+                            <p id="subjectes"> Math
+                                <button id="section_button_{{$class->num}}{{$section->id}}{{$subject->id}}2"
+                                    onclick="showform(this)"><i class="fas fa-cloud-upload-alt"></i>
+                                </button>
+                            </p>
+                          
+                            <div id="schedule_form_{{$class->num}}{{$section->id}}{{$subject->id}}2"
+                                style="display: none;">
+
+                                <form action="{{route('schedules.store',['section'=>$section->id])}}" method="post"
+                                    enctype="multipart/form-data">
+
+                                    <div class="file-field input-field">
+                                        <div class="btn">
+                                            <span>
+                                                <label class="btn-floating btn-large pulse" for="file">
+                                                    <i class="fas fa-plus-circle"></i></label>
+                                                <h3> PDF File <i class="fas fa-file-pdf"></i></h3>
+                                            </span>
+                                            <input name="file" accept="PDF/*" id="file" type="file" required>
+                                        </div>
+                                        <div class="file-path-wrapper">
+                                            <input class="file-path validate" id="path1" type="text"
+                                                placeholder="No File Chosen">
+                                        </div>
+                                    </div>
+
+                                    <button type="submit" class="waves-effect waves-light btn-small">Submit</button>
+
+                                </form>
+                            </div>
                         </div>
                     </div>
                     

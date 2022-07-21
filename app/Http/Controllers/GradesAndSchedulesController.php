@@ -91,6 +91,14 @@ class GradesAndSchedulesController extends Controller
 
     public function setgrades(Request $request,$subject)
     {
+        error_log('Entered');
+        if($request->file('file'))
+        {
+            error_log('exist');
+        }
+        $credentials = $request->validate([
+            'file'=>'required'
+        ]);
         $import =new Students_Grades_Import;
         Excel::import($import,$request->file('file'));
         $array = $import->getArray();

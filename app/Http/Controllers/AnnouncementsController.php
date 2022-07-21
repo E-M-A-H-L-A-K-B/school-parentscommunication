@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\SchoolAnnouncement;
+use App\Models\SClass;
 use App\Models\SectionAnnouncement;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -70,6 +71,12 @@ class AnnouncementsController extends Controller
 
     public function viewsections()
     {
-        return view('index/staffsections');
+        $sections = array();
+        foreach(Auth::user()->sections as $section)
+        {
+            array_push($sections,$section->id);
+        }
+        $classes = SClass::all();
+        return view('index/staffsections',['sections'=>$sections,'classes'=>$classes]);
     }
 }

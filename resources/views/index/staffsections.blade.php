@@ -47,53 +47,39 @@
     </div>
     <div class="d">
         <div class="dc">
-            
-            <div id="class_div_1" >
-                @foreach(Auth::user()->sections->sortBy('class_num')->sortBy('num') as $section)
-                    @if($loop->first)
-                        @php
-                            $num = $section->SClass->num;
-                        @endphp
-                        <p>Class {{$section->SClass->num}} <button id="class_button_{{$section->SClass->num}}" class="sele" onclick="showsection(this)">Select</button></p><br/>
-                        <div id="section_div_{{$section->SClass->num}}" style="display: none;">
+            @foreach($classes as $class)
+                @php
+                    $class_test = false;
+                @endphp
+                @foreach($class->sections as $section)
+                    @for($i=0;$i< count($sections);$i++)
+                        @if($section->id == $sections[$i])
+                            @php
+                                $class_test = true;
+                            @endphp
+                            @break
+                        @endif
+                    @endfor
+                    @if($class_test)
+                        @break
                     @endif
-                    @if($num != $section->SClass->num)
-                        @php
-                            $num = $section->SClass->num;
-                        @endphp
-                        </div>
-                        <p>Class {{$section->SClass->num}} <button id="class_button_{{$section->SClass->num}}" class="sele" onclick="showsection(this)">Select</button></p><br/>
-                        <div id="section_div_{{$section->SClass->num}}" style="display: none;">
-                    @endif
-                    <p id="se">Section {{$section->num}} <a href="{{route('sections.announcement',['id'=>$section->id])}}"><input type="button" value="Select"></a></p>
                 @endforeach
+                @if($class_test)
+                <div id="class_div_1" >
+                    <p>Class {{$class->num}} <button id="class_button_{{$class->num}}" class="sele" onclick="showsection(this)">Select</button></p><br/>
+                    <div id="section_div_{{$class->num}}" style="display: none;">
+                        @foreach($class->sections as $section)
+                            @for($i=0; $i< count($sections);$i++)
+                                @if($section->id == $sections[$i])
+                                    <p id="se">Section {{$section->num}} <a href="{{route('sections.announcement',['id'=>$section->id])}}"><input type="button" value="Select"></a></p>
+                                @endif
+                            @endfor
+                        @endforeach
+                    </div>
                 </div>
-                <p>Class 1 <button id="class_button_10" class="sele" onclick="showsection(this)">Select</button></p><br/>
-                <div id="section_div_10" style="display: none;">
-                    <p id="se">Section 1<input type="button" value="Add"onclick="#"></p>
-                    <p id="se">Section 2<input type="button" value="Add"onclick="#"></p>
-                    <p id="se">Section 3<input type="button" value="Add"onclick="#"></p>
-                </div>
-                <p>Class 2 <button id="class_button_12" class="sele" onclick="showsection(this)">Select</button></p><br/>
-                <div id="section_div_12" style="display: none;">
-                    <p id="se">Section 1<input type="button" value="Add"onclick="#"></p>
-                    <p id="se">Section 2<input type="button" value="Add"onclick="#"></p>
-                    <p id="se">Section 3<input type="button" value="Add"onclick="#"></p>
-
-                </div>
-                <p>Class 3 <button id="class_button_13" class="sele"onclick="showsection(this)">Select</button></p><br/>
-                <div id="section_div_13" style="display: none;">
-                    <p id="se">Section 1<input type="button" value="Add"onclick="#"></p>
-                    <p id="se">Section 2<input type="button" value="Add"onclick="#"></p>
-                    <p id="se">Section 3<input type="button" value="Add"onclick="#"></p>
-                    <p id="se">Section 2<input type="button" value="Add"onclick="#"></p>
-                    <p id="se">Section 2<input type="button" value="Add"onclick="#"></p>
-                </div>
-            </div>
-
+                @endif
+            @endforeach
         </div>
-        
-
     </div>
     <br>
 
