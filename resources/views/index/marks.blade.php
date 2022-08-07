@@ -19,7 +19,6 @@
         </div>
     </div>
     <h1>Marks</h1>
-
     @foreach($classes as $class)
         @php
             $class_test = false;
@@ -67,37 +66,27 @@
                                         
                                             <div id="subject_div_{{$class->num}}{{$section->id}}" style="display: none;">
                                                 @foreach($class->subjects as $subject)
-                                                <p id="subjectes"> {{$subject->name}}
-                                                    <button id="section_button_{{$class->num}}{{$section->id}}{{$subject->id}}"
-                                                        onclick="showform(this)"><i class="fas fa-cloud-upload-alt"></i>
-                                                    </button>
-                                                </p>
-                                            
-                                                <div id="schedule_form_{{$class->num}}{{$section->id}}{{$subject->id}}"
-                                                    style="display: none;">
+                                                    <p id="subjectes"> {{$subject->name}}
+                                                        <button id="section_button_{{$class->num}}{{$section->id}}{{$subject->id}}"
+                                                            onclick="showform(this)"><i class="fas fa-cloud-upload-alt"></i>
+                                                        </button>
+                                                    </p>
                                                 
-                                                    <form action="{{route('schedules.store',['section'=>$section->id])}}" method="post"
-                                                        enctype="multipart/form-data">
+                                                    <div id="schedule_form_{{$class->num}}{{$section->id}}{{$subject->id}}"
+                                                        style="display: none;">
                                                     
-                                                        <div class="file-field input-field">
-                                                            <div class="btn">
-                                                                <span>
-                                                                    <label class="btn-floating btn-large pulse" for="file">
-                                                                        <i class="fas fa-plus-circle"></i></label>
-                                                                    <h3> PDF File <i class="fas fa-file-pdf"></i></h3>
-                                                                </span>
-                                                                <input name="file" accept="PDF/*" id="file" type="file" required>
-                                                            </div>
-                                                            <div class="file-path-wrapper">
-                                                                <input class="file-path validate" id="path1" type="text"
-                                                                    placeholder="No File Chosen">
-                                                            </div>
-                                                        </div>
-                                                    
-                                                        <button type="submit" class="waves-effect waves-light btn-small">Submit</button>
-                                                    
-                                                    </form>
-                                                </div>
+                                                        <form action="{{route('grades.store',['subject'=>$subject->id])}}" method="post"
+                                                            enctype="multipart/form-data">
+                                                            @csrf
+                                                            
+                                                            <label id="f1">Upload File</label>
+                                                            <input for="f1" type="file" name="file" required class="upload">
+                                                        
+                                                        
+                                                            <button type="submit" class="waves-effect waves-light btn-small">Submit</button>
+                                                        
+                                                        </form>
+                                                    </div>
                                                 @endforeach
                                             </div>
                                         @endif
@@ -154,7 +143,7 @@
             }
         }
     </script>
-    <script src="{{URL::asset('js/materialize.js')}}"></script>
+    <script src="js/materialize.js"></script>
 </body>
 
 </html>

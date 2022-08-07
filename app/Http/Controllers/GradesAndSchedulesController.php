@@ -118,11 +118,24 @@ class GradesAndSchedulesController extends Controller
                                 ->where('last_name',$row['last_name'])
                                 ->first();
 
-                $grade = new Grade();
-                $grade->student_id = $student->id;
-                $grade->subject_id = $subject;
-                $grade->number = $row['grade'];
-                $grade->save();
+                if(Grade::where('student_id',$student->id)
+                        ->where('subject_id',$subject)
+                        ->exists())
+                {
+                    $grade = Grade::where('student_id',$student->id)
+                                    ->where('subject_id',$subject)
+                                    ->first();
+                    $grade->number = $row['grade'];
+                    $grade->save();
+                }
+                else
+                {
+                    $grade = new Grade();
+                    $grade->student_id = $student->id;
+                    $grade->subject_id = $subject;
+                    $grade->number = $row['grade'];
+                    $grade->save();
+                }
             }
 
             DB::commit();

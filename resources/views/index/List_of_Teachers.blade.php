@@ -53,7 +53,7 @@
     </div>
 
     @php
-        $section = Auth::guard('student')->user()->section_id;
+        $section = Auth::guard('student')->user()->section->id;
         
     @endphp
 
@@ -64,13 +64,37 @@
             </th>
 
         </tr>
+        @php
+            $count = array();
+        @endphp
         @foreach(Auth::guard('student')->user()->section->guides as $guide)
             <tr>
                 <td>{{ $guide->name}} {{ $guide->father}} {{ $guide->last_name}}</td>
-                <td>Guide</td>
+                <td>موجه</td>
             </tr>
         @endforeach
         @foreach(Auth::guard('student')->user()->section->teachers as $teacher)
+            @if($loop->first)
+                @php
+                    array_push($count,$teacher->id);
+                @endphp
+            @else
+                @php
+                    $exist = false;
+                    for($i=0 ;$i < count($count) ; $i++)
+                    {
+                        if($count[$i] == $teacher->id)
+                        {
+                            $exist = true;
+                            break;
+                        }
+                    }
+                @endphp
+                @if($exist)
+                    @continue
+                @endif
+            @endif
+
             @foreach($teacher->subjects as $subject)
                 @php
                     $test = false;
@@ -90,22 +114,6 @@
                 @endif
             @endforeach
         @endforeach
-        <tr>
-            <td>omar</td>
-            <td>arabic</td>
-        </tr>
-        <tr>
-            <td>omar2</td>
-            <td>arabic2</td>
-        </tr>
-        <tr>
-            <td>omar3</td>
-            <td>arabic3</td>
-        </tr>
-        <tr>
-            <td>omar4</td>
-            <td>arabic4</td>
-        </tr>
     </table>
     <br>
 

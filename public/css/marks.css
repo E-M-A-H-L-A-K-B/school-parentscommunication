@@ -213,10 +213,10 @@ h3 {
 }
 
 #path1 {
-    width: 84%;
+    width: 90%;
     position: absolute;
     top: 40px;
-    left: 30px;
+    left: 10px;
 }
 
 #path2 {
@@ -285,7 +285,7 @@ h3 {
     color: #f8fbfc;
     border-radius: 20px;
     font-weight: bold;
-    top: 0px;
+    top: 10px;
     margin-bottom: 20px;
 }
 
@@ -293,4 +293,30 @@ h3 {
     background: #f8fbfc;
     color: #052c58;
     box-shadow: 0 0 10px rgb(1, 26, 54);
+}
+label {
+    font-size: 15px;
+    color: #111649;
+    font-weight: bold;
+    position: relative;
+    left: 30%;
+}
+.upload{
+    font-size: 15px;
+    background-color: #8b91a8;
+    box-shadow: 5px 5px 10px #0b1a5b;
+    outline: none;
+    cursor: pointer;
+    border-radius: 20px;
+    margin-bottom: 5px;
+}
+ ::-webkit-file-upload-button{
+    background-image:linear-gradient(45deg ,rgb(65, 76, 121),#071127);
+    color: #e5e1f3;
+border-radius: 20px;
+}
+::-webkit-file-upload-button:hover{
+    background-image:linear-gradient(45deg ,#071127,rgb(65, 76, 121));
+    color: #e5e1f3;
+    cursor: pointer;
 }

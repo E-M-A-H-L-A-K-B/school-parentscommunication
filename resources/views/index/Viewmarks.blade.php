@@ -62,26 +62,6 @@
 
             </tr>
         @endforeach
-        <tr>
-            <td>arabic</td>
-            <td>50</td>
-
-        </tr>
-        <tr>
-            <td>arabic2</td>
-            <td>40</td>
-
-        </tr>
-        <tr>
-            <td>arabic3</td>
-            <td>30</td>
-
-        </tr>
-        <tr>
-            <td>arabic4</td>
-            <td>70</td>
-
-        </tr>
     </table>
     <br>
 
