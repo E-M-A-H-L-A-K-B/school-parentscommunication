@@ -250,7 +250,7 @@ class StructureController extends Controller
     public function showsort()
     {
         $students = Student::all();
-        return view('students',['students'=>$students]);
+        return view('index/students',['students'=>$students]);
     }
 
     public function sortstudents(Request $request)

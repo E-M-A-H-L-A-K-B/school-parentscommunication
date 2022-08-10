@@ -1,0 +1,171 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: serif;
+  background: linear-gradient(#143449, rgb(201, 217, 241));
+  min-height: 200px;
+}
+
+.fa-arrow-alt-circle-left:before {
+  position: relative;
+  left: 20px;
+  top: 10px;
+  color: #e5e1f3;
+}
+
+.fa-arrow-alt-circle-left:hover {
+
+  color: #50a2dd;
+  font-size: 30px;
+}
+h1 {
+  position: relative;
+  left: 40%;
+  top: -80px;
+  font-weight: bold;
+  color: #e5e1f3;
+  font-size: 5vw;
+  letter-spacing: 5px;
+  text-shadow: 30px 30px 10px #e1ebfc;
+}
+
+.card{
+  position: relative;
+  top: -30px;
+  left: 30%;
+  width: 500px;
+  background-color: #6e7d92;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  box-shadow: 0px 25px 50px rgba(8, 14, 53, 0.15);
+  
+}
+
+#up{
+  position: relative;
+  top: 30px;
+  left: -50px;
+  width:460px ;
+  height: 50px;
+  margin-bottom: 60px;
+  background-color:  #072549 ;
+border-radius: 30px;
+border-bottom-left-radius:0 ;
+}
+.card #up::before{
+  content: '';
+  position: absolute;
+  top: 50px;
+  left:0px;
+  width: 30px;
+  height: 30px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  background-color: #051b35;
+  z-index: 2;
+}
+.card #up::after{
+  content: '';
+  position: absolute;
+  top: 50px;
+  left:0px;
+  width: 30px;
+  height: 10px;
+  background-color: #072549;
+}
+label#f1 {
+  color: white;
+    position: relative;
+    top: 0px;
+    font-weight: bold;
+    left: 30%;
+    font-size: 30px;
+    border-radius: 20px;
+    padding: 3px 20px;
+}
+input.upload {
+  position: relative;
+  left: -20px;
+  color: #f6f7ff;
+  margin-bottom: 30px;
+  font-size: 25px;
+  border-radius: 20px;
+}
+::-webkit-file-upload-button{
+  background-image:linear-gradient(45deg ,rgb(65, 76, 121),#071127);
+  color: #e5e1f3;
+  border: none;
+  border: 2px dashed rgb(213, 225, 241);
+border-radius: 20px;
+}
+::-webkit-file-upload-button:hover{
+  background-image:linear-gradient(45deg ,#071127,rgb(65, 76, 121));
+  color: #e5e1f3;
+  cursor: pointer;
+}
+.show{
+  position: relative;
+  top: -20px;
+  left: 5%;
+  margin-bottom: 20px;
+}
+button#section_button_\{\{\$class-\>num\}\}\{\{\$section-\>id\}\} {
+  color: #072549;
+  border: none;
+  background: transparent;
+  font-size: 30px;
+  font-family: cursive;
+  font-weight: bold;
+  cursor: pointer;}
+  button#section_button_\{\{\$class-\>num\}\}\{\{\$section-\>id\}\}:hover {
+font-size:32px ;
+  }
+  .fa-chevron-circle-down:before  {
+    display: block;
+    position: relative;
+    top: 40px;
+    left: -130px;
+}
+button:focus {
+  border: none;
+  outline: none;
+  }
+  .btn-small {
+    position: relative;
+    cursor: pointer;
+    font-size: 23px;
+    background: #052c58;
+    color: #f8fbfc;
+    border-radius: 20px;
+    padding: 0px 10px;
+    font-weight: bold;
+    top: -10px;
+    margin-bottom: 20px;
+}
+
+.btn-small:hover {
+    background: #f8fbfc;
+    color: #052c58;
+    box-shadow: 0 0 10px rgb(1, 26, 54);
+}
+table{
+  border-radius: 20px;
+  margin-bottom: 20px;
+  margin-top: 40px;
+  position: relative;
+  left: -20px;
+}
+thead tr{
+  font-size:26px;
+  font-weight: bold;
+  background-image: linear-gradient(45deg , rgb(5, 21, 70) , rgb(35, 35, 201));
+  color: #e5e1f3;
+border-bottom: 1px dashed rgb(248, 249, 253);
+}
+tbody tr{
+  background-image: linear-gradient(90deg , rgb(157, 174, 223) , rgb(207, 212, 230));
+  font-size: 20px;
+  color: #051b35;
+}
+

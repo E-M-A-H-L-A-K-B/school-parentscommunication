@@ -10,8 +10,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: serif;
-  background: linear-gradient(#5249e3, rgb(201, 217, 241));
-background: linear-gradient(#180dc7, rgb(50 51 52));
+  background: linear-gradient(#143449, rgb(201, 217, 241));
 }
 
 .fa-arrow-alt-circle-left:before {
@@ -96,7 +95,7 @@ table
 margin-right: 25%;
 margin-top:-10%;
   border-radius: 30px 30px 0 0;
-   border: 5px #10264d solid;
+   border: 5px #09094d solid;
 
 
 }
@@ -113,17 +112,17 @@ td{
 
 }
 th{
-    background-color: blue;
+    background-color:#09094d;
     color: white;
     
 }
 tr:nth-child(odd)
 {
-    background-color: lightblue;
+    background-color: rgb(134, 154, 190);
 }
 tr:nth-child(odd):hover
 {
-    background-color: dodgerblue;
+    background-color: rgb(55, 106, 158);
     color: white;
     transform: scale(1.2);
     transition: transform 300ms ease-in;
@@ -133,11 +132,11 @@ tr:nth-child(odd):hover
 
 tr:nth-child(even)
 {
-    background-color: #ededed;
+    background-color: #ccddf7;
 }
 tr:nth-child(even):hover
 {
-    background-color: lightgray;
+    background-color: rgb(67, 135, 202);
     
     transform: scale(1.2);
     transition: transform 300ms ease-in;

@@ -24,7 +24,7 @@ class UserIsStaff
 
         else if(!Auth::guard('student')->check() && !Auth::check())
         {
-            return redirect()->intended('/userlogin')->with('protection','You Must Login As A Staff Member To Enter This URL');
+            return redirect()->intended('/')->with('protection','You Must Login As A Staff Member To Enter This URL');
         }
         
         return $next($request);

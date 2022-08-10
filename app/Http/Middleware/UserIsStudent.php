@@ -19,7 +19,7 @@ class UserIsStudent
     {
         if(!Auth::check() && !Auth::guard('student')->check())
         {
-            return redirect()->intended('/studentlogin')->with('protection','Must Be LoggedIn As A Student To Enter This URL');
+            return redirect()->intended('/')->with('protection','Must Be LoggedIn As A Student To Enter This URL');
         }
 
         else if(Auth::check())

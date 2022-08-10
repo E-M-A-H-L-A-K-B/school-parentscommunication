@@ -61,7 +61,7 @@ class UserAuthController extends Controller
 
     public function ChangePassword(Request $req)
     {
-        return view('user change password');
+        return view('index/change password');
     }
 
     public function HandleAdminChangePassword(Request $req)

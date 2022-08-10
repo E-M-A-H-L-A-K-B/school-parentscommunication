@@ -36,13 +36,16 @@
             @if(Auth::check())
               @if(Auth::user()->admin)
                 <a class="nav-link" href="{{route('adminmain')}}"><i id="iconbar" class="fas fa-user-circle"></i>Admin Panel</a>
+                
               @elseif(Auth::user()->guide)
                 <a class="nav-link" href="{{route('guidemain')}}"><i id="iconbar" class="fas fa-user-circle"></i>My Panel</a>
               @elseif(Auth::user()->teacher)
                 <a class="nav-link" href="{{route('teachermain')}}"><i id="iconbar" class="fas fa-user-circle"></i>My Panel</a>
               @endif
+              <a class="nav-link" href="{{route('user.changepassword')}}"><i id="iconbar" class="fas fa-user-circle"></i>Change Password</a>
             @elseif(Auth::guard('student')->check())
               <a class="nav-link" href="{{route('studentmain')}}"><i id="iconbar" class="fas fa-user-circle"></i>My Panel</a>
+              <a class="nav-link" href="{{route('student.changepassword')}}"><i id="iconbar" class="fas fa-sign-out-alt"></i>Change Password</a>
             @endif
           </li>
           <li>
@@ -64,6 +67,7 @@
           <li>
             @if(Auth::check())
             <a class="nav-link" href="{{route('user.logout')}}"><i id="iconbar" class="fas fa-sign-out-alt"></i>Logout</a>
+
             @elseif(Auth::guard('student')->check())
             <a class="nav-link" href="{{route('student.logout')}}"><i id="iconbar" class="fas fa-sign-out-alt"></i>Logout</a>
             @endif

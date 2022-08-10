@@ -25,7 +25,7 @@ class StudentAuthController extends Controller
 
     public function ChangePassword(Request $req)
     {
-        return view('student change password');
+        return view('index/change password');
     }
 
     public function HandleChangePassword(Request $req)

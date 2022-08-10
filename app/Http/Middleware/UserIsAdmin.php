@@ -19,7 +19,7 @@ class UserIsAdmin
     {
         if(!Auth::check() && !Auth::guard('student')->check())
         {
-            return redirect()->intended('/userlogin')->with('protection','Must Be LoggedIn As Admin To Enter This URL');
+            return redirect()->intended('/')->with('protection','Must Be LoggedIn As Admin To Enter This URL');
         }
 
         else if(Auth::guard('student')->check())
