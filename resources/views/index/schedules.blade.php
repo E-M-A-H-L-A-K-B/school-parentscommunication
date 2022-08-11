@@ -48,7 +48,7 @@
                         <div class="card-content">
                             <div id="icon"><i class="fas fa-chalkboard"></i></div>
                             <p id="classes">Class {{$class->num}}
-                            <button id='class_bttn_{{$class->num}}' onclick="showsections(this)">Show Sections<i
+                            <button id='class_bttn_{{$class->num}}' class="t" onclick="showsections(this)">Show Sections<i
                                     class="fas fa-chevron-circle-down "></i>
                             </button></p>
                         
@@ -57,7 +57,7 @@
     
                                     @for($i=0;$i < count($sections);$i++)
                                         @if($sections[$i] == $section->id)
-                                            <p id="sectiones"> Section {{$section->num}}<button id="section_button_{{$class->num}}{{$section->id}}"
+                                            <p id="sectiones"> Section {{$section->num}}<button class="dd" id="section_button_{{$class->num}}{{$section->id}}"
                                                     onclick="showform(this)"><i class="fas fa-cloud-upload-alt"></i>
                                                 </button></p>
                                             

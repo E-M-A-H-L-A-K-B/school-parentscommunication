@@ -48,7 +48,7 @@
                             <div id="icon"><i class="fas fa-chalkboard"></i></div>
                         
                             <p id="classes">Class {{$class->num}}
-                                <button id='class_bttn_{{$class->num}}' onclick="showsections(this)">Show Sections<i
+                                <button class="t" id='class_bttn_{{$class->num}}' onclick="showsections(this)">Show Sections<i
                                         class="fas fa-chevron-circle-down "></i>
                                 </button>
                             </p>
@@ -59,7 +59,7 @@
                                     @for($i=0;$i < count($sections);$i++)
                                         @if($sections[$i] == $section->id)
                                             <p id="sectiones"> Section {{$section->num}}
-                                                <button id="section_button_{{$class->num}}{{$section->id}}"
+                                                <button class="dd" id="section_button_{{$class->num}}{{$section->id}}"
                                                     onclick="showstudents(this)">Show Subject
                                                 </button>
                                             </p>
@@ -67,7 +67,7 @@
                                             <div id="subject_div_{{$class->num}}{{$section->id}}" style="display: none;">
                                                 @foreach($class->subjects as $subject)
                                                     <p id="subjectes"> {{$subject->name}}
-                                                        <button id="section_button_{{$class->num}}{{$section->id}}{{$subject->id}}"
+                                                        <button class="ddd"  id="section_button_{{$class->num}}{{$section->id}}{{$subject->id}}"
                                                             onclick="showform(this)"><i class="fas fa-cloud-upload-alt"></i>
                                                         </button>
                                                     </p>

@@ -84,15 +84,13 @@
 
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
       <div class="carousel-inner">
+        
         <div class="carousel-item active">
-          <img class="photo w-100" src="{{URL::asset('img/IMG_8563+sky.jpg')}}" alt="First slide">
-        </div>
-        <div class="carousel-item">
-          <img class="photo w-100" src="{{URL::asset('img/Nailsea-School-2.jpg')}}" alt="second slide">
+          <img class="photo w-100" src="{{URL::asset('img/Nailsea-School-2.jpg')}}" alt="First slide">
         </div>
 
         <div class="carousel-item">
-          <img class="photo w-100" src="{{URL::asset('img/2429237300000578-2880555-image-a-19_1418993618094.jpg')}}" alt="Third slide">
+          <img class="photo w-100" src="{{URL::asset('img/2429237300000578-2880555-image-a-19_1418993618094.jpg')}}" alt="Second slide">
         </div>
 
         <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
