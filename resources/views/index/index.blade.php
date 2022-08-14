@@ -220,108 +220,64 @@
       </div>
     </div>
     <div class="title_text">
-      <p>STUDENT TRAILING</p>
+      <p> Welcome To STUDENT TRAILING</p>
     </div>
 
     <div class="home_box">
 
       <p id="par">
 
-        Nailsea is a completely comprehensive school offering high quality educational opportunities to students of all
-        abilities and aptitudes.
-        We care deeply not only about the academic development of our students but also their emotional and personal
-        development.
-        We recognise that every student has their own individual strengths,
-        gifts and talents and our aim is to ensure that these are all developed to their full potential...
+      Student Trailing is an online platform that allow parents and schools to communicate a keep in
+      touch with each other more effectivly through creating an account for the student so the parents
+      can communicate with the school management, guids and teaching staff, and to send and
+      recieve feedback from the school and check the school's different announcements as well as
+      check on the student's grades in different subjects.
       </p>
-      <p><small class="text-muted"> Thank you for your interest in our school and I look forward to welcoming you. Mrs D
-          Elliott Headteacher </small></p>
+      <p><small class="text-muted"> Thank you for your interest in our platform and we look forward to welcoming you.
+          The Student Trailing team</small></p>
 
     </div>
   </section>
 
   <section id="about">
     <div class="title_text">
-      <p>About Us</p>
+      <p>About Student Trailing</p>
     </div>
     <div class="about_box">
       <p id="par">
 
-        Nailsea is a happy school where students and teachers enjoy working together,
-        We have a strong ethos based on core values of respect, tolerance and courtesy,
-        We set high standards of behaviour, Our young people gain the confidence to take their place in society
-        and develop the skills and attitudes to enable them to succeed in their chosen paths.  
+        This platform allows the director to create the school's structure from classes, sections,
+        subjects, students, and faculty members and assign them according to his well, and allows
+        the faculty members to rate the student in a simple, easy and fast way through writing their
+        feedback to the parents of every student, guides can recieve feedback from parents and
+        respond to them, as well as send announcements to the sections assigned to him, on the other
+        hand, parents can view the faculty members responsible for their child's education, as well as
+        check their marks, view school and section announcements and recieve feed back from the
+        faculty members and respond to it.
       </p>
       <div class="about_imgss"><img src="{{URL::asset('img/Classroom-2.jpg')}}"></div>
       <div class="about_imgss"><img src="{{URL::asset('img/Science-Super-Laboratory-Room-2.jpg')}}"></div>
       <div class="about_imgss"><img src="{{URL::asset('img/music-3.jpg')}}"></div>
       <div class="about_imgss"><img src="{{URL::asset('img/Canteen-2 (1).jpg')}}"></div>
 
-      <div id="accordion">
-        <div class="card">
-          <div class="card-header" id="headingTwo">
-            <h5 class="mb-0">
-              <button class="btn btn-link collapsed" id="about_title_pa" data-toggle="collapse"
-                data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                OUR FACILITIES
-              </button>
-            </h5>
-          </div>
-          <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-            <div class="card-body">
-              I am delighted that you wish to find out about our school –
-              a place that I consider to be a fantastic place to work and to learn.
-              By ensuring your child’s happiness remains our first priority,
-              we know they will go onto achieve their full potential here with us.
-              Nailsea School was re-built in 2009 and
-              the architects worked hard in consultation with staff and students to create a bright,
-              modern centre of learning.
-              Many of the classrooms and staff bases have glass walls creating a sense of openness and visibility.
-              The design is based on an arc which means navigation around the school is easy,
-              and colour coded areas help identify subject areas.
-            </div>
-          </div>
-        </div>
-      </div>
-
     </div>
   </section>
 
   <section id="Headteacher">
     <div class="title_text">
-      <p>Headteacher</p>
+      <p>Our Goals</p>
     </div>
     <div class="Headteacher_box">
-      <h1 id="Headteacher-title">Senior Leadership Team (SLT)</h1>
       <div class="card-group">
 
         <div class="card">
           <div class="card-body">
-            <h4 class="card-title">Mrs D Elliott</h4>
-            <p class="card-text"><small class="text-muted">Headteacher</small></p>
+            <h4 class="card-title"></h4>
             <p class="card-text">
-              I joined Nailsea School in 2014, originally as Deputy Headteacher,
-              and was very proud to be appointed Headteacher in September 2016.
-              It is a privilege to work with our dedicated staff who maintain our fantastic school ethos, ensuring our
-              students develop into responsible young adults,
-              irrespective of where their futures take them.</p>
-            <p class="card-text"><small class="text-muted">Teaching Area: History <wbr>
-              Qualifications: BA (Hons) History, (University of Exeter) PGCE (University of Bristol)</small></p>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card-body">
-            <h4 class="card-title">Mrs S Hurlow</h4>
-            <p class="card-text"><small class="text-muted"> Business Manager</small></p>
-            <p class="card-text">My journey at Nailsea School started in 2009 when I was appointed to the position of
-              Business Manager, my interview was my first time in a secondary school since I was a student! I am a
-              qualified Chartered Accountant, specialising in the public sector,
-              and have previously worked in the NHS in roles as Deputy Director or Finance and Head of Finance.</p>
-            <p id="HURLOW" class="card-text"><small class="text-muted">Responsibilities: Non-teaching aspects of the
-                school (including Finance, HR, Premises, Catering, ICT, Marketing and Fundraising)<wbr>
-                Qualifications: Chartered Accountant (CIPFA); BA (Hons) Business Administration, (Brunel University); Diploma for School Business Leaders (Institute of Leadership & Management)</small>
-            </p>
+            To complete the educational process in the finest way through the educational cooperation
+            of both parents and faculty members by securing a way of communication between them, to
+            create a new generation with great capabilities and competencies in a convenient way for both
+            parties.</p>
           </div>
         </div>
 
