@@ -12,7 +12,11 @@ body {
   font-family: serif;
   background: linear-gradient(#143449, rgb(201, 217, 241));
 }
-
+img{
+  width: 250px;
+  position: relative;
+  left: -100px;
+}
 .fa-arrow-alt-circle-left:before {
   position: relative;
   left: 20px;

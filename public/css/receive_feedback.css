@@ -10,6 +10,11 @@ body {
     position: relative;
     left: -50px;
 }
+img{
+    width: 250px;
+    position: relative;
+    left: -100px;
+}
 .fa-arrow-alt-circle-left:before {
     position: relative;
     left: 20px;

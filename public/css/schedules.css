@@ -24,7 +24,11 @@ body {
     color: #50a2dd;
     font-size: 30px;
 }
-
+img{
+    width: 250px;
+    position: relative;
+    left: -100px;
+}
 h1 {
     position: relative;
     left: 35%;
@@ -44,7 +48,7 @@ h1 {
     flex-wrap: wrap;
     padding: 40px 0px;
     position: relative;
-    top: -140px;
+    top: -160px;
 }
 
 .card {
@@ -53,7 +57,7 @@ h1 {
     border-radius: 20px;
     min-height: 30vh;
     width: 300px;
-    margin: 10px 0px;
+    margin: 20px 30px;
 }
 
 .card::before {
@@ -112,6 +116,7 @@ button#class_bttn_\{\{\$class-\>num\}\} {
     cursor: pointer;
     border-radius: 8px;
 }
+
 .t{
     background:none;
     color: #052c58;
@@ -123,6 +128,7 @@ button#class_bttn_\{\{\$class-\>num\}\} {
     border: none;
     color: #071127;
 }
+
 button#class_bttn_\{\{\$class-\>num\}\}:hover {
   
     font-size: 30px;
@@ -262,7 +268,6 @@ div .btn:hover {
     border-radius: 20px;
     font-weight: bold;
     top: 20px;
-    left: 35% ;
     margin-bottom: 20px;
 }
 

@@ -18,7 +18,11 @@ body {
   color: #50a2dd;
   font-size: 30px;
 }
-
+img{
+  width: 250px;
+  position: relative;
+  left: -100px;
+}
 label {
   position: relative;
   left: 640px;

@@ -11,7 +11,11 @@ body {
     position: relative;
     left: -50px;
 }
-
+img{
+    width: 250px;
+    position: relative;
+    left: -100px;
+}
 .fa-arrow-alt-circle-left:before {
     position: relative;
     left: 20px;
@@ -35,6 +39,7 @@ h1 {
     letter-spacing: 5px;
     text-shadow: 30px 30px 10px #e1ebfc;
 }
+
 .t{
     background:none;
     color: #052c58;
@@ -50,6 +55,7 @@ h1 {
 .ddd{
     border: none;
 }
+
 #Class {
     display: flex;
     justify-content: center;

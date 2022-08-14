@@ -35,7 +35,11 @@ h2{
         
     
 }
-
+img{
+    width: 250px;
+    position: relative;
+    left: -100px;
+}
 #send-to{
     color: #f0f3f5;
   font-size: 25px;

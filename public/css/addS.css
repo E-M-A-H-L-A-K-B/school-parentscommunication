@@ -4,7 +4,11 @@ body{
 .form-row {
     background: transparent
 }
-
+img{
+    width: 250px;
+    position: relative;
+    left: -100px;
+}
 .fa-arrow-alt-circle-left:before {
 position: relative;
     left: -100px;

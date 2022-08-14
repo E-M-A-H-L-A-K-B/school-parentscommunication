@@ -17,6 +17,12 @@ body {
     color: #50a2dd;
     font-size: 30px;
 }
+
+img{
+    width: 250px;
+    position: relative;
+    left: -100px;
+}
 hr {
     border: none;
     border-bottom: 2px solid #0d254e;

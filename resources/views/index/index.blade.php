@@ -220,7 +220,7 @@
       </div>
     </div>
     <div class="title_text">
-      <p>Welcome to Nailsea School</p>
+      <p>STUDENT TRAILING</p>
     </div>
 
     <div class="home_box">
@@ -359,7 +359,7 @@
       <p> School Contact Details</p>
     </div>
     <div id="contactt_box">
-      <p id="contact_title"><i class="fas fa-map-marked-alt"></i> Mizzymead Road,Nailsea, Bristol, BS48 2HN</p>
+      <p id="contact_title"><i class="fas fa-map-marked-alt"></i> Mizzymead Road,STUDENT TRAILING, Bristol, BS48 2HN</p>
 
       <table class="content-table" style="width:100%">
         <tbody>
@@ -381,7 +381,7 @@
           </tr>
         </tbody>
       </table>
-      <p id="contact_title">Travelling to Nailsea School</p>
+      <p id="contact_title">Travelling to STUDENT TRAILING</p>
       <p id="contact_info"><i id="contact_icon" class="fas fa-train"></i><span id="contact_title_info">TRAIN:</span> The
         nearest station is Nailsea & Backwell. It is a 25 minute walk from the station to the school</p>
       <p id="contact_info"><i id="contact_icon" class="fas fa-bus-alt"></i><span id="contact_title_info"> BUS:</span>
@@ -418,7 +418,7 @@
       <img src="{{URL::asset('img/Horizontal-line.gif')}}">
       <div class="col">
 
-        <h3>Nailsea School<div class="underline "><span></span></div>
+        <h3>STUDENT TRAILING<div class="underline "><span></span></div>
         </h3><wbr>
         <p id="footer_p">I would encourage you to visit the school to experience things for yourself and I would be more
           than happy to take you on a tour of the site to see our staff and students in action.
@@ -440,7 +440,7 @@
         <h3>FIND US<div class="underline "><span></span></div>
         </h3>
         <p id="footer_p"> Mizzymead Road ,
-          Nailsea , BS48 2HN</p>
+        STUDENT TRAILING , BS48 2HN</p>
         <img id="footer-img" src="{{URL::asset('img/logo_fixed.png')}}">
       </div>
 

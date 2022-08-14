@@ -18,6 +18,11 @@ body {
   color: #50a2dd;
   font-size: 30px;
 }
+img{
+  width: 250px;
+  position: relative;
+  left: -100px;
+}
 h1 {
   position: relative;
   left: 40%;

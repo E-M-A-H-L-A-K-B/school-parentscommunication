@@ -21,7 +21,7 @@ body {
   h1 {
     position: relative;
     left: 28%;
-    top: -90px;
+    top: -130px;
     font-weight: bold;
     color: #e5e1f3;
     font-size: 5vw;
@@ -33,10 +33,15 @@ body {
     font-weight: bold;
     font-size: 25px;
   }
+  img{
+    width: 250px;
+    position: relative;
+    left: -100px;
+}
   .box{
     position: relative;
     left: 31%;
-    top: -40px;
+    top: -80px;
     width: 550px;
     height: 400px;
     padding: 20px;

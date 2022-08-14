@@ -10,7 +10,11 @@ body {
     position: relative;
     left: -50px;
 }
-
+img{
+    width: 250px;
+    position: relative;
+    left: -100px;
+}
 .fa-arrow-alt-circle-left:before {
     position: relative;
     left: 20px;
@@ -26,7 +30,7 @@ body {
 h1 {
     position: relative;
     left: 37%;
-    top: -100px;
+    top: -140px;
     font-weight: bold;
     color: #e5e1f3;
     font-size: 5vw;
@@ -58,7 +62,7 @@ h3{
 
 #box {
     position: relative;
-    top: -20px;
+    top: -50px;
     width: 350;
     height: 270px;
     display: flex;

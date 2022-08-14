@@ -25,11 +25,21 @@ body {
 }
 
 img {
+    width: 100px;
     position: relative;
-    left: 50px;
-    top: 20px;
-}
 
+    left: 30px;
+}
+.container {
+    text-align: center;
+    margin-top: 10%;
+    position: relative;
+    top: -50px;
+  }
+  .row {
+    position: relative;
+    top: -50px;
+}
 ul {
     position: absolute;
     top: 8%;
@@ -137,10 +147,7 @@ ul li a:hover .name span  {
     left: 20%;
 }
 
-.container{
-    text-align: center;
-    margin-top: 10%;
-}
+
 .circle:nth-child(1),
 .circle:nth-child(2),
 .circle:nth-child(3),
