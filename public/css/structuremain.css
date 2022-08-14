@@ -27,8 +27,7 @@ body {
 img {
     width: 100px;
     position: relative;
-
-    left: 30px;
+    left: 40px;
 }
 .container {
     text-align: center;

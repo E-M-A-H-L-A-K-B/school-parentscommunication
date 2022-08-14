@@ -1,0 +1,31 @@
+Marks
+
+.t{
+    background:none;
+    color: #052c58;
+    border: none;
+    position: relative;
+    top: 70px;
+}
+.dd{
+    border: none;
+    background: none;
+    font-size: 15px;
+}
+.ddd{
+    border: none;
+}
+
+Schedules
+
+.t{
+    background:none;
+    color: #052c58;
+    border: none;
+    position: relative;
+    top: 70px;
+}
+.dd{
+    border: none;
+    color: #071127;
+}
