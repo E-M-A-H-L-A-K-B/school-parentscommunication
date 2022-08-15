@@ -265,6 +265,7 @@ class StructureController extends Controller
 
             foreach($array as $row)
             {
+                
                 $data=Student::where('name',$row['name'])
                                 ->where('father',$row['father'])
                                 ->where('last_name',$row['last_name'])

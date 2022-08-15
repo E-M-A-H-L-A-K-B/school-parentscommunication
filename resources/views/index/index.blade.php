@@ -106,9 +106,11 @@
 
 
     <div>
+      @if(!Auth::check() && !Auth::guard('student')->check())
       <button id="sigin" type="button" class="btn btn-primary " data-toggle="modal" data-target="#myModal">
         <i class="fas fa-sign-in-alt"></i>
       </button>
+      @endif
 
       <div class="modal" id="myModal">
         <div class="modal-dialog">

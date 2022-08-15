@@ -25,7 +25,7 @@ use Nette\Schema\Elements\Structure;
 Route::get('/', function () {
     $announs = SchoolAnnouncement::all()->sortByDesc('created_at')->take(5);
     return view('index/index',['announs'=>$announs]);
-});
+})->name('home');
 
 
 Route::middleware('auth.admin')->group(function (){

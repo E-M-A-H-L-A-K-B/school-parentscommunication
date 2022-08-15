@@ -10,7 +10,11 @@
 </head>
 
 <body>
-    <a href="structuremain.html"> <i id="left" class="fas fa-arrow-alt-circle-left"></i></a>
+@if(Auth::guard('student')->check())
+    <a href="{{route('studentmain')}}"> <i id="left" class="fas fa-arrow-alt-circle-left"></i></a>
+    @elseif(Auth::user()->guide)
+    <a href="{{route('guidemain')}}"> <i id="left" class="fas fa-arrow-alt-circle-left"></i></a>
+    @endif
     <div class="container">
         <div id="logo">
             <img src="{{URL::asset('img/logo_fixed.png')}}">
@@ -27,7 +31,7 @@
                     @if($student)
                         @if($feedback->subject != null)
                             <p id="send-to">{{$feedback->user->name}} {{$feedback->user->father}} {{$feedback->user->last_name}}
-                            <p id="from">The {{$feedback->subject->name}} Teacher</p>
+                            <p id="from">{{$feedback->subject->name}}</p>
                             </p>
                         @else
                             <p id="send-to">{{$feedback->user->name}} {{$feedback->user->father}} {{$feedback->user->last_name}}

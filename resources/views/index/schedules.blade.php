@@ -12,7 +12,7 @@
 </head>
 
 <body>
-    <a href="structuremain.html"> <i id="left" class="fas fa-arrow-alt-circle-left"></i></a>
+    <a href="{{route('guidemain')}}"> <i id="left" class="fas fa-arrow-alt-circle-left"></i></a>
     <div class="container">
         <div id="logo">
             <img src="{{URL::asset('img/logo_fixed.png')}}">
@@ -69,7 +69,7 @@
                                                     @error('pic') <span><small style="color: red;">{{ $massege }}</small></span> @enderror
 
                                                     <label id="f1">Upload File</label>
-                                                    <input for="f1" type="file" required name="file" class="upload">
+                                                    <input for="f1" type="file" required name="file" class="upload" accept="image/*">
                                                     <label  id="f2">Upload Photo</label>
                                                     <input for="f2" type="file" required name="pic" class="upload">
                                                 

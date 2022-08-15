@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <a href="structuremain.html"> <i id="left" class="fas fa-arrow-alt-circle-left"></i></a>
+    <a href="{{route('adminmain')}}"> <i id="left" class="fas fa-arrow-alt-circle-left"></i></a>
     <div class="container">
         <div id="logo">
             <img src="{{URL::asset('img/logo_fixed.png')}}">

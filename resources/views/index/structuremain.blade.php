@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <a href="#"> <i id="left" class="fas fa-arrow-alt-circle-left"></i></a>
+    <a href="{{route('home')}}"> <i id="left" class="fas fa-arrow-alt-circle-left"></i></a>
     <a href="#"> <i id="left" class="fas fa-sign-out-alt"></i></a>
     <div id="logo">
         <img src="{{URL::asset('img/logo_fixed.png')}}">

@@ -10,7 +10,7 @@
 </head>
 
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
-  <a href="structuremain.html"> <i id="left" class="fas fa-arrow-alt-circle-left"></i></a>
+  <a href="{{route('adminmain')}}"> <i id="left" class="fas fa-arrow-alt-circle-left"></i></a>
 
   <div class="container">
     <div id="logo">
