@@ -47,8 +47,8 @@
             <form id="form_div_12" action="{{route('structure.storeclass')}}" method="post" >
                 @csrf
                 <input type="number" id="idF" name="class_number" placeholder="Name Class">
-                @error('class_number') <span><small style="color: red;">{{ $message }}</small></span> @enderror
                 <input type="submit" value="Add"><br>
+                @error('class_number') <span><small style="color: red;">{{ $message }}</small></span> @enderror
                 @if(Session::has('number_error'))
                 <span><small style="color: red;">{{ Session::get('number_error') }}</small></span><br>
                  @elseif(Session::has('class_exist'))

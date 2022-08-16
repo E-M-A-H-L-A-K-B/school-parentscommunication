@@ -72,9 +72,9 @@
             @endif
                 @csrf
                 <input type="number" id="idF" name="section_number" placeholder="Section Number">
-                @error('section_number') <span><small style="color: red;"></small>{{$message}}</span> @enderror
                 <input type="hidden" name="class_number" value="{{ $class->num }}">
                 <input type="submit" value="Add">
+                @error('section_number') <span><small style="color: red;"></small>{{$message}}</span> @enderror
                 @if(Session::has('section_exist_'.$class->num))
                     <span><small style="color: red;">{{Session::get('section_exist_'.$class->num)}}</small></span>
                 @endif
@@ -92,25 +92,6 @@
 
         </div>
         @endforeach
-        <h3>Class 1:</h3>
-        <div class="dc">
-
-            <button id="section_button_11" class="tittle1"  onclick="showsdiv(this)">View Section</button>
-
-            <button id="section_button_12"  class="tittle2"  onclick="showsform(this)">Add section</button>
-            
-            <form id="form_div_12" style="display: none;">
-                <input type="text" id="idF" name="nameF" placeholder="Name Section">
-                <input type="submit" value="Add">
-            </form>
-
-            <div id="div_div_11" style="display: none;">
-                <p id="se">First section <input type="button" value="delete"onclick="#"></p>
-                <p id="se">secondsection <input type="button" value="delete"onclick="#"></p>
-                <p id="se">third section<input type="button" value="delete"onclick="#"></p>
-            </div>
-
-        </div>
 
     </div>
     </div>
