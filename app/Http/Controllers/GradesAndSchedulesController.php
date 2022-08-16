@@ -91,6 +91,9 @@ class GradesAndSchedulesController extends Controller
 
     public function setgrades(Request $request,$subject)
     {
+        $test = $request->validate([
+            'file'=>['required'],
+        ]);
         error_log('Entered');
         if($request->file('file'))
         {

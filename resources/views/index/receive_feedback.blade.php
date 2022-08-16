@@ -64,6 +64,7 @@
                                 <form action="{{route('feedback.respondtoschool',['id'=>$feedback->id])}}" method="post">
                             @else
                                 <form action="{{route('feedback.respondtoparent',['id'=>$feedback->id])}}" method="post">
+                                @error('response') <span><small style="color: red;"></small>{{$message}}</span> @enderror
                             @endif
                                 @csrf
                                 <textarea name="response" required placeholder="ww"></textarea>

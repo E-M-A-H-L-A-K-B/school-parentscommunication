@@ -72,6 +72,7 @@
             @endif
                 @csrf
                 <input type="number" id="idF" name="section_number" placeholder="Section Number">
+                @error('section_number') <span><small style="color: red;"></small>{{$message}}</span> @enderror
                 <input type="hidden" name="class_number" value="{{ $class->num }}">
                 <input type="submit" value="Add">
                 @if(Session::has('section_exist_'.$class->num))

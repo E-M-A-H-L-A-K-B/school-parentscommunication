@@ -56,6 +56,7 @@
             @endif
                 @csrf
                 <input type="text" id="idF" name="subject_name">
+                @error('subject_name') <span><small style="color: red;"></small>{{$message}}</span> @enderror
                 <input type="hidden" name="class_number" value="{{ $class->num }}">
                 <input type="submit" value="Add">
                 @if(Session::has('subject_exist_'.$class->num))

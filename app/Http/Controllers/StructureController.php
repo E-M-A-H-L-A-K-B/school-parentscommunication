@@ -31,6 +31,9 @@ class StructureController extends Controller
 
     public function storeclass(Request $request)
     {
+        $test = $request->validate([
+            'class_num'=>['required'],
+        ]);
         if($request->class_number < 1 || $request->class_number > 12)
         {
             return back()->with('number_error','The Class Number Must Be Between 1 and 12');
@@ -81,6 +84,9 @@ class StructureController extends Controller
 
     public function storesection(Request $request)
     {
+        $test = $request->validate([
+            'section_number'=>['required'],
+        ]);
         if(Section::where('class_num',$request->class_number)->where('num',$request->section_number)->exists())
         {
             return back()->with('section_exist_'.$request->class_number,'This Section Already Exists In This Class');
@@ -123,6 +129,9 @@ class StructureController extends Controller
 
     public function storesubject(Request $request)
     {
+        $test = $request->validate([
+            'subject_name'=>['required'],
+        ]);
         if(Subject::where('class_num',$request->class_number)->where('name',$request->subject_name)->exists())
         {
             return back()->with('subject_exist_'.$request->class_number,'This Subject Already Exists In This Class');
@@ -255,6 +264,9 @@ class StructureController extends Controller
 
     public function sortstudents(Request $request)
     {
+        $test = $request->validate([
+            'file'=>['required'],
+        ]);
         $import =new Student_Section_Import;
         Excel::import($import,$request->file('file'));
         $array = $import->getArray();

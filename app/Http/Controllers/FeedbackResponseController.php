@@ -15,6 +15,9 @@ class FeedbackResponseController extends Controller
 {
     public function respondToParent(Request $request,$id)
     {
+        $test = $request->validate([
+            'response'=>['required'],
+        ]);
         error_log('started function');
         DB::beginTransaction();
         error_log('entering try catch');
@@ -44,6 +47,9 @@ class FeedbackResponseController extends Controller
 
     public function respondToSchool(Request $request,$id)
     {
+        $test = $request->validate([
+            'response'=>['required'],
+        ]);
         DB::beginTransaction();
         try
         {

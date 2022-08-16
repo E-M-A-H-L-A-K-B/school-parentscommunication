@@ -30,6 +30,7 @@
             </div>
 
             <input for="f1" name="file" type="file" required class="upload">
+            @error('file') <span><small style="color: red;"></small>{{$message}}</span> @enderror
             <button type="submit" class="waves-effect waves-light btn-small">Submit</button>
         </form>    
 
