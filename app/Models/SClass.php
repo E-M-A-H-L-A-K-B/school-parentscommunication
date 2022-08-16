@@ -9,6 +9,8 @@ class SClass extends Model
 {
     use HasFactory;
 
+    public $primaryKey = 'class_num';
+
     public function sections()
     {
         return $this->hasMany(Section::class,'class_num','num');
