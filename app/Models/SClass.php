@@ -9,7 +9,7 @@ class SClass extends Model
 {
     use HasFactory;
 
-    public $primaryKey = 'class_num';
+    public $primaryKey = 'num';
 
     public function sections()
     {
